@@ -242,7 +242,7 @@ class DataExporter:
             scale_y = 1.0
             obj = {
                 'id': f"GEN_Road_{len(world_data['nodes'])}",
-                'instance_name': 'BP_Road1_C',
+                'instance_name': 'BP_Road_C',
                 'properties': {
                     'location': {
                         'x': round(center['x'] * 100, 4),
@@ -254,9 +254,14 @@ class DataExporter:
                         'yaw': round(rotation, 4),
                         'roll': 0
                     },
+                    # 'scale': {
+                    #     'x': round(scale_x * 0.95, 4),
+                    #     'y': round(scale_y * 0.9, 4),
+                    #     'z': 1.0
+                    # }
                     'scale': {
-                        'x': round(scale_x * 0.95, 4),
-                        'y': round(scale_y * 0.9, 4),
+                        'x': 0.88,
+                        'y': 1.0,
                         'z': 1.0
                     }
                 }

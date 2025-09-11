@@ -439,6 +439,27 @@ class UnrealCV(object):
         with self.lock:
             self.client.request(cmd)
 
+    def p_movement_simulation(self, object_name):
+        """Start pedestrian movement simulation.
+
+        Args:
+            object_name: Object name.
+        """
+        cmd = f'vbp {object_name} MovementSimulation'
+        with self.lock:
+            self.client.request(cmd)
+
+    def p_set_waypoints(self, object_name, waypoints):
+        """Set pedestrian waypoints.
+
+        Args:
+            object_name: Object name.
+            waypoints: String of waypoints. Use semicolon to separate waypoints and use comma to separate coordinates. Example: "100,100;200,200;300,300"
+        """
+        cmd = f'vbp {object_name} SetWaypoints {waypoints}'
+        with self.lock:
+            self.client.request(cmd)
+
     def tl_set_vehicle_green(self, object_name: str):
         """Set vehicle traffic light to green.
 
@@ -495,9 +516,38 @@ class UnrealCV(object):
         with self.lock:
             self.client.request(cmd)
 
+    def add_vehicle_signal(self, intersection_name, vehicle_signal_name):
+        """Add vehicle signal.
+
+        Args:
+            intersection_name: Name of the intersection to add traffic signal to.
+            vehicle_signal_name: Name of the vehicle signal to add.
+        """
+        cmd = f'vbp {intersection_name} AddVehicleSignal {vehicle_signal_name}'
+        with self.lock:
+            self.client.request(cmd)
+
+    def add_pedestrian_signal(self, intersection_name, pedestrian_signal_name):
+        """Add pedestrian signal.
+
+        Args:
+            intersection_name: Name of the intersection to add pedestrian signal to.
+            pedestrian_signal_name: Name of the pedestrian signal to add.
+        """
+        cmd = f'vbp {intersection_name} AddPedSignal {pedestrian_signal_name}'
+        with self.lock:
+            self.client.request(cmd)
+
+    def traffic_signal_start_simulation(self, intersection_name):
+        """Start traffic signal simulation."""
+        cmd = f'vbp {intersection_name} StartSimulation'
+        with self.lock:
+            self.client.request(cmd)
+
     ##############################################################
     # Robot System
     ##############################################################
+
     def dog_move(self, robot_name, action):
         """Apply transition action.
 
@@ -556,6 +606,7 @@ class UnrealCV(object):
 
     ##############################################################
     # Humanoid System
+    # For '/Game/TrafficSystem/Pedestrian/Base_User_Agent.Base_User_Agent_C'
     ##############################################################
 
     def humanoid_move_forward(self, object_name):
@@ -809,6 +860,27 @@ class UnrealCV(object):
         with self.lock:
             self.client.request(cmd)
 
+    def humanoid_set_path(self, object_name, path):
+        """Set humanoid path.
+
+        Args:
+            object_name: Name of the humanoid object.
+            path: String of path. Use semicolon to separate waypoints and use comma to separate coordinates. Example: "100,100;200,200;300,300"
+        """
+        cmd = f'vbp {object_name} SetPath {path}'
+        with self.lock:
+            self.client.request(cmd)
+
+    def humanoid_follow_path(self, object_name):
+        """Follow path.
+
+        Args:
+            object_name: Name of the humanoid object.
+        """
+        cmd = f'vbp {object_name} FollowPath'
+        with self.lock:
+            self.client.request(cmd)
+
     ##############################################################
     # Camera
     ##############################################################
@@ -842,7 +914,7 @@ class UnrealCV(object):
             camera_id: ID of the camera to get rotation.
 
         Returns:
-            Rotation (pitch, yaw, roll) of the camera.
+            Rotation (yaw, pitch, roll) of the camera.
         """
         cmd = f'vget /camera/{camera_id}/rotation'
         with self.lock:
@@ -855,7 +927,7 @@ class UnrealCV(object):
             camera_id: ID of the camera to get field of view.
 
         Returns:
-            Field of view of the camera.
+            Horizontal field of view of the camera.
         """
         cmd = f'vget /camera/{camera_id}/fov'
         with self.lock:
@@ -901,7 +973,7 @@ class UnrealCV(object):
 
         Args:
             camera_id: ID of the camera to set field of view.
-            fov: Field of view of the camera.
+            fov: Horizontal field of view of the camera.
         """
         cmd = f'vset /camera/{camera_id}/fov {fov}'
         with self.lock:
@@ -1041,9 +1113,18 @@ class UnrealCV(object):
         Returns:
             Decoded image.
         """
-        img = np.asarray(PIL.Image.open(BytesIO(res)))
-        img = img[:, :, :-1]  # delete alpha channel
-        img = img[:, :, ::-1]  # transpose channel order
+        # img = np.asarray(PIL.Image.open(BytesIO(res)))
+        # img = img[:, :, :-1]  # delete alpha channel
+        # img = img[:, :, ::-1]  # transpose channel order
+        # return img
+        pil_img = PIL.Image.open(BytesIO(res))
+
+        rgb_img = pil_img.convert('RGB')
+
+        img = np.asarray(rgb_img)
+
+        img = img[:, :, ::-1]
+
         return img
 
     def _decode_bmp(self, res, channel=4):
@@ -1070,3 +1151,106 @@ class UnrealCV(object):
         cmd = f'vbp {object_name} UpdateObjects'
         with self.lock:
             self.client.request(cmd)
+
+    ##############################################################
+    # Weather
+    ##############################################################
+    def set_sun_direction(self, weather_manager_name, pitch, yaw):
+        """Set sun direction.
+
+        Args:
+            weather_manager_name: Name of the weather manager.
+            pitch: Pitch of the sun. -89 - 89
+            yaw: Yaw of the sun. 0 - 360
+        """
+        cmd = f'vbp {weather_manager_name} SetSunDirection {pitch} {yaw}'
+        with self.lock:
+            self.client.request(cmd)
+
+    def get_sun_direction(self, weather_manager_name):
+        """Get sun direction.
+
+        Args:
+            weather_manager_name: Name of the weather manager.
+
+        Returns:
+            Sun direction.
+        """
+        cmd = f'vbp {weather_manager_name} GetSunDirection'
+        with self.lock:
+            return self.client.request(cmd)
+
+    def set_sun_intensity(self, weather_manager_name, intensity):
+        """Set sun intensity.
+
+        Args:
+            weather_manager_name: Name of the weather manager.
+            intensity: Intensity of the sun. 0 - 100
+        """
+        cmd = f'vbp {weather_manager_name} SetSunIntensity {intensity}'
+        with self.lock:
+            self.client.request(cmd)
+
+    def get_sun_intensity(self, weather_manager_name):
+        """Get sun intensity.
+
+        Args:
+            weather_manager_name: Name of the weather manager.
+
+        Returns:
+            Sun intensity.
+        """
+        cmd = f'vbp {weather_manager_name} GetSunIntensity'
+        with self.lock:
+            return self.client.request(cmd)
+
+    def set_fog(self, weather_manager_name, density, distance, falloff):
+        """Set fog.
+
+        Args:
+            weather_manager_name: Name of the weather manager.
+            density: Density of the fog. 0 - 100
+            distance: Distance of the fog. 0 - 5000, cm
+            falloff: Falloff of the fog. 0 - 2
+        """
+        cmd = f'vbp {weather_manager_name} SetFog {density} {distance} {falloff}'
+        with self.lock:
+            self.client.request(cmd)
+
+    def get_fog(self, weather_manager_name):
+        """Get fog.
+
+        Args:
+            weather_manager_name: Name of the weather manager.
+
+        Returns:
+            Fog.
+        """
+        cmd = f'vbp {weather_manager_name} GetFog'
+        with self.lock:
+            return self.client.request(cmd)
+
+    def set_atmosphere(self, weather_manager_name, rayleigh, mie):
+        """Set atmosphere.
+
+        Args:
+            weather_manager_name: Name of the weather manager.
+            rayleigh: RayleighScatteringScale of the atmosphere. 0 - 2.
+            mie: MieScatteringScale of the atmosphere. 0 - 5.
+        """
+        cmd = f'vbp {weather_manager_name} SetAtmosphere {rayleigh} {mie}'
+        with self.lock:
+            self.client.request(cmd)
+
+    def get_atmosphere(self, weather_manager_name):
+        """Get atmosphere.
+
+        Args:
+            weather_manager_name: Name of the weather manager.
+
+        Returns:
+            Atmosphere.
+        """
+        cmd = f'vbp {weather_manager_name} GetAtmosphere'
+        with self.lock:
+            return self.client.request(cmd)

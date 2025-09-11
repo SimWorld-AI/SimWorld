@@ -5,6 +5,7 @@ from enum import Enum, auto
 import numpy as np
 
 from simworld.agent.base_agent import BaseAgent
+from simworld.traffic.base.sidewalk import Sidewalk
 from simworld.utils.vector import Vector
 
 
@@ -20,7 +21,7 @@ class Pedestrian(BaseAgent):
 
     _id_counter = 0
 
-    def __init__(self, position: Vector, direction: Vector, current_sidewalk, speed: float = 100):
+    def __init__(self, position: Vector, direction: Vector, current_sidewalk: Sidewalk = None, speed: float = 100):
         """Initialize a pedestrian agent.
 
         Args:

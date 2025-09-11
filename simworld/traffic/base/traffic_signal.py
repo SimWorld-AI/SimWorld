@@ -27,7 +27,7 @@ class TrafficSignal:
     """
     _id_counter = 0
 
-    def __init__(self, position: Vector, direction: Vector, lane_id: int, crosswalk_id: int, type: str):
+    def __init__(self, position: Vector, direction: Vector, lane_id: int = None, crosswalk_id: int = None, type: str = 'both'):
         """Initialize a traffic signal.
 
         Args:
@@ -79,7 +79,7 @@ class TrafficSignal:
         if isinstance(state, tuple) and len(state) == 2:
             self.state = state
         else:
-            raise ValueError(f'Invalid state: {state}. Must be a TrafficLightState enum value')
+            raise ValueError(f'Invalid state: {state}. Must be a TrafficSignalState enum value')
 
     def get_state(self):
         """Get the current state of the traffic signal.

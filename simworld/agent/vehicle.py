@@ -150,7 +150,7 @@ class Vehicle(BaseAgent):
         """
         # Define detection area (cone-shaped area in front of vehicle)
         DETECTION_ANGLE = self.config['traffic.detection_angle']
-        PEDESTRIAN_DETECTION_DISTANCE = 2 * self.config['traffic.distance_between_objects'] + self.length / 2
+        PEDESTRIAN_DETECTION_DISTANCE = self.config['traffic.distance_between_objects'] + self.length / 2
 
         # Check vehicles
         for vehicle in vehicles:
@@ -166,8 +166,8 @@ class Vehicle(BaseAgent):
             if distance > VEHICLE_DETECTION_DISTANCE:
                 continue
 
-            # First check if object is in front of the vehicle using dot product
-            if vehicle.direction.dot(self.direction) <= 0:  # object is behind or beside the vehicle
+            # Filter out vehicles from opposite lanes (different directions)
+            if vehicle.direction.dot(self.direction) <= 0:  # opposite or perpendicular lanes
                 continue
 
             # Calculate angle between vehicle direction and position difference

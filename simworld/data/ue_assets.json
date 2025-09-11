@@ -55,6 +55,10 @@
         "asset_path": "/Game/CityDatabase/blueprints/BP_Rabbish.BP_Rabbish_C",
         "color": "TRASH"
     },
+    "BP_Road_C": {
+        "asset_path": "/Game/CityDatabase/blueprints/BP_Road.BP_Road_C",
+        "color": "STREET_FURNITURE"
+    },
     "BP_Road1_C": {
         "asset_path": "/Game/CityDatabase/blueprints/BP_Road1.BP_Road1_C",
         "color": "STREET_FURNITURE"
