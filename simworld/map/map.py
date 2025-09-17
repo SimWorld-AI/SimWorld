@@ -31,6 +31,14 @@ class Road:
         self.length = start.distance(end)
         self.center = (start + end) / 2
 
+    def __str__(self) -> str:
+        """Return a readable string representation of the road."""
+        return f'Road(start={self.start}, end={self.end})'
+
+    def __repr__(self) -> str:
+        """Alias for __str__."""
+        return self.__str__()
+
 
 class Node:
     """Graph node with a position and type ('sidewalk', 'crosswalk', or 'intersection')."""
@@ -155,6 +163,8 @@ class Map:
             start = Vector(road['start']['x'] * 100, road['start']['y'] * 100)
             end = Vector(road['end']['x'] * 100, road['end']['y'] * 100)
             road_objects.append(Road(start, end))
+
+        self.roads = road_objects
 
         for road in road_objects:
             normal = Vector(road.direction.y, -road.direction.x)
@@ -829,6 +839,63 @@ class Map:
             if result:
                 return result
         return None
+
+    def get_road_at_position(self, position: Vector) -> Road:
+        """Find the road that contains the given position.
+
+        Args:
+            position: Position vector to check.
+
+        Returns:
+            The Road object if position is on any road.
+        """
+        if not self.roads:
+            return None
+
+        min_distance = float('inf')
+        closest_road = None
+
+        for road in self.roads:
+            distance = self._point_to_segment_distance(position, road.start, road.end)
+            if distance < min_distance:
+                min_distance = distance
+                closest_road = road
+
+        return closest_road
+
+    def get_road_info_at_position(self, position: Vector) -> dict:
+        """Get detailed information about the road at the given position.
+
+        Args:
+            position: Position vector to check.
+
+        Returns:
+            Dictionary containing road information and distance, or None if no road found.
+        """
+        road = self.get_road_at_position(position)
+        if road is None:
+            return None
+
+        distance = self._point_to_segment_distance(position, road.start, road.end)
+
+        # Calculate relative position along the road (0.0 = start, 1.0 = end)
+        road_vector = road.end - road.start
+        road_length = road_vector.length()
+        if road_length == 0:
+            relative_position = 0.0
+        else:
+            to_position = position - road.start
+            relative_position = (to_position.x * road_vector.x + to_position.y * road_vector.y) / (road_length ** 2)
+            relative_position = max(0.0, min(1.0, relative_position))  # Clamp to [0, 1]
+
+        return {
+            'road': road,
+            'distance_to_road': distance,
+            'relative_position': relative_position,
+            'is_at_start': relative_position < 0.1,
+            'is_at_end': relative_position > 0.9,
+            'is_at_middle': 0.1 <= relative_position <= 0.9
+        }
 
 
 if __name__ == '__main__':

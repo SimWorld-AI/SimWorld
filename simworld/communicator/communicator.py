@@ -205,6 +205,16 @@ class Communicator:
         """
         return self.unrealcv.get_image(cam_id, viewmode, mode)
 
+    def get_camera_observation_multicam(self, cam_ids, viewmode, mode='direct'):
+        """Get camera observation batch."""
+        if isinstance(cam_ids, list):
+            images = []
+            for cam_id in cam_ids:
+                images.append(self.unrealcv.get_image(cam_id, viewmode, mode))
+            return images
+        else:
+            return self.unrealcv.get_image(cam_ids, viewmode, mode)
+
     def show_img(self, image):
         """Show image.
 
@@ -329,6 +339,20 @@ class Communicator:
             pedestrians_states_str += pedestrian_state
 
         self.unrealcv.p_set_states(self.ue_manager_name, pedestrians_states_str)
+
+    def p_set_waypoints(self, pedestrian_id, waypoints):
+        """Set pedestrian waypoints.
+
+        Args:
+            pedestrian_id: Pedestrian ID.
+            waypoints: List of waypoints (Vector).
+        """
+        name = self.get_pedestrian_name(pedestrian_id)
+        str_waypoints = ''
+        for waypoint in waypoints:
+            str_waypoints += f'{waypoint.x},{waypoint.y};'
+        str_waypoints = str_waypoints[:-1]
+        self.unrealcv.p_set_waypoints(name, str_waypoints)
 
     def get_pedestrian_name(self, pedestrian_id):
         """Get pedestrian name.
@@ -597,7 +621,7 @@ class Communicator:
         location_3d = (
             agent.position.x,  # Unreal X = 2D Y
             agent.position.y,  # Unreal Y = 2D X
-            110  # Z coordinate (ground level)
+            600  # Z coordinate (ground level)
         )
         # Convert 2D direction to 3D orientation (assuming rotation around Z axis)
         orientation_3d = (
@@ -605,6 +629,7 @@ class Communicator:
             math.degrees(math.atan2(agent.direction.y, agent.direction.x)),  # Yaw
             0  # Roll
         )
+        print(location_3d)
         self.unrealcv.set_location(location_3d, name)
         self.unrealcv.set_orientation(orientation_3d, name)
         self.unrealcv.set_scale((1, 1, 1), name)  # Default scale

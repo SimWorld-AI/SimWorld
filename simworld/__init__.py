@@ -5,7 +5,7 @@ and visualization in Unreal Engine.
 """
 
 from simworld.agent.base_agent import BaseAgent
-from simworld.assets_rp.AssetsRP import AssetsRetrieverPlacer
+# from simworld.assets_rp.AssetsRP import AssetsRetrieverPlacer
 from simworld.citygen.city.city_generator import CityGenerator
 from simworld.citygen.function_call.city_function_call import CityFunctionCall
 from simworld.communicator.communicator import Communicator

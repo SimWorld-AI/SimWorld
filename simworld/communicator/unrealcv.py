@@ -6,6 +6,7 @@ capture.
 """
 import json
 import os
+import struct
 import time
 from io import BytesIO
 from threading import Lock
@@ -533,22 +534,21 @@ class UnrealCV(object):
         Args:
             intersection_name: Name of the intersection to add pedestrian signal to.
             pedestrian_signal_name: Name of the pedestrian signal to add.
-        """ 
+        """
         cmd = f'vbp {intersection_name} AddPedSignal {pedestrian_signal_name}'
         with self.lock:
             self.client.request(cmd)
 
     def traffic_signal_start_simulation(self, intersection_name):
-        """Start traffic signal simulation.
-        """
+        """Start traffic signal simulation."""
         cmd = f'vbp {intersection_name} StartSimulation'
         with self.lock:
             self.client.request(cmd)
 
-
     ##############################################################
     # Robot System
     ##############################################################
+
     def dog_move(self, robot_name, action):
         """Apply transition action.
 
@@ -873,6 +873,13 @@ class UnrealCV(object):
         with self.lock:
             return self.client.request(cmd)
 
+    def get_camera_location_multicam(self, camera_ids: list):
+        """Get camera location batch."""
+        locations = []
+        for camera_id in camera_ids:
+            locations.append(self.get_camera_location(camera_id))
+        return locations
+
     def get_camera_location(self, camera_id: int):
         """Get camera location.
 
@@ -893,7 +900,7 @@ class UnrealCV(object):
             camera_id: ID of the camera to get rotation.
 
         Returns:
-            Rotation (pitch, yaw, roll) of the camera.
+            Rotation (yaw, pitch, roll) of the camera.
         """
         cmd = f'vget /camera/{camera_id}/rotation'
         with self.lock:
@@ -906,7 +913,7 @@ class UnrealCV(object):
             camera_id: ID of the camera to get field of view.
 
         Returns:
-            Field of view of the camera.
+            Horizontal field of view of the camera.
         """
         cmd = f'vget /camera/{camera_id}/fov'
         with self.lock:
@@ -952,7 +959,7 @@ class UnrealCV(object):
 
         Args:
             camera_id: ID of the camera to set field of view.
-            fov: Field of view of the camera.
+            fov: Horizontal field of view of the camera.
         """
         cmd = f'vset /camera/{camera_id}/fov {fov}'
         with self.lock:
@@ -1042,6 +1049,7 @@ class UnrealCV(object):
                 cmd = f'vget /camera/{cam_id}/{viewmode} bmp'
                 with self.lock:
                     res = self.client.request(cmd)
+                # print(type(res), len(res) if hasattr(res, '__len__') else res)
                 image = self._decode_bmp(res)
 
             elif mode == 'file_path':  # save image to file and read it
@@ -1092,25 +1100,69 @@ class UnrealCV(object):
         Returns:
             Decoded image.
         """
-        img = np.asarray(PIL.Image.open(BytesIO(res)))
-        img = img[:, :, :-1]  # delete alpha channel
-        img = img[:, :, ::-1]  # transpose channel order
+        # img = np.asarray(PIL.Image.open(BytesIO(res)))
+        # img = img[:, :, :-1]  # delete alpha channel
+        # img = img[:, :, ::-1]  # transpose channel order
+        # return img
+        pil_img = PIL.Image.open(BytesIO(res))
+
+        # 2. 统一转换为RGB格式 (关键步骤)
+        #    - 如果原图是RGBA，则去除A通道。
+        #    - 如果原图是L(灰度图)，则转换为RGB。
+        #    - 如果原图是RGB，则保持不变。
+        rgb_img = pil_img.convert('RGB')
+
+        # 3. 转换为Numpy数组
+        img = np.asarray(rgb_img)
+
+        # 4. 将RGB转换为BGR，以适配OpenCV
+        #    这行代码现在是安全的，因为我们已经确保了图像是3通道的RGB
+        img = img[:, :, ::-1]
+
         return img
 
-    def _decode_bmp(self, res, channel=4):
-        """Decode BMP image.
+    def _decode_bmp(self, res: bytes):
+        """Robust BMP decoder.
 
-        Args:
-            res: BMP image.
-            channel: Channel.
-
-        Returns:
-            Decoded image.
+        Parses header, handles row padding and top-down/bottom-up storage.
+        Returns an RGB image of shape (H, W, 3).
         """
-        img = np.fromstring(res, dtype=np.uint8)
-        img = img[-self.resolution[1]*self.resolution[0]*channel:]
-        img = img.reshape(self.resolution[1], self.resolution[0], channel)
-        return img[:, :, :-1]
+        if not isinstance(res, (bytes, bytearray)):
+            raise TypeError(f'BMP decoder expects bytes, got {type(res)}')
+
+        # --- BMP signature ---
+        if res[:2] != b'BM':
+            raise ValueError("Not a BMP file (missing 'BM' signature).")
+
+        # --- Parse header (little-endian) ---
+        pixel_offset = struct.unpack_from('<I', res, 10)[0]  # Pixel array start
+        width = struct.unpack_from('<i', res, 18)[0]  # Signed: negative means top-down
+        height_raw = struct.unpack_from('<i', res, 22)[0]  # Signed: negative => top-down
+        bpp = struct.unpack_from('<H', res, 28)[0]  # Bits per pixel
+        if bpp not in (24, 32):
+            raise NotImplementedError(f'Unsupported BMP bpp: {bpp} (only 24/32 supported)')
+
+        ch = bpp // 8
+        w = int(width)
+        h = abs(int(height_raw))
+
+        # --- Row stride with padding to 4-byte boundary ---
+        row_stride = ((bpp * w + 31) // 32) * 4  # bytes per row including padding
+        needed = row_stride * h
+        buf = np.frombuffer(res, dtype=np.uint8, count=needed, offset=pixel_offset)
+        if buf.size < needed:
+            raise ValueError(f'BMP pixel data too short: {buf.size} < expected {needed}')
+
+        # Reshape to (H, row_stride), then slice off padding to (H, W*ch), then to (H, W, ch)
+        buf = buf.reshape(h, row_stride)[:, :w * ch].reshape(h, w, ch)
+
+        # BMP bottom-up when height_raw > 0; top-down when height_raw < 0
+        if height_raw > 0:
+            buf = np.flipud(buf)
+
+        # Convert BGR(A) -> RGB and drop alpha if present
+        rgb = buf[:, :, :3][:, :, ::-1]
+        return rgb
 
     def update_objects(self, object_name):
         """Update objects.
@@ -1149,10 +1201,10 @@ class UnrealCV(object):
         cmd = f'vbp {weather_manager_name} GetSunDirection'
         with self.lock:
             return self.client.request(cmd)
-        
+
     def set_sun_intensity(self, weather_manager_name, intensity):
         """Set sun intensity.
-        
+
         Args:
             weather_manager_name: Name of the weather manager.
             intensity: Intensity of the sun. 0 - 100
@@ -1160,13 +1212,13 @@ class UnrealCV(object):
         cmd = f'vbp {weather_manager_name} SetSunIntensity {intensity}'
         with self.lock:
             self.client.request(cmd)
-        
+
     def get_sun_intensity(self, weather_manager_name):
         """Get sun intensity.
-        
+
         Args:
             weather_manager_name: Name of the weather manager.
-        
+
         Returns:
             Sun intensity.
         """
@@ -1195,7 +1247,7 @@ class UnrealCV(object):
 
         Returns:
             Fog.
-        """ 
+        """
         cmd = f'vbp {weather_manager_name} GetFog'
         with self.lock:
             return self.client.request(cmd)
@@ -1206,7 +1258,7 @@ class UnrealCV(object):
         Args:
             weather_manager_name: Name of the weather manager.
             rayleigh: RayleighScatteringScale of the atmosphere. 0 - 2.
-            mie: MieScatteringScale of the atmosphere. 0 - 5. 
+            mie: MieScatteringScale of the atmosphere. 0 - 5.
         """
         cmd = f'vbp {weather_manager_name} SetAtmosphere {rayleigh} {mie}'
         with self.lock:
