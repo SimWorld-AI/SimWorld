@@ -19,6 +19,7 @@ class VideoRecorder:
             resolution=(1440, 720),
             fps=25.0,
             frame_num=500,
+            move_pattern=None,
             camera_mode='lit'):
         """Initialize the recorder with target communicator and humanoid.
 
@@ -51,6 +52,10 @@ class VideoRecorder:
         self.fps = fps
         self.frame_num = frame_num
         self.camera_mode = camera_mode
+        if move_pattern:
+            self.move_pattern = lambda timestamp: move_pattern(self, timestamp)
+        else:
+            self.move_pattern = self._move_pattern
 
         # set resolution
         self.communicator.unrealcv.set_camera_resolution(
@@ -115,7 +120,7 @@ class VideoRecorder:
         self.save_csv(camera_position, humanoid_actions)
         return self.video_path
 
-    def move_pattern(self, timestamp):
+    def _move_pattern(self, timestamp):
         """Generate a movement pattern for the humanoid at given timestamp."""
         actions = []
         step = timestamp

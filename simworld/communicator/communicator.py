@@ -600,7 +600,7 @@ class Communicator:
         self.unrealcv.set_movable(object_name, True)
 
     # Initialization methods
-    def spawn_agent(self, agent, name, model_path='/Game/TrafficSystem/Pedestrian/Base_User_Agent.Base_User_Agent_C', type='humanoid'):
+    def spawn_agent(self, agent, name, position=None, model_path='/Game/TrafficSystem/Pedestrian/Base_User_Agent.Base_User_Agent_C', type='humanoid'):
         """Spawn agent.
 
         Args:
@@ -618,11 +618,18 @@ class Communicator:
                 name = name
         self.unrealcv.spawn_bp_asset(model_path, name)
         # Convert 2D position to 3D (x,y -> x,y,z)
-        location_3d = (
-            agent.position.x,  # Unreal X = 2D Y
-            agent.position.y,  # Unreal Y = 2D X
-            600  # Z coordinate (ground level)
-        )
+        if position is None:
+            location_3d = (
+                agent.position.x,  # Unreal X = 2D Y
+                agent.position.y,  # Unreal Y = 2D X
+                600  # Z coordinate (ground level)
+            )
+        else:
+            location_3d = (
+                position[0],
+                position[1],
+                position[2]
+            )
         # Convert 2D direction to 3D orientation (assuming rotation around Z axis)
         orientation_3d = (
             0,  # Pitch
