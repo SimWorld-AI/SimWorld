@@ -38,7 +38,7 @@ class AssetsRetrieverPlacer:
         self.input_dir = input_dir
         self.city_generator = self.data_importer.import_city_data(input_dir)
 
-        self.logger = Logger().get_logger('AssetsRP')
+        self.logger = Logger.get_logger('AssetsRP')
 
     def generate_assets_manually(self, natural_language_input, sample_dataset_dir: str = None, output_dir: str = None,  description_map_path: str = None, assets_retrieval_model: str = None):
         """This function is used to retrieve and place the assets based on user's prompt.

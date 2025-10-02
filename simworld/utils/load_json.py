@@ -37,7 +37,7 @@ def load_json(file_path: str):
         try:
             # Extract filename from path and try loading from default location
             file_name = os.path.basename(file_path)
-            logger = Logger().get_logger('JsonLoader')
+            logger = Logger.get_logger('JsonLoader')
             logger.warning(f"File not found at '{file_path}', falling back to default location")
             return load_default_json(file_name)
         except Exception as e:
