@@ -14,8 +14,8 @@ class BaseAgent:
             position: Initial position vector.
             direction: Initial direction vector.
         """
-        self._position = position
-        self._direction = direction
+        self._position = position if isinstance(position, Vector) else Vector(0, 0)
+        self._direction = direction if isinstance(direction, Vector) else Vector(0, 0)  
         self._yaw = 0
 
     @property

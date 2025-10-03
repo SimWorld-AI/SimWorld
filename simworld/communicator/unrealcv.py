@@ -6,6 +6,7 @@ capture.
 """
 import json
 import os
+import struct
 import time
 from io import BytesIO
 from threading import Lock
@@ -533,7 +534,7 @@ class UnrealCV(object):
         Args:
             intersection_name: Name of the intersection to add pedestrian signal to.
             pedestrian_signal_name: Name of the pedestrian signal to add.
-        """
+        """ 
         cmd = f'vbp {intersection_name} AddPedSignal {pedestrian_signal_name}'
         with self.lock:
             self.client.request(cmd)
@@ -894,6 +895,13 @@ class UnrealCV(object):
         with self.lock:
             return self.client.request(cmd)
 
+    def get_camera_location_multicam(self, camera_ids: list):
+        """Get camera location batch."""
+        locations = []
+        for camera_id in camera_ids:
+            locations.append(self.get_camera_location(camera_id))
+        return locations
+
     def get_camera_location(self, camera_id: int):
         """Get camera location.
 
@@ -1063,6 +1071,7 @@ class UnrealCV(object):
                 cmd = f'vget /camera/{cam_id}/{viewmode} bmp'
                 with self.lock:
                     res = self.client.request(cmd)
+                # print(type(res), len(res) if hasattr(res, '__len__') else res)
                 image = self._decode_bmp(res)
 
             elif mode == 'file_path':  # save image to file and read it
@@ -1113,34 +1122,53 @@ class UnrealCV(object):
         Returns:
             Decoded image.
         """
-        # img = np.asarray(PIL.Image.open(BytesIO(res)))
-        # img = img[:, :, :-1]  # delete alpha channel
-        # img = img[:, :, ::-1]  # transpose channel order
-        # return img
-        pil_img = PIL.Image.open(BytesIO(res))
-
-        rgb_img = pil_img.convert('RGB')
-
-        img = np.asarray(rgb_img)
-
-        img = img[:, :, ::-1]
-
+        img = np.asarray(PIL.Image.open(BytesIO(res)))
+        img = img[:, :, :-1]  # delete alpha channel
+        img = img[:, :, ::-1]  # transpose channel order
         return img
 
-    def _decode_bmp(self, res, channel=4):
-        """Decode BMP image.
+    def _decode_bmp(self, res: bytes):
+        """Robust BMP decoder.
 
-        Args:
-            res: BMP image.
-            channel: Channel.
-
-        Returns:
-            Decoded image.
+        Parses header, handles row padding and top-down/bottom-up storage.
+        Returns an RGB image of shape (H, W, 3).
         """
-        img = np.fromstring(res, dtype=np.uint8)
-        img = img[-self.resolution[1]*self.resolution[0]*channel:]
-        img = img.reshape(self.resolution[1], self.resolution[0], channel)
-        return img[:, :, :-1]
+        if not isinstance(res, (bytes, bytearray)):
+            raise TypeError(f'BMP decoder expects bytes, got {type(res)}')
+
+        # --- BMP signature ---
+        if res[:2] != b'BM':
+            raise ValueError("Not a BMP file (missing 'BM' signature).")
+
+        # --- Parse header (little-endian) ---
+        pixel_offset = struct.unpack_from('<I', res, 10)[0]  # Pixel array start
+        width = struct.unpack_from('<i', res, 18)[0]  # Signed: negative means top-down
+        height_raw = struct.unpack_from('<i', res, 22)[0]  # Signed: negative => top-down
+        bpp = struct.unpack_from('<H', res, 28)[0]  # Bits per pixel
+        if bpp not in (24, 32):
+            raise NotImplementedError(f'Unsupported BMP bpp: {bpp} (only 24/32 supported)')
+
+        ch = bpp // 8
+        w = int(width)
+        h = abs(int(height_raw))
+
+        # --- Row stride with padding to 4-byte boundary ---
+        row_stride = ((bpp * w + 31) // 32) * 4  # bytes per row including padding
+        needed = row_stride * h
+        buf = np.frombuffer(res, dtype=np.uint8, count=needed, offset=pixel_offset)
+        if buf.size < needed:
+            raise ValueError(f'BMP pixel data too short: {buf.size} < expected {needed}')
+
+        # Reshape to (H, row_stride), then slice off padding to (H, W*ch), then to (H, W, ch)
+        buf = buf.reshape(h, row_stride)[:, :w * ch].reshape(h, w, ch)
+
+        # BMP bottom-up when height_raw > 0; top-down when height_raw < 0
+        if height_raw > 0:
+            buf = np.flipud(buf)
+
+        # Convert BGR(A) -> RGB and drop alpha if present
+        rgb = buf[:, :, :3][:, :, ::-1]
+        return rgb
 
     def update_objects(self, object_name):
         """Update objects.
