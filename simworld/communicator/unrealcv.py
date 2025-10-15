@@ -534,7 +534,7 @@ class UnrealCV(object):
         Args:
             intersection_name: Name of the intersection to add pedestrian signal to.
             pedestrian_signal_name: Name of the pedestrian signal to add.
-        """ 
+        """
         cmd = f'vbp {intersection_name} AddPedSignal {pedestrian_signal_name}'
         with self.lock:
             self.client.request(cmd)
@@ -620,23 +620,24 @@ class UnrealCV(object):
         with self.lock:
             self.client.request(cmd)
 
-    def humanoid_rotate(self, object_name, angle, direction='left'):
+    def humanoid_rotate(self, object_name, angle, direction='left', duration=0.1):
         """Rotate humanoid.
 
         Args:
             object_name: Name of the humanoid object to rotate.
             angle: Rotation angle in degrees.
             direction: Direction of rotation, either 'left' or 'right'. Defaults to 'left'.
+            duration: Duration of the rotation in seconds. Defaults to 0.1.
         """
         if direction == 'right':
             clockwise = 1
         elif direction == 'left':
             angle = -angle
             clockwise = -1
-        cmd = f'vbp {object_name} TurnAround {1} {angle} {clockwise}'
+        cmd = f'vbp {object_name} TurnAround {duration} {angle} {clockwise}'
         with self.lock:
             self.client.request(cmd)
-        time.sleep(1)
+        time.sleep(duration)
 
     def humanoid_stop(self, object_name):
         """Stop humanoid.

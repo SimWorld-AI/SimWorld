@@ -449,3 +449,5 @@ docs/source/_static/
 
 # Output
 output*/
+
+/scripts/video_record/
