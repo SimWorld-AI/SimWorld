@@ -184,10 +184,10 @@ class VideoRecorder:
             self.communicator.humanoid_move_forward(humanoid.id)
             actions_log.append([timestamp, 'move_forward'])
         elif action == 'rotate_right':
-            self.communicator.humanoid_rotate(humanoid.id, value, 'right')
+            self.communicator.humanoid_rotate(humanoid.id, value, 'right', duration=0.1)
             actions_log.append([timestamp, 'rotate_right'])
         elif action == 'rotate_left':
-            self.communicator.humanoid_rotate(humanoid.id, value, 'left')
+            self.communicator.humanoid_rotate(humanoid.id, value, 'left', duration=0.1)
             actions_log.append([timestamp, 'rotate_left'])
 
     def save_video(self, images, video_path):

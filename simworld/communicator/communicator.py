@@ -55,15 +55,16 @@ class Communicator:
         """
         self.unrealcv.humanoid_move_forward(self.get_humanoid_name(humanoid_id))
 
-    def humanoid_rotate(self, humanoid_id, angle, direction):
+    def humanoid_rotate(self, humanoid_id, angle, direction, duration=0.1):
         """Rotate humanoid.
 
         Args:
             humanoid_id: humanoid ID.
             angle: Rotation angle.
             direction: Rotation direction.
+            duration: Duration of the rotation in seconds.
         """
-        self.unrealcv.humanoid_rotate(self.get_humanoid_name(humanoid_id), angle, direction)
+        self.unrealcv.humanoid_rotate(self.get_humanoid_name(humanoid_id), angle, direction, duration=duration)
 
     def humanoid_stop(self, humanoid_id):
         """Stop humanoid.
@@ -606,6 +607,7 @@ class Communicator:
         Args:
             agent: Agent object.
             name: Agent name.
+            position: Position. Tuple (x, y, z). If None, use agent's position with default z=600.
             model_path: Model path.
             type: Agent type, possible values: 'humanoid', 'dog', ...
         """
