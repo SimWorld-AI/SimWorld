@@ -1,7 +1,10 @@
 # SimWorld: An Open-ended Realistic Simulator for Autonomous Agents in Physical and Social Worlds
-![Overview](https://github.com/user-attachments/assets/6246ad14-2851-4a51-a534-70f59a40e460)
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/5d2da588-9470-44ef-82a9-5d45d592497a" width="840" height="795" alt="image" />
+</p>
 
-**SimWorld** is a simulation platform for developing and evaluating **LLM/VLM-powered** AI agents in complex physical and social environments.
+
+**SimWorld** is a simulation platform for developing and evaluating **LLM/VLM** AI agents in complex physical and social environments.
 
 <div align="center">
     <a href="https://simworld-ai.github.io/"><img src="https://img.shields.io/badge/Website-SimWorld-blue" alt="Website" /></a>
@@ -21,7 +24,14 @@ SimWorld is built on Unreal Engine 5 and offers core capabilities to meet the ne
 - Diverse and customizable physical and social reasoning scenarios, enabling systematic training and evaluation of complex agent behaviors like navigation, planning, and strategic cooperation.
 
 ## 🏗️ Architecture
-![Architecture](https://github.com/user-attachments/assets/f5f43638-7583-483f-aadc-1ddf5d6ff27a)
+<p align="center">
+    <img width="830" height="681" alt="image" src="https://github.com/user-attachments/assets/a3cfd890-80c2-4504-ae8f-0842625226a1" />
+</p>
+
+**SimWorld** consists of three layers: 
+- the Unreal Engine Backend, providing diverse and open-ended environments, rich assets and realistic physics simulation; 
+- the Environment layer, supporting procedural city generation, language-driven scene editing, gym-like APIs for LLM/VLM agents and traffic simulation; 
+- the Agent layer, enabling LLM/VLM agents to reason over multimodal observations and history while executing actions via an action planner;
 
 SimWorld's architecture is designed to be modular and flexible, supporting an array of functionalities such as dynamic world generation, agent control, and performance benchmarking. The components are seamlessly integrated to provide a robust platform for **Embodied AI** and **Agents** research and applications.
 
