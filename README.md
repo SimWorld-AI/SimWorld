@@ -106,70 +106,53 @@ To set up your own configuration:
 Once the SimWorld UE5 environment is running, you can connect from Python and control an in-world humanoid agent in just a few lines:
 
 ```python
-from simworld.communicator.unrealcv import UnrealCV  # UnrealCV wrapper, used to communicate with a running UE instance
-from simworld.communicator.communicator import Communicator  # Higher-level communication wrapper, provides agent/vehicle operations
-from simworld.agent.humanoid import Humanoid  # Humanoid (pedestrian) agent class
-from simworld.utils.vector import Vector  # 2D/3D vector utility class
+from simworld.communicator.unrealcv import UnrealCV
+from simworld.communicator.communicator import Communicator
+from simworld.agent.humanoid import Humanoid
+from simworld.utils.vector import Vector
 
-# Create a connection to the running Unreal Engine instance
+# Connect to the running Unreal Engine instance via UnrealCV
 ucv = UnrealCV()
 comm = Communicator(ucv)
 
-# Blueprint path of the humanoid agent to be spawned in UE
-agent_bp = "/Game/TrafficSystem/Pedestrian/Base_User_Agent.Base_User_Agent_C"
+# Define your customized environment logic
+class Env:
+    def __init__(self, comm: Communicator, agent: Humanoid, target: Vector):
+        self.comm = comm
+        self.agent = agent
+        self.target = target
 
-# Create a humanoid agent
-agent = Humanoid(Vector(0, 0), Vector(1, 0))
+    def reset(self):
+        # Blueprint path for the humanoid agent to spawn in the UE level
+        agent_bp = "/Game/TrafficSystem/Pedestrian/Base_User_Agent.Base_User_Agent_C"
+        
+        # Initial spawn position and facing direction for the humanoid
+        spawn_location = Vector(0, 0)
+        spawn_forward = Vector(0, 1)
+        agent = Humanoid(spawn_location, spawn_forward)
+        
+        # Spawn the humanoid agent in the Unreal world
+        comm.spawn_agent(agent, agent_bp)
+        
+        # Define a target position the agent is encouraged to move toward (example value)
+        target = Vector(100, 0)
 
-# Name of the agent in UE (used as identifier in UnrealCV)
-agent_name = "test_agent"
+    def step(self):
+        self.comm.humanoid_step_forward(self.agent.id, 2.0)
+        location = self.comm.unrealcv.get_location(self.agent.id)
+        observation = self.comm.get_camera_observation(self.agent.camera_id)
+        reward = -distance(location, self.target)
 
-# Spawn a humanoid agent in the UE scene
-comm.spawn_agent(agent=agent, name=agent_name, model_path=agent_bp)
+        return observation, reward
 
+# Create the environment wrapper
+env = Env(comm, agent, target)
+env.reset()
 
-def reset():
-    # Teleport the agent to the origin position (x=0, y=0, z=0)
-    comm.unrealcv.set_location(agent_name, [0, 0, 0])
-    # Reset the agent's Euler orientation to (pitch=0, yaw=0, roll=0)
-    comm.unrealcv.set_orientation(agent_name, [0, 0, 0])
-    return get_state()
-
-
-def step():
-    # Move the humanoid agent forward by 2.0 units (meters or engine units)
-    comm.humanoid_step_forward(agent.id, 2.0)
-
-    # Capture a rendered image frame from camera with id=0 in 'lit' mode (usually RGB)
-    obs = comm.get_camera_observation(0, "lit")
-
-    # Get the current accumulated collision count for this agent
-    collision = comm.get_collision_number(agent.id)
-
-    # Read the latest position and orientation of the agent from UE
-    state = get_state()
-    return obs, collision, state
-
-
-def get_state():
-    # Get the agent's world position from UE
-    position = comm.unrealcv.get_location(agent_name)
-    # Get the agent's Euler orientation from UE
-    orientation = comm.unrealcv.get_orientation(agent_name)
-    state = {
-        "position": position,
-        "orientation": orientation,
-    }
-    return state
-
-
-# Reset the scene first and get the initial state
-state = reset()
-
-# Run 10 simulation steps and print the observation, collision count, and state at each step
-for i in range(10):
-    obs, collision, state = step()
-    print(f"Step {i}: obs={obs}, collision={collision}, state={state}")
+# Roll out a short trajectory
+for _ in range(100):
+    observation, reward = env.step()
+    # TODO: plug this into your RL loop / logging as needed
 ```
 
 
