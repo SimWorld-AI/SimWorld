@@ -125,7 +125,7 @@ class Agent:
         self.system_prompt = f"You are an intelligent agent in a 3D world. Your goal is to: {self.goal}."
 
     def action(self, obs):
-        prompt = f"{self.system_prompt}\n You are currently at: {obs}\nWhat is your next goal?"
+        prompt = f"{self.system_prompt}\n You are currently at: {obs}\nWhat is your next action?"
         action = self.llm.generate_text(system_prompt=self.system_prompt, user_prompt=prompt)
         return action
 
