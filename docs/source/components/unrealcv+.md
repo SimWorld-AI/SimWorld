@@ -1,18 +1,22 @@
-# Communicator
+# UnrealCV+
 
 ## Overview
-```{image} ../assets/communicator.png
+<!-- ```{image} ../assets/communicator.png
 :width: 800px
 :align: center
 :alt: Communicator Architecture
-```
-The **Communicator** module serves as the bridge between Python client and Unreal Engine server. Implemented in both Python and C++, it uses **UnrealCV** to establish a TCP connection, enabling communication between the two sides.
+``` -->
+**UnrealCV+** is a communication module that bridges the Unreal Engine backend and the Environment layer, enabling efficient and reliable interaction between them over a TCP connection. Built upon the original [UnrealCV](https://unrealcv.org/) framework, UnrealCV+ extends its capabilities to support large-scale, real-time embodied AI simulations. Implemented in both Python and C++, it provides flexible data exchange and fine-grained control over the simulation process.
 
-We extended the basic communication protocol by defining a custom set of commands for scene control, actor manipulation, and data querying. These commands are encoded in JSON format and passed through the TCP channel. For instance, Python can instruct UE to spawn an actor at a specific location, retrieve the current pose of a pedestrian, or trigger motion events on a robot.
+UnrealCV+ introduces a custom command set designed for agent-based tasks, including scene control, actor manipulation, and data querying. For example, users or the environment layer can send commands such as: "spawn actors at locations", "get position of a pedestrian" and "execute action of a robot"
 
-The Communicator plays a central role in the simulation loop: Python uses it to update the virtual world, while UE reports back environmental feedback or visual state. This design allows us to decouple logic computation from rendering, achieving both flexibility and modularity.
+During each simulation loop, the Environment layer manages the logical progression of tasks, while the Unreal Engine continuously returns updated physical states and visual observations. All data and commands are transmitted through UnrealCV+, forming a decoupled architecture that separates logic computation from rendering—greatly improving flexibility, scalability, and modularity.
+
+UnrealCV+ is open-sourced (both UE and Python), allowing users to customize and build their own simulation environments directly within the Unreal Engine Editor using personal or third-party assets.
 
 ## Communicator
+UnrealCV+ is realized through the `Communicator` and `UnrealCV` classes in Python. The `Communicator` class serves as the primary interface between Python and Unreal Engine (UE), managing all interactions between the two. It holds an `unrealcv` attribute—an instance of the `UnrealCV` class—which is responsible for establishing and maintaining the underlying TCP connection.
+
 ```python
 class Communicator:
     def __init__(self, unrealcv: UnrealCV = None):
@@ -40,7 +44,7 @@ class UnrealCV:
         self.resolution = resolution
         ...
 ```
-The Communicator class acts as the bridge between Python and Unreal Engine (UE). It maintains a unrealcv attribute (an instance of the UnrealCV class), which handles the underlying TCP connection. Additionally, the Communicator is responsible for mapping Python objects to their unique name in UE.
+
 
 ## Using Communicator
 All communication between Python and UE—such as rendering the scene, simulating traffic, or interacting with agents—is handled through the Communicator. Below are some basic use cases, including how to generate a city in UE, spawn objects, and clean the environment. For complete functionality, refer to the [Python API](../resources/modules.md).

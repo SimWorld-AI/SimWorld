@@ -5,7 +5,7 @@ SimWorld consists two parts:
 1. Unreal Engine executable file.
 2. Python package.
 
-Connection between Python and UE is set up by Communicator component, which holds TCP client in Python and server in UE. In Python, it is structured as a Communicator Class. In UE, it is an embedded plugin.
+Connection between Python and UE is set up by UnrealCV+, which holds TCP client in Python and server in UE. In Python, it is structured as a `Communicator` Class. In UE, it is an embedded plugin.
 
 Below shows the code structure of the Python Package.
 ```text

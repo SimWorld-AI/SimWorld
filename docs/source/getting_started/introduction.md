@@ -1,22 +1,35 @@
-# SimWorld
+# Introduction
 
-SimWorld is a simulation platform for developing and evaluating LLM/VLM-powered AI agents in complex physical and social environments. The main goal of SimWorld is to help bridge the gap between agent performance in structured digital domains and the dynamic challenges of the real world. To do so, the platform is designed to be a foundational tool for advancing real-world agent intelligence across a variety of disciplines.
+## Overview
+**SimWorld** is an Unreal Engine 5–based simulator for creating rich, dynamic, and photorealistic environments to support embodied AI research. Unlike most existing simulators that focus on indoor or task-specific domains (e.g., household robotics or autonomous driving), SimWorld enables large-scale, open-ended outdoor simulation with realistic physical and social dynamics.
 
-SimWorld is built on Unreal Engine 5 and offers core capabilities to meet the needs of modern agent development. It provides (1) realistic, open-ended world simulation with accurate physics and language-based procedural generation. Control and interaction are handled through (2) a rich interface for LLM/VLM agents, supporting multi-modal perception and natural language actions. Finally, SimWorld includes (3) diverse and customizable physical and social reasoning scenarios, enabling systematic training and evaluation of complex agent behaviors like navigation, planning, and strategic cooperation.
+Through its user-friendly Python API and extensive 3D asset library, users can procedurally generate diverse city layouts or load high-quality, pre-defined environments sourced from the Unreal Marketplace. This flexibility allows researchers to easily design experiments ranging from navigation and interaction to multi-agent collaboration.
 
-## Simulator
+SimWorld also integrates seamlessly with large language models (LLMs) and vision-language models (VLMs), enabling agents to perceive, reason, and act in complex, dynamic worlds. With SimWorld, you can explore embodied intelligence at scale—combining procedural generation, realistic simulation, and language-driven control in one unified platform.
+
+## Architecture
+
+```{image} ../assets/Arch.png
+:width: 800px
+:align: center
+:alt: SimWorld Architecture
+```
+
+SimWorld employs a three-tier hierarchical architecture that separates the high-performance *Unreal Engine Backend* from two Python-side layers: the *Environment* layer and the *Agent* layer. This design is connected through the *UnrealCV+* communication module, which enables seamless interaction and data exchange between Unreal Engine and Python components.
+
+At its core, the *Unreal Engine Backend* provides high-fidelity scenes, assets, and physics, forming the foundation for realistic simulation. Built upon it, the *Environment* layer serves as an intermediary that abstracts low-level rendering and physics into structured representations, supporting procedural city generation, traffic simulation, and a Gym-like interface for agent interaction via *UnrealCV+*. On top of this, the *Agent* layer integrates LLM/VLM agents capable of interpreting multimodal observations from the environment, reasoning about goals, and issuing actions that are executed through the environment’s connection to the Unreal backend. Together, these components form a closed perception–planning–action loop, enabling intelligent agents to interact, learn, and adapt in rich, dynamic worlds.
+
+
 ```{image} ../assets/architecture.png
 :width: 800px
 :align: center
 :alt: SimWorld Server-Client Architecture
 ```
 
-SimWorld employs a robust and scalable client-server architecture that enables efficient simulation and agent control. The server component, built on Unreal Engine 5, serves as the simulation backbone, handling critical tasks such as sensor rendering, physical simulation and updates on the world-state.
+SimWorld adopts a robust and scalable client-server design that enables efficient simulation and agent control. The server component, built on Unreal Engine 5, serves as the simulation backbone, handling critical tasks such as sensor rendering, physical simulation and updates on the world-state.
 
 The client component, implemented in Python, provides a flexible and developer-friendly interface for:
 - Agent control logic and decision-making
 - Seamless integration with LLM/VLM models
 - Custom scenario configuration and management
-
-This architecture enables efficient separation of concerns while maintaining high performance and scalability for complex simulation scenarios.
 

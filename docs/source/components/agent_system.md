@@ -21,16 +21,17 @@ class BaseAgent:
         self._direction = direction
         self._yaw = 0
 ```
+For LLM/VLM integration, SimWorld provides a basic LLM interface ([Base LLM](#base-llm)).
 
 **Related files:** `base_agent.py`.
 
-## LLM/VLM-driven Agent
+<!-- ## LLM/VLM-driven Agent
 ```{image} ../assets/agent_system.png
 :width: 800px
 :align: center
 :alt: Agent 
 ```
-A classic LLM/VLM-driven agent typically consists of three core components: observation, LLMs/VLMs, and memory. SimWorld supports visual observations by utilizing camera actors within Unreal Engine ([Sensors](ue_detail.md#sensors)). For LLM/VLM integration, SimWorld provides a basic LLM interface ([Base LLM](#base-llm)). However, its memory module is currently limited—it simply records the most recent steps along with their corresponding feedback.
+A classic LLM/VLM-driven agent typically consists of three core components: observation, LLMs/VLMs, and memory. SimWorld supports visual observations by utilizing camera actors within Unreal Engine ([Sensors](ue_detail.md#sensors)). For LLM/VLM integration, SimWorld provides a basic LLM interface ([Base LLM](#base-llm)). However, its memory module is currently limited—it simply records the most recent steps along with their corresponding feedback. -->
 
 ## Get Camera Observation
 After initializing the agent, the image observation can be obtained by calling the `get_image(camera_id)` method.

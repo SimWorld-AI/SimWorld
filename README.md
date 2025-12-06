@@ -28,9 +28,9 @@ SimWorld is built on Unreal Engine 5 and offers core capabilities to meet the ne
     <img width="799" height="671" alt="image" src="https://github.com/user-attachments/assets/2e67356a-7dca-4eba-ab57-de1226e080bb" />
 </p>
 
-**SimWorld** consists of three layers: 
-- the Unreal Engine Backend, providing diverse and open-ended environments, rich assets and realistic physics simulation; 
-- the Environment layer, supporting procedural city generation, language-driven scene editing, gym-like APIs for LLM/VLM agents and traffic simulation; 
+**SimWorld** consists of three layers:
+- the Unreal Engine Backend, providing diverse and open-ended environments, rich assets and realistic physics simulation;
+- the Environment layer, supporting procedural city generation, language-driven scene editing, gym-like APIs for LLM/VLM agents and traffic simulation;
 - the Agent layer, enabling LLM/VLM agents to reason over multimodal observations and history while executing actions via an action planner;
 
 SimWorld's architecture is designed to be modular and flexible, supporting an array of functionalities such as dynamic world generation, agent control, and performance benchmarking. The components are seamlessly integrated to provide a robust platform for **Embodied AI** and **Agents** research and applications.
@@ -104,6 +104,7 @@ To set up your own configuration:
 #### Simple Running Example
 
 Once the SimWorld UE5 environment is running, you can connect from Python and control an in-world humanoid agent in just a few lines:
+(The whole example of minimal demo is shown in : [`examples/minimal_demo.ipynb`](https://github.com/SimWorld-AI/SimWorld/blob/hotfix-examples/examples/minimal_demo.ipynb))
 
 ```python
 from simworld.communicator.unrealcv import UnrealCV
@@ -117,11 +118,22 @@ from simworld.llm.base_llm import BaseLLM
 ucv = UnrealCV()
 comm = Communicator(ucv)
 
+class Agent:
+    def __init__(self, goal):
+        self.goal = goal
+        self.llm = BaseLLM("gpt-4o")
+        self.system_prompt = f"You are an intelligent agent in a 3D world. Your goal is to: {self.goal}."
 
-class Env:
+    def action(self, obs):
+        prompt = f"{self.system_prompt}\n You are currently at: {obs}\nWhat is your next action?"
+        action = self.llm.generate_text(system_prompt=self.system_prompt, user_prompt=prompt)
+        return action
+
+class Environment:
     def __init__(self, comm: Communicator):
         self.comm = comm
         self.agent: Humanoid | None = None
+        self.action_planner = None
         self.agent_name: str | None = None
         self.target: Vector | None = None
 
@@ -134,34 +146,30 @@ class Env:
         agent_bp = "/Game/TrafficSystem/Pedestrian/Base_User_Agent.Base_User_Agent_C"
 
         # Initial spawn position and facing direction for the humanoid (2D)
-        spawn_location = Vector(0, 0)
-        spawn_forward = Vector(0, 1)
+        spawn_location, spawn_forward = Vector(0, 0), Vector(0, 1)
         self.agent = Humanoid(spawn_location, spawn_forward)
+        self.action_planner = LocalPlanner(agent=self.agent,model=self.action_planner_llm,rule_based=False)
 
         # Spawn the humanoid agent in the Unreal world
-        # NOTE: name is ignored for humanoid type, but required by the API.
         self.comm.spawn_agent(self.agent, name=None, model_path=agent_bp, type="humanoid")
-
-        # Cache the generated UE actor name
-        self.agent_name = self.comm.get_humanoid_name(self.agent.id)
 
         # Define a target position the agent is encouraged to move toward (example value)
         self.target = Vector(1000, 0)
 
         # Return initial observation (optional, but RL-style)
         observation = self.comm.get_camera_observation(self.agent.camera_id, "lit")
+
         return observation
 
     def step(self, action):
-        """Move the humanoid forward a bit and compute reward."""
+        """Use action planner to execute the given action."""
         # Parse the action text and map it to the action space
-        if "step_forward" in action:
-            self.comm.humanoid_step_forward(self.agent.id, 2.0)
+        primitive_actions = self.action_planner.parse(action)
+
+        self.action_planner.execute(primitive_actions)
 
         # Get current location from UE (x, y, z) and convert to 2D Vector
-        loc_3d = self.comm.unrealcv.get_location(self.agent_name)
-        # loc_3d is a numpy array; explicitly use x, y to build our 2D Vector
-        location = Vector(loc_3d[0], loc_3d[1])
+        location = Vector(*self.comm.unrealcv.get_location(self.agent)[:2])
 
         # Camera observation for RL
         observation = self.comm.get_camera_observation(self.agent.camera_id, "lit")
@@ -174,17 +182,16 @@ class Env:
 
 if __name__ == "__main__":
     # Create the environment wrapper
-    env = Env(comm)
-    obs = env.reset()
-    llm = BaseLLM("GPT-4o")  # Make sure OPENAI_API_KEY is set as an environment variable
+    agent = Agent(goal='Go to (1700, -1700) and pick up GEN_BP_Box_1_C.')
+    env = Environment(communicator)
 
-    system_prompt = "Your system prompt here"
+    obs = env.reset()
 
     # Roll out a short trajectory
     for _ in range(100):
-        user_prompt = f"Current observation: {obs}\nPlease output an action."
-        action = llm.generate_text(system_prompt, user_prompt)
+        action = agent.action(obs)
         obs, reward = env.step(action)
+        print(f"obs: {obs}, reward: {reward}")
         # Plug this into your RL loop / logging as needed
 ```
 
@@ -238,5 +245,3 @@ feat: add user login API
 + Add comments or documentation if needed.
 
 We appreciate clean, well-described contributions! 🚀
-
-

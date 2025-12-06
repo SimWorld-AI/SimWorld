@@ -11,6 +11,10 @@ from threading import Lock
 import numpy as np
 import pandas as pd
 
+from simworld.agent.humanoid import Humanoid
+from simworld.agent.pedestrian import Pedestrian
+from simworld.agent.scooter import Scooter
+from simworld.agent.vehicle import Vehicle
 from simworld.communicator.unrealcv import UnrealCV
 from simworld.utils.load_json import load_json
 from simworld.utils.logger import Logger
@@ -606,6 +610,7 @@ class Communicator:
         Args:
             agent: Agent object.
             name: Agent name.
+            position: Position. If None, use agent's position.
             model_path: Model path.
             type: Agent type, possible values: 'humanoid', 'dog', ...
         """
@@ -895,6 +900,10 @@ class Communicator:
                 self.unrealcv.destroy(objects[index])
 
         self.unrealcv.clean_garbage()
+        Humanoid._id_counter = 0
+        Scooter._id_counter = 0
+        Pedestrian._id_counter = 0
+        Vehicle._id_counter = 0
 
     def clean_traffic_only(self, vehicles, pedestrians, traffic_signals):
         """Clean traffic objects only.

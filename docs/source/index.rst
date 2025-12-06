@@ -6,12 +6,23 @@ SimWorld Documentation
    :width: 800px
    :align: center
 
-Welcome to **SimWorld** Documentation!
+.. raw:: html
 
-**SimWorld** is a novel Unreal Engine-based simulator designed to generate unlimited, diverse urban environments for embodied AI tasks.
+   <br><br>
+ 
+Welcome to the **SimWorld** Documentation!
 
-Existing embodied simulators typically focus on indoor scenes. There have been urban simulators, but they either lack realism or are limited to autonomous driving. Critically, most of them do not allow users to flexibly generate new scenes or define new embodied AI tasks. In contrast, SimWorld provides a user-friendly Python API and diverse 3D assets that enable users to procedurally generate realistic and dynamic city-scale environments to support various Embodied AI research tasks. Our simulator can also be connected with large language models (LLMs) to drive the behavior of different types of agents (humans, vehicles, and robots) in the environments.
-simulation powered by Unreal Engine 5.
+Realistic, open-ended, and natively LLM/VLM-compatible simulators are essential for advancing agent development in complex physical and social environments. However, most existing simulators focus on indoor or task-specific domains (e.g., household robotics or autonomous driving), limiting research into large-scale, open-ended scenarios with realistic physical and social dynamics.
+
+SimWorld addresses these limitations by providing a comprehensive platform that combines: 
+
+1. Realistic, Open-Ended World Simulation. 
+
+2. Rich Interface for LLM/VLM Agents. 
+
+3. Diverse Physical and Social Reasoning Scenarios.
+
+With SimWorld, researchers can explore embodied intelligence at scale, enabling agents to perceive, reason, and act in complex, dynamic worlds that closely mirror real-world scenarios.
 
 .. note::
 
@@ -24,19 +35,18 @@ simulation powered by Unreal Engine 5.
 
    getting_started/introduction
    getting_started/quick_start
-   simworld-robotics/simworld_robotics
 
 .. toctree::
    :maxdepth: 2
    :caption: SIMWORLD COMPONENTS
 
    components/overview
+   components/ue_detail
    components/citygen
    components/waypoint_system
    components/traffic_system
-   components/communicator
    components/agent_system
-   components/ue_detail
+   components/unrealcv+
 
 .. toctree::
    :maxdepth: 2

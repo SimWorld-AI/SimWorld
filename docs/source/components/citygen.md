@@ -1,12 +1,12 @@
-# Layout Generation
+# Procedural City Generation
 
 ## Overview
 ```{image} ../assets/citygen.png
 :width: 800px
 :align: center
-:alt: Layout Generation Pipeline
+:alt: Procedural City Generation
 ```
-The **Layout Generation** module is responsible for generating realistic city layouts from simple input specifications. This module provides a flexible and extensible framework for creating diverse urban environments that can be used for various embodied AI tasks.
+The **Procedural City Generation** module is responsible for generating realistic city layouts from simple input specifications. This module provides a flexible and extensible framework for creating diverse urban environments that can be used for various embodied AI tasks.
 
 As illustrated in the figure above, the city generation process is organized into three sequential stages: road generation, building generation and street element generation. Each stage progressively adds layers of realism and complexity to the simulated environment.
 
@@ -19,7 +19,7 @@ As illustrated in the figure above, the city generation process is organized int
 
 ## Procedural Generation Process
 
-Procedural generation is a fundamental technique for creating realistic city layouts. In this approach, all items in the generated world follow predefined rules and constraints. These constraints govern the spatial distribution of elements, ensuring the resulting layout is structured and coherent rather than arbitrary.
+Procedural generation is a fundamental technique for creating city layouts. In this approach, all items in the generated world follow predefined rules and constraints. These constraints govern the spatial distribution of elements, ensuring the resulting layout is structured and coherent rather than arbitrary.
 
 **Related files:** `city_generator.py`.
 
@@ -99,7 +99,7 @@ Street elements include smaller city objects such as trees, cones, chairs, table
 
 **Related files:** `element_generator.py`, `element_manager.py`.
 
-## Using Layout Generation
+## Using Procedural City Generation
 The `CityFunctionCall` class provides a simplified interface for generating city layouts programmatically.
 
 ### Random City Generation
@@ -132,6 +132,6 @@ cfc.export_city('path/to/your_folder')
 A complete example can be found in `scripts/layout_generation.ipynb`.
 
 ```{note}
-Layout Generation only produces JSON files representing the city’s structure.  
-To render the physical city in Unreal Engine (UE), see the [Communicator](communicator.md) documentation.
+Procedural City Generation only produces JSON files representing the city’s structure.  
+To render the physical city in Unreal Engine (UE), see the [UnrealCV+](unrealcv+.md) documentation.
 ```

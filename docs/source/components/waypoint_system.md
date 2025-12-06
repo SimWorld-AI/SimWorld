@@ -7,7 +7,7 @@
 :alt: Waypoint System Overview
 ```
 
-To enable robust agent navigation and path planning within the simulated environment, SimWorld incorporates a customizable waypoint system that serves as the foundational representation of navigable space. This system is initially constructed using a coarse-grained waypoint skeleton derived from the output of the **Layout Generation** pipeline. Specifically, the pipeline generates high-level geometric features of the environment, such as road centerlines and intersection points, which are then used to define the topological structure of the navigation graph.
+To enable robust agent navigation and path planning within the simulated environment, SimWorld incorporates a customizable waypoint system that serves as the foundational representation of navigable space. This system is initially constructed using a coarse-grained waypoint skeleton derived from the output of the [Procedual City Generation](../components/citygen.md) pipeline. Specifically, the pipeline generates high-level geometric features of the environment, such as road centerlines and intersection points, which are then used to define the topological structure of the navigation graph.
 
 ## Map
 The **Waypoint System** is implemented as a `Map` class, where each waypoint is represented by a `Node` and each connection between waypoints is represented by an `Edge`.
