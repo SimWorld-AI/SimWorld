@@ -40,7 +40,8 @@ class BaseLLM(metaclass=LLMMetaclass):
         Args:
             model_name: Name of the model to use.
             url: Base URL for the API. If None, uses OpenAI's default URL.
-            provider: Provider to use. Can be 'openai' or 'openrouter'.
+            provider: Provider to use. Can be 'openai', 'openrouter', or 'local'.
+                      Use 'local' for vLLM and other local OpenAI-compatible servers.
 
         Raises:
             ValueError: If no valid API key is provided or if the URL is invalid.
@@ -59,6 +60,9 @@ class BaseLLM(metaclass=LLMMetaclass):
             if not openrouter_api_key:
                 raise ValueError('No OpenRouter API key provided. Please set OPENROUTER_API_KEY environment variable.')
             self.api_key = openrouter_api_key
+        elif provider == 'local':
+            # For local models (vLLM, etc.), API key is not required
+            self.api_key = os.getenv('OPENAI_API_KEY', 'not-needed')
         else:
             raise ValueError(f'Not supported provider: {provider}')
 
@@ -70,8 +74,10 @@ class BaseLLM(metaclass=LLMMetaclass):
                 api_key=self.api_key,
                 base_url=url,
             )
-            # validate the api key
-            self.client.models.list()
+            # Validate the API key for cloud providers
+            # Skip validation for local providers as they may not implement models.list()
+            if provider != 'local':
+                self.client.models.list()
         except Exception as e:
             raise ValueError(f'Failed to initialize OpenAI client: {str(e)}')
 

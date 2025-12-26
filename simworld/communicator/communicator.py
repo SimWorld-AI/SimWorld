@@ -11,10 +11,6 @@ from threading import Lock
 import numpy as np
 import pandas as pd
 
-from simworld.agent.humanoid import Humanoid
-from simworld.agent.pedestrian import Pedestrian
-from simworld.agent.scooter import Scooter
-from simworld.agent.vehicle import Vehicle
 from simworld.communicator.unrealcv import UnrealCV
 from simworld.utils.load_json import load_json
 from simworld.utils.logger import Logger
@@ -883,6 +879,12 @@ class Communicator:
     # Utility methods
     def clear_env(self, keep_roads=False):
         """Clear all objects in the environment."""
+        # Lazy import to avoid circular dependency
+        from simworld.agent.humanoid import Humanoid
+        from simworld.agent.pedestrian import Pedestrian
+        from simworld.agent.scooter import Scooter
+        from simworld.agent.vehicle import Vehicle
+
         # Get all objects in the environment
         objects = [obj.lower() for obj in self.unrealcv.get_objects()]  # Convert objects to lowercase
         # Define unwanted objects
