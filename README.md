@@ -62,7 +62,7 @@ README.md
 + Python Client
 Make sure to use Python 3.10 or later.
 ```bash
-git clone https://github.com/renjw02/SimWorld.git
+git clone https://github.com/SimWorld-AI/SimWorld.git
 cd SimWorld
 conda create -n simworld python=3.10
 conda activate simworld
