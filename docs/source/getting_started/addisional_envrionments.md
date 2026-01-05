@@ -17,7 +17,7 @@ or on Linux:
 ```
 
 ### GUI
-If you run the SimWorld on the machine that have the GUI, you can switch the map after launching the SimWorld unreal engine backend by using the console command in the console window:
+If you run the SimWorld on the machine that has the GUI, you can switch the map after launching the SimWorld unreal engine backend by using the console command in the console window:
 
 1. press `~` to open the console window
 2. type `open /Game/TokyoStylizedEnvironment/Maps/Tokyo.umap` and press enter
