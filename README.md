@@ -123,6 +123,7 @@ from simworld.agent.humanoid import Humanoid
 from simworld.utils.vector import Vector
 from simworld.llm.base_llm import BaseLLM
 from simworld.local_planner.local_planner import LocalPlanner
+from simworld.llm.a2a_llm import A2ALLM
 
 
 # Connect to the running Unreal Engine instance via UnrealCV
@@ -147,6 +148,7 @@ class Environment:
         self.action_planner = None
         self.agent_name: str | None = None
         self.target: Vector | None = None
+        self.action_planner_llm = A2ALLM(model_name="gpt-4o-mini")
 
     def reset(self):
         """Clear the UE scene and (re)spawn the humanoid and target."""
@@ -159,7 +161,7 @@ class Environment:
         # Initial spawn position and facing direction for the humanoid (2D)
         spawn_location, spawn_forward = Vector(0, 0), Vector(0, 1)
         self.agent = Humanoid(spawn_location, spawn_forward)
-        self.action_planner = LocalPlanner(agent=self.agent, model=self.agent.llm, rule_based=False)
+        self.action_planner = LocalPlanner(agent=self.agent, model=self.action_planner_llm, rule_based=False)
 
         # Spawn the humanoid agent in the Unreal world
         self.comm.spawn_agent(self.agent, name=None, model_path=agent_bp, type="humanoid")
