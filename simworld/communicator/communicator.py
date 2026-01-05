@@ -930,7 +930,7 @@ class Communicator:
         self.unrealcv.disconnect()
 
     ##############################################################
-    # Weather-related methods
+    # Weather-related methods (currently not in use for production)
     ##############################################################
 
     def set_sun_direction(self, weather_manager_name, pitch, yaw):

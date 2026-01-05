@@ -534,7 +534,7 @@ class UnrealCV(object):
         Args:
             intersection_name: Name of the intersection to add pedestrian signal to.
             pedestrian_signal_name: Name of the pedestrian signal to add.
-        """ 
+        """
         cmd = f'vbp {intersection_name} AddPedSignal {pedestrian_signal_name}'
         with self.lock:
             self.client.request(cmd)
@@ -1181,7 +1181,7 @@ class UnrealCV(object):
             self.client.request(cmd)
 
     ##############################################################
-    # Weather
+    # Weather (currently not in use for production)
     ##############################################################
     def set_sun_direction(self, weather_manager_name, pitch, yaw):
         """Set sun direction.
