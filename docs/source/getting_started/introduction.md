@@ -28,4 +28,4 @@ We release two versions of SimWorld: the base version and the additional environ
 | base version | 1 (Procedural Generated City) |
 | additional environments version | 100+ (Procedural Generated City, Industrial Area, Natural Environment, etc.) |
 
-The usage of the additional version can be shown in the [Additional Environments](.addisional_envrionments) page.
+The usage of the additional version can be shown in the [Additional Environments](../getting_started/addisional_envrionments) page.

@@ -16,7 +16,7 @@ The following requirements should be fulfilled before installing SimWorld:
 ### Agent and Environment Client
 Download the Python library from GitHub:
 
-[SimWorld Python Client Library](https://github.com/SimWorld-AI/SimWorld)
+[SimWorld Python Client Library](https://github.com/SimWorld-AI/SimWorld.git)
 
 ```bash
 git clone https://github.com/SimWorld-AI/SimWorld.git
@@ -30,7 +30,7 @@ pip install -e .
 
 
 ### Unreal Engine Backend
-Download the SimWorld Unreal Engine backend executable from S3, choose the version according to your OS and the edition you want to use, the usage of the additional environments version can be shown in the [Additional Environments](.addisional_envrionments) page.
+Download the SimWorld Unreal Engine backend executable from S3, choose the version according to your OS and the edition you want to use, the usage of the additional environments version can be shown in the [Additional Environments](../getting_started/addisional_envrionments) page.
 
 | OS | Edition | Download |
 | --- | --- | --- |
