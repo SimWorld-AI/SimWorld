@@ -3,8 +3,8 @@
 Walk through the `examples/minimal_demo.ipynb` notebook with a step-by-step setup. This example launches a simple LLM-driven humanoid that plans in natural language and executes via the Local Planner.
 
 ## Prerequisites
-- Install the Python client and have the UE backend running (see [Installation](../getting_started/installation)).
-- Ensure the backend is reachable (default ports 9000/9001). If you changed ports, pass them through `Config` or `UnrealCV` as needed.
+- Install the Python client and have the UE backend running (see {doc}`Installation <../getting_started/installation>`).
+- Ensure the backend is reachable (default ports 9000). If you changed ports, pass them through command line arguments `--cvport 9001` or change the `/gym_citynav/Binaries/Win64/unrealcv.ini`.
 - Set an OpenAI-compatible API key in your environment (the demo uses `gpt-4o` for the agent and `gpt-4o-mini` for the planner).
 
 ```bash
@@ -12,7 +12,7 @@ export OPENAI_API_KEY="<your_api_key>"
 ```
 
 ```{note}
-You can swap models or providers by changing `BaseLLM` / `A2ALLM` parameters. See [Agent System](../components/agent_system) for interfaces.
+You can swap models or providers by changing `BaseLLM` / `A2ALLM` parameters. See {doc}`Agent System <../components/agent_system>` for interfaces.
 ```
 
 ## 1. Import and configure
@@ -52,7 +52,7 @@ class Agent:
 ```
 
 ```{tip}
-To add memory or richer observations, extend this class and see [Agent System](../components/agent_system) and [UnrealCV+ details](../components/unrealcv+).
+To add memory or richer observations, extend this class and see {doc}`Agent System <../components/agent_system>` and {doc}`UnrealCV+ details <../components/unrealcv+>`.
 ```
 
 ## 3. Build the environment wrapper
@@ -109,7 +109,7 @@ class Environment:
 Key things to customize:
 - `roads_file`: swap in your own map data for different layouts.
 - `agent_bp`: point to a different UE blueprint if you have custom characters.
-- `rule_based`: set `True` to use deterministic navigation; see [Local Planner](../components/agent_system#using-local-planner).
+- `rule_based`: set `True` to use deterministic navigation; see {ref}`Local Planner <components/agent_system#using-local-planner>`.
 
 ## 4. Run a short rollout
 ```python
@@ -129,10 +129,10 @@ communicator.disconnect()
 You now have a minimal loop: observe the world, let the LLM suggest the next move, execute it through the Local Planner, and log rewards.
 
 ```{note}
-For action space details and planner behavior, read [Agent System](../components/agent_system), [Traffic System](../components/traffic_system), and [UE Detail – Actions](../components/ue_detail#actions).
+For action space details and planner behavior, read {doc}`Agent System <../components/agent_system>`, {doc}`Traffic System <../components/traffic_system>`, and {ref}`UE Detail – Actions <components/ue_detail#actions>`.
 ```
 
 ## Next steps
 - Try different goals or shorter loops to debug.
 - Replace `A2ALLM` with your own model wrapper for planning.
-- Incorporate image observations via `UnrealCV.get_image` for VLM-based agents; see [UE Detail – Sensors](../components/ue_detail#sensors) for view modes and camera controls.
+- Incorporate image observations via `UnrealCV.get_image` for VLM-based agents; see {ref}`UE Detail – Sensors <components/ue_detail#sensors>` for view modes and camera controls.
