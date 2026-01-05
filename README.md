@@ -72,12 +72,14 @@ pip install -e .
 + UE server
 Download the SimWorld server executable from S3:
 
-| OS | Edition | Download |
-| --- | --- | --- |
-| Windows | Base | [SimWorld Windows 64-bit Unreal Engine Backend (v0.1.0) - base version](https://simworld-release.s3.us-east-1.amazonaws.com/SimWorld-Win64-v0_1_0-Foundation.zip) |
-| Windows | Additional environments | [SimWorld Windows 64-bit Unreal Engine Backend (v0.1.0) - additional environments version](https://simworld-release.s3.us-east-1.amazonaws.com/SimWorld-Win64-v0_1_0-100Maps.zip) |
-| Linux | Base | [SimWorld Linux 64-bit Unreal Engine Backend (v0.1.0) - base version](https://simworld-release.s3.us-east-1.amazonaws.com/SimWorld-Linux-v0_1_0-Foundation.zip) |
-| Linux | Additional environments | [SimWorld Linux 64-bit Unreal Engine Backend (v0.1.0) - additional environments version](https://simworld-release.s3.us-east-1.amazonaws.com/SimWorld-Linux-v0_1_0-100Maps.zip) |
+| Platform | Package | Scenes/Maps Included | Download | Notes |
+| --- | --- | --- | --- | --- |
+| Windows | Base | Foundation scenes | [Download (Base)](https://simworld-release.s3.us-east-1.amazonaws.com/SimWorld-Win64-v0_1_0-Foundation.zip) | Full agent features; smaller download. |
+| Windows | Environments Pack | 100+ maps (includes Base) | [Download (100+ Maps)](https://simworld-release.s3.us-east-1.amazonaws.com/SimWorld-Win64-v0_1_0-100Maps.zip) | Full agent features; larger download. |
+| Linux | Base | Foundation scenes | [Download (Base)](https://simworld-release.s3.us-east-1.amazonaws.com/SimWorld-Linux-v0_1_0-Foundation.zip) | Full agent features; smaller download. |
+| Linux | Environments Pack | 100+ maps (includes Base) | [Download (100+ Maps)](https://simworld-release.s3.us-east-1.amazonaws.com/SimWorld-Linux-v0_1_0-100Maps.zip) | Full agent features; larger download. |
+
+**Tip:** If you only need core functionality for development/testing, use **Base**. If you want richer demos and more scenes, use **Environments Pack (100+ Maps)**.
 
 ### Quick Start
 
