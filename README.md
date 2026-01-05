@@ -17,7 +17,7 @@
  - 2025.11 The white paper of **SimWorld** has been on arxiv!
  - 2025.9 **SimWorld** has been accepted to NeurIPS 2025 main track as **spotlight** paper! 🎉
  - 2025.6 The first formal release of **SimWorld** has been published! 🚀
- - 2025.3 Our demo of **SimWolrd** been accepted by CVPR 2025 Demostration Tack! 🎉
+ - 2025.3 Our demo of **SimWorld** been accepted by CVPR 2025 Demostration Track! 🎉
 
 ## 💡 Introduction
 SimWorld is built on Unreal Engine 5 and offers core capabilities to meet the needs of modern agent development. It provides:
