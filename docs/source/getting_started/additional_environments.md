@@ -3,7 +3,7 @@ The additional environments version of SimWorld includes over 100 pre-defined sc
 
 ## Usage
 ### CLI
-If you run the SimWorld on the server, to load and use these additional environments in SimWorld, you can refer to [Unreal Engine Official Document](https://dev.epicgames.com/documentation/en-us/unreal-engine/command-line-arguments-in-unreal-engine) to specify the desired Map URI when launching the unreal engine backend. For example:
+If you run the SimWorld on a server, to load and use these additional environments in SimWorld, you can refer to [Unreal Engine Official Document](https://dev.epicgames.com/documentation/en-us/unreal-engine/command-line-arguments-in-unreal-engine) to specify the desired Map URI when launching the unreal engine backend. For example:
 
 on Windows:
 ```bash
@@ -17,10 +17,10 @@ or on Linux:
 ```
 
 ### GUI
-If you run the SimWorld on the machine with GUI, you can switch the map after launching the SimWorld unreal engine backend by using the console command in the console window:
+If you run the SimWorld on a machine with GUI, you can switch the map after launching the SimWorld unreal engine backend by using the console command in the console window:
 
-1. press `~` to open the console window
-2. type `open /Game/TokyoStylizedEnvironment/Maps/Tokyo.umap` and press enter
+1. Press `~` to open the console window
+2. Type `open /Game/TokyoStylizedEnvironment/Maps/Tokyo.umap` and press enter
 
 
 ## Scene List

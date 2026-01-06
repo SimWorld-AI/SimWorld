@@ -1,6 +1,6 @@
 # Overview
 
-SimWorld consists two parts:
+SimWorld consists of two parts:
 
 1. Unreal Engine executable file.
 2. Python package.
@@ -10,7 +10,7 @@ Connection between Python and UE is set up by UnrealCV+, which holds TCP client 
 Below shows the code structure of the Python Package.
 ```text
 simworld/               # Python package
-    local_planner/      # Local planner component
+    local_planner/      # Local action planner component
     agent/              # Agent system
     assets_rp/          # Live editor component for retrieval and re-placing
     citygen/            # City layout procedural generator

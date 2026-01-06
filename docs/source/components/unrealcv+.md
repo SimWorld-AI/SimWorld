@@ -12,7 +12,7 @@ UnrealCV+ introduces a custom command set designed for agent-based tasks, includ
 
 During each simulation loop, the Environment layer manages the logical progression of tasks, while the Unreal Engine continuously returns updated physical states and visual observations. All data and commands are transmitted through UnrealCV+, forming a decoupled architecture that separates logic computation from rendering—greatly improving flexibility, scalability, and modularity.
 
-We released UnrealCV+, Python side is include in SimWorld Github repo and Unreal Engine side has been packaged in the binary file of SimWorld Unreal Engine backend.
+We released UnrealCV+. The Python side is included in SimWorld GitHub repo, and the Unreal Engine side has been packaged in the binary file of SimWorld Unreal Engine backend.
 
 ## Communicator
 UnrealCV+ is realized through the `Communicator` and `UnrealCV` classes in Python. The `Communicator` class serves as the primary interface between Python and Unreal Engine (UE), managing all interactions between the two. It holds an `unrealcv` attribute—an instance of the `UnrealCV` class—which is responsible for establishing and maintaining the underlying TCP connection.
@@ -35,7 +35,7 @@ class UnrealCV:
         Args:
             port: Connection port, defaults to 9000.
             ip: Connection IP address, defaults to 127.0.0.1.
-            resolution: Resolution, defaults to (320, 240).
+            resolution: Resolution, defaults to (640, 480).
         """
         self.ip = ip
         # Build a client to connect to the environment

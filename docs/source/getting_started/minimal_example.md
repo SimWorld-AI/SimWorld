@@ -109,7 +109,7 @@ class Environment:
 Key things to customize:
 - `roads_file`: swap in your own map data for different layouts.
 - `agent_bp`: point to a different UE blueprint if you have custom characters.
-- `rule_based`: set `True` to use deterministic navigation; see [Local Planner](../components/agent_system.html).
+- `rule_based`: set to `True` to use deterministic navigation; see [Local Planner](../components/agent_system.md).
 
 ## 4. Run a short rollout
 ```python
@@ -129,10 +129,10 @@ communicator.disconnect()
 You now have a minimal loop: observe the world, let the LLM suggest the next move, execute it through the Local Planner, and log rewards.
 
 ```{note}
-For action space details and planner behavior, read [Agent System](../components/agent_system.md), [Traffic System](../components/traffic_system.md), and [UE Detail – Actions](../components/ue_detail.html).
+For action space details and planner behavior, read [Agent System](../components/agent_system.md), [Traffic System](../components/traffic_system.md), and [Actions](../components/ue_detail.md).
 ```
 
 ## Next steps
 - Try different goals or shorter loops to debug.
 - Replace `A2ALLM` with your own model wrapper for planning.
-- Incorporate image observations via `UnrealCV.get_image` for VLM-based agents; see [UE Detail – Sensors](../components/ue_detail.html#sensors) for view modes and camera controls.
+- Incorporate image observations via `UnrealCV.get_image` for VLM-based agents; see [Sensors](../components/ue_detail.md) for view modes and camera controls.

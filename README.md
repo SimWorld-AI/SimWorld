@@ -14,8 +14,8 @@
 </div>
 
 ## 🔥 News
- - 2025.11 The white paper of **SimWorld** has been on arxiv!
- - 2025.9 **SimWorld** has been accepted to NeurIPS 2025 main track as **spotlight** paper! 🎉
+ - 2025.11 The white paper of **SimWorld** is available on arxiv!
+ - 2025.9 **SimWorld** has been accepted to NeurIPS 2025 main track as a **spotlight** paper! 🎉
  - 2025.6 The first formal release of **SimWorld** has been published! 🚀
  - 2025.3 Our demo of **SimWorld** has been accepted by CVPR 2025 Demonstration Track! 🎉
 
@@ -33,14 +33,14 @@ SimWorld is built on Unreal Engine 5 and offers core capabilities to meet the ne
 **SimWorld** consists of three layers:
 - the Unreal Engine Backend, providing diverse and open-ended environments, rich assets and realistic physics simulation;
 - the Environment layer, supporting procedural city generation, language-driven scene editing, gym-like APIs for LLM/VLM agents and traffic simulation;
-- the Agent layer, enabling LLM/VLM agents to reason over multimodal observations and history while executing actions via an action planner;
+- the Agent layer, enabling LLM/VLM agents to reason over multimodal observations and history while executing actions via a local action planner;
 
 SimWorld's architecture is designed to be modular and flexible, supporting an array of functionalities such as dynamic world generation, agent control, and performance benchmarking. The components are seamlessly integrated to provide a robust platform for **Embodied AI** and **Agents** research and applications.
 
 ### Project Structure
 ```bash
 simworld/               # Python package
-    local_planner/      # Local planner component
+    local_planner/      # Local action planner component
     agent/              # Agent system
     assets_rp/          # Live editor component for retrieval and re-placing
     citygen/            # City layout procedural generator
@@ -77,14 +77,14 @@ We offer two versions of the SimWorld UE package: the base version, which comes 
 | Platform | Package | Scenes/Maps Included | Download | Notes |
 | --- | --- | --- | --- | --- |
 | Windows | Base | Empty map for procedural generation | [Download (Base)](https://simworld-release.s3.us-east-1.amazonaws.com/SimWorld-Win64-v0_1_0-Foundation.zip) | Full agent features; smaller download. |
-| Windows | Environments Pack | 100+ maps (including the empty one) | [Download (100+ Maps)](https://simworld-release.s3.us-east-1.amazonaws.com/SimWorld-Win64-v0_1_0-100Maps.zip) | Full agent features; larger download. |
+| Windows | Additional Environments | 100+ maps (including the empty one) | [Download (100+ Maps)](https://simworld-release.s3.us-east-1.amazonaws.com/SimWorld-Win64-v0_1_0-100Maps.zip) | Full agent features; larger download. |
 | Linux | Base | Empty map for procedural generation | [Download (Base)](https://simworld-release.s3.us-east-1.amazonaws.com/SimWorld-Linux-v0_1_0-Foundation.zip) | Full agent features; smaller download. |
-| Linux | Environments Pack | 100+ maps (including the empty one) | [Download (100+ Maps)](https://simworld-release.s3.us-east-1.amazonaws.com/SimWorld-Linux-v0_1_0-100Maps.zip) | Full agent features; larger download. |
+| Linux | Additional Environments | 100+ maps (including the empty one) | [Download (100+ Maps)](https://simworld-release.s3.us-east-1.amazonaws.com/SimWorld-Linux-v0_1_0-100Maps.zip) | Full agent features; larger download. |
 
 
 **Note:**
 1. Please check the [documentation](https://simworld.readthedocs.io/en/latest/getting_started/additional_environments.html#usage) for usage instructions of the **100+ Maps** version.
-2. If you only need core functionality for development or testing, use **Base**. If you want richer demonstrations and more scenes, use the **Environments Pack (100+ Maps)**.
+2. If you only need core functionality for development or testing, use **Base**. If you want richer demonstrations and more scenes, use the **Additional Environments (100+ Maps)**.
 
 ### Quick Start
 
@@ -92,10 +92,10 @@ We provide several examples of code in `examples/`, showcasing how to use the ba
 
 #### Configuration
 
-SimWorld uses YAML-formatted configuration files for system settings. The default configuration files are located in the `./simworld/config` directory while user configurations are placed in the `./config` directory.
+SimWorld uses YAML-formatted configuration files for system settings. The default configuration files are located in the `simworld/config` directory while user configurations are placed in the `config` directory.
 
-- `./simworld/config/default.yaml` serves as the default configuration file.
-- `./config/example.yaml` is provided as a template for custom configurations.
+- `simworld/config/default.yaml` serves as the default configuration file.
+- `config/example.yaml` is provided as a template for custom configurations.
 
 Users can switch between different configurations by specifying a custom configuration file path through the `Config` class:
 
@@ -103,7 +103,7 @@ To set up your own configuration:
 
 1. Create your custom configuration by copying the example template:
    ```bash
-   cp ./config/example.yaml ./config/your_config.yaml
+   cp config/example.yaml config/your_config.yaml
    ```
 
 2. Modify the configuration values in `your_config.yaml` according to your needs
@@ -113,7 +113,7 @@ To set up your own configuration:
    from simworld.config import Config
    config = Config('path/to/your_config')    # use absolute path here
    ```
-   
+
 #### Agent Action Space
 SimWorld provides a comprehensive action space for pedestrians, vehicles and robots (e.g., move forward, sit down, pick up). For more details, see [actions](https://simworld.readthedocs.io/en/latest/components/ue_detail.html#actions) and `examples/ue_command.ipynb`.
 
@@ -131,7 +131,7 @@ All APIs are located in `simworld/communicator`. Some of the most commonly used 
 #### Simple Running Example
 
 Once the SimWorld UE5 environment is running, you can connect from Python and control an in-world humanoid agent in just a few lines:
-(The whole example of minimal demo is shown in : [`examples/minimal_demo.ipynb`](https://github.com/SimWorld-AI/SimWorld/blob/hotfix-examples/examples/minimal_demo.ipynb))
+(The whole example of minimal demo is shown in `examples/gym_interface_demo.ipynb`)
 
 ```python
 from simworld.communicator.unrealcv import UnrealCV
