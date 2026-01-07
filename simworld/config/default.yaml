@@ -5,7 +5,7 @@ simworld:
 
 citygen:
   input_layout: false
-  input_roads: "E:/Projects/SimWorld/output/roads.json"
+  input_roads: "<path to your roads.json>"
   input_bounding_boxes: "bounding_boxes.json"
   output_dir: "output"
   world_json: "progen_world.json"
