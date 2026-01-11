@@ -37,9 +37,7 @@ Launch the Unreal Engine and create a new project. Then name the project as ``Si
 3. Import Assets
 ----------------
 
-.. tip:: Asset Organization
-
-   Import your desired assets into the project. You can use assets from the Unreal Marketplace or your own custom assets. Make sure all assets are properly organized in **a same** folder under the ``Content`` directory.
+Import your desired assets into the project. You can use assets from the Unreal Marketplace or your own custom assets. Make sure all assets are properly organized in **a same** folder under the ``Content`` directory.
 
 .. image:: ../assets/MYO_3.png
    :width: 800px
@@ -47,7 +45,7 @@ Launch the Unreal Engine and create a new project. Then name the project as ``Si
    :alt: Import Assets
    :class: with-margin
 
-4. Setup Chunk Package
+1. Setup Chunk Package
 -----------------------
 
 Open project settings by navigating to ``Edit > Project Settings``. In the Project Settings window, go to the ``Packaging`` section and enable the ``Use Pak File`` option, **disenable** ``Use Io Store``, and enable ``Generate Chunks``.
