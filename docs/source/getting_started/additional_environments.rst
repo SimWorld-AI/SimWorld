@@ -1,7 +1,7 @@
 Additional Environments
 ========================
 
-The additional environments are packages as .pak files which includes over 100 pre-defined scenes sourced from the Unreal Marketplace. These environments cover a wide range of settings, including urban areas, industrial zones, natural landscapes, and interior spaces. In addition, you can make your own .pak files to extend the environment or agent library of SimWorld by following the :doc:`make_your_own_pak` guide.
+The additional environments are packaged as .pak files which includes over 100 pre-defined scenes sourced from the Unreal Marketplace. These environments cover a wide range of settings, including urban areas, industrial zones, natural landscapes, and interior spaces. In addition, you can make your own .pak files to extend the environment or agent library of SimWorld by following the :doc:`make_your_own_pak` guide.
 
 Download and Installation
 -------------------------
@@ -9,7 +9,7 @@ Download and Installation
 Download
 ~~~~~~~~
 
-To use the additional environments, download the environments paks as you need from this huggingface `link <https://huggingface.co/SimWorld-AI/SimWorld/tree/main>`_.
+To use the additional environments, download the environments paks as needed from this huggingface `link <https://huggingface.co/SimWorld-AI/SimWorld/tree/main>`_.
 
 .. important::
 
@@ -26,7 +26,7 @@ Usage
 CLI
 ~~~
 
-If you run the SimWorld on a server, to load and use these additional environments in SimWorld, you can refer to the `Unreal Engine Official Document <https://dev.epicgames.com/documentation/en-us/unreal-engine/command-line-arguments-in-unreal-engine>`_ to specify the desired Map URI when launching the unreal engine backend. 
+If you run SimWorld on a server, to load and use these additional environments in SimWorld, you can refer to the `Unreal Engine Official Document <https://dev.epicgames.com/documentation/en-us/unreal-engine/command-line-arguments-in-unreal-engine>`_ to specify the desired Map URI when launching the unreal engine backend. 
 
 .. seealso::
 
@@ -49,7 +49,7 @@ or on Linux:
 GUI
 ~~~
 
-If you run the SimWorld on a machine with GUI, you can switch the map after launching the SimWorld unreal engine backend by using the console command in the console window:
+If you run SimWorld on a machine with GUI, you can switch the map after launching the SimWorld unreal engine backend by using the console command in the console window:
 
 1. Press ``~`` to open the console window
 2. Type ``open /Game/TokyoStylizedEnvironment/Maps/Tokyo.umap`` and press enter

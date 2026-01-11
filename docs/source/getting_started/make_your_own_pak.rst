@@ -6,12 +6,12 @@ You can create your own .pak files to extend the environment or agent library of
 .. note::
 
    - We use Windows for this tutorial, but the steps are similar for Linux.
-   - If you are on Windows, you can use cross-compiling to build pak files for Linux by refering this document: `Unreal Engine Linux Cross-Compilation <https://dev.epicgames.com/documentation/en-us/unreal-engine/linux-development-requirements-for-unreal-engine?application_version=5.3#cross-compiletoolchain>`_.
+   - If you are on Windows, you can use cross-compiling to build pak files for Linux by referring to this document: `Unreal Engine Linux Cross-Compilation <https://dev.epicgames.com/documentation/en-us/unreal-engine/linux-development-requirements-for-unreal-engine?application_version=5.3#cross-compiletoolchain>`_.
 
 1. Download the Unreal Editor
 -----------------------------
 
-Download the Unreal Editor from the `Epic Games Launcher <https://www.unrealengine.com/en-US/download>`_. The Latest version of SimWorld is using Unreal Engine 5.3.2, so make sure to install the same version.
+Download the Unreal Editor from the `Epic Games Launcher <https://www.unrealengine.com/en-US/download>`_. The latest version of SimWorld is using Unreal Engine 5.3.2, so make sure to install the same version.
 
 .. image:: ../assets/MYO_1.png
    :width: 800px
@@ -22,7 +22,7 @@ Download the Unreal Editor from the `Epic Games Launcher <https://www.unrealengi
 2. Create a New Unreal Project
 ------------------------------
 
-Launch the Unreal Engine and create a new project. Then name the project as ``SimWorld`` to match the SimWorld structure.
+Launch the Unreal Engine and create a new project. Then name the project ``SimWorld`` to match the SimWorld structure.
 
 .. image:: ../assets/MYO_2.png
    :width: 800px
@@ -32,12 +32,12 @@ Launch the Unreal Engine and create a new project. Then name the project as ``Si
 
 .. warning::
 
-   Make sure your project has been named as ``SimWorld``, otherwise the pak file may not work properly.
+   Make sure your project is named ``SimWorld``, otherwise the pak file may not work properly.
 
 3. Import Assets
 ----------------
 
-Import your desired assets into the project. You can use assets from the Unreal Marketplace or your own custom assets. Make sure all assets are properly organized in **a same** folder under the ``Content`` directory.
+Import your desired assets into the project. You can use assets from the Unreal Marketplace or your own custom assets. Make sure all assets are properly organized in the **same** folder under the ``Content`` directory.
 
 .. image:: ../assets/MYO_3.png
    :width: 800px
@@ -45,10 +45,10 @@ Import your desired assets into the project. You can use assets from the Unreal 
    :alt: Import Assets
    :class: with-margin
 
-4. Setup Chunk Package
+4. Set Up Chunk Package
 -----------------------
 
-Open project settings by navigating to ``Edit > Project Settings``. In the Project Settings window, go to the ``Packaging`` section and enable the ``Use Pak File`` option, **disenable** ``Use Io Store``, and enable ``Generate Chunks``.
+Open project settings by navigating to ``Edit > Project Settings``. In the Project Settings window, go to the ``Packaging`` section and enable the ``Use Pak File`` option, **disable** ``Use Io Store``, and enable ``Generate Chunks``.
 
 .. image:: ../assets/MYO_4.png
    :width: 800px
@@ -56,7 +56,7 @@ Open project settings by navigating to ``Edit > Project Settings``. In the Proje
    :alt: Package Settings
    :class: with-margin
 
-Then, add a ``Data Asset`` at the directory where you imported your assets. Right-click in the Content Browser, select ``Miscellaneous > Data Asset``, and choose ``Primary Asset Label`` to create a new Data Asset.
+Then, add a ``Data Asset`` in the directory where you imported your assets. Right-click in the Content Browser, select ``Miscellaneous > Data Asset``, and choose ``Primary Asset Label`` to create a new Data Asset.
 
 .. image:: ../assets/MYO_5.png
    :width: 800px
@@ -68,7 +68,7 @@ Then, add a ``Data Asset`` at the directory where you imported your assets. Righ
 5. Configure Chunk Settings
 ----------------------------
 
-Open the created Data Asset and set the ``ChunkID``. And enable all options under ``Primary Asset Label`` to make sure all assets under this directory will be included in the pak file.
+Open the created Data Asset and set the ``ChunkID``. Enable all options under ``Primary Asset Label`` to make sure all assets under this directory will be included in the pak file.
 
 .. image:: ../assets/MYO_6.png
    :width: 800px

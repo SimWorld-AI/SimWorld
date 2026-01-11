@@ -4,7 +4,7 @@ Introduction
 Overview
 --------
 
-**SimWorld** is an Unreal Engine 5–based simulator for creating rich, dynamic, and photorealistic environments to support embodied AI research. Unlike most existing simulators that focus on indoor or task-specific domains (e.g., household robotics or autonomous driving), SimWorld enables large-scale, open-ended outdoor simulation with realistic physical and social dynamics.
+**SimWorld** is an Unreal Engine 5-based simulator for creating rich, dynamic, and photorealistic environments to support embodied AI research. Unlike most existing simulators that focus on indoor or task-specific domains (e.g., household robotics or autonomous driving), SimWorld enables large-scale, open-ended outdoor simulation with realistic physical and social dynamics.
 
 Through its user-friendly Python API and extensive 3D asset library, users can procedurally generate diverse city layouts or load high-quality, pre-defined environments sourced from the Unreal Marketplace. This flexibility allows researchers to easily design experiments ranging from navigation and interaction to multi-agent collaboration.
 
@@ -40,12 +40,12 @@ We release the base version of SimWorld and the additional environments paks. Ba
      - Notes
    * - Base
      - Empty map for procedural generation
-     - Full agent features; smaller download.
+     - Full agent features; Smaller download.
    * - Environments Packs
      - 100+ maps
-     - Full agent features; Need install; Download as needed.
+     - Full agent features; Installation required; Download as needed.
 
 .. note::
 
-   1. Please check the `Addition Environments <https://simworld.readthedocs.io/en/latest/getting_started/additional_environments.html>`_ for downloading and setup instructions of the **100+ Maps** version.
-   2. If you only need core functionality for development or testing, use **Base**. If you want richer demonstrations and more scenes, download and install the **Environments Packs** as your need.
+   1. Please check the `Additional Environments <https://simworld.readthedocs.io/en/latest/getting_started/additional_environments.html>`_ for downloading and setup instructions of the **100+ Maps** version.
+   2. If you only need core functionality for development or testing, use **Base**. If you want richer demonstrations and more scenes, download and install the **Environments Packs** as needed.
