@@ -180,6 +180,10 @@ ucv.set_camera_fov(camera_id)
 ucv.set_camera_resolution(camera_id)
 ```
 
+..Note::
+    Currently, Only camera spawned by unrealcv+ can provide depth and segmentation map.
+    Pawn camera (the default camera with camera id = 0 in each map) can only provide RGB image.
+
 **Related files:** `communicator.py`, `unrealcv.py`.
 
 ## Synchronous and Asynchronous mode
