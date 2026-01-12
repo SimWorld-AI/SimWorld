@@ -43,14 +43,6 @@ These assets collectively enable the creation of complex, dynamic, and realistic
    :align: center
    :alt: A Subset of Collected Assets
 
-Asset Generation Pipeline
-~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Our **Asset Generation Pipeline** enables the automatic generation of 3D assets from natural language descriptions. This tool is currently designed for developers and is intended to be used within the Unreal Engine Editor. By translating descriptive text into ``.uasset`` files, this pipeline significantly accelerates asset creation, making it easier to populate large-scale environments with customized elements.
-
-.. warning::
-   **Asset Generation Pipeline** can only be used in editor mode.
-
 Actions
 -------
 
@@ -250,9 +242,6 @@ How to get images
    ucv.set_camera_rotation(camera_id)
    ucv.set_camera_fov(camera_id)
    ucv.set_camera_resolution(camera_id)
-
-.. note::
-  Only cameras spawned by ``unrealcv+`` provide depth and segmentation maps. The default pawn camera (camera id ``0`` in each map) outputs RGB images only.
 
 **Related files:** ``communicator.py``, ``unrealcv.py``.
 
