@@ -11,7 +11,7 @@ You can create your own .pak files to extend the environment or agent library of
 1. Download the Unreal Editor
 -----------------------------
 
-Download the Unreal Editor from the `Epic Games Launcher <https://www.unrealengine.com/en-US/download>`_. The latest version of SimWorld is using Unreal Engine 5.3.2, so make sure to install the same version.
+Download the Unreal Editor from the `Epic Games Launcher <https://www.unrealengine.com/en-US/download>`_. The latest version of SimWorld uses Unreal Engine 5.3.2, so make sure to install the same version.
 
 .. image:: ../assets/MYO_1.png
    :width: 800px

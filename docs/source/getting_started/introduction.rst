@@ -22,7 +22,7 @@ Architecture
    :align: center
    :alt: SimWorld Architecture
 
-SimWorld employs a three-tier hierarchical architecture that separates the high-performance *Unreal Engine Backend* from two Python-side layers: the *Environment* layer and the *Agent* layer. This design is connected through the *UnrealCV+* communication module, which enables seamless interaction and data exchange between Unreal Engine and Python components.
+SimWorld employs a three-tier hierarchical architecture that separates the high-performance *Unreal Engine Backend* from two Python-side layers: the *Environment* layer and the *Agent* layer. Python and Unreal Engine are connected through the *UnrealCV+* communication module, which enables seamless interaction and data exchange between Unreal Engine and Python components.
 
 At its core, the *Unreal Engine Backend* provides high-fidelity scenes, assets, and physics, forming the foundation for realistic simulation. Built upon it, the *Environment* layer serves as an intermediary that abstracts low-level rendering and physics into structured representations, supporting procedural city generation, traffic simulation, and a Gym-like interface for agent interaction via *UnrealCV+*. On top of this, the *Agent* layer integrates LLM/VLM agents capable of interpreting multimodal observations from the environment, reasoning about goals, and issuing actions that are executed through the environment's connection to the Unreal backend. Together, these components form a closed perception–planning–action loop, enabling intelligent agents to interact, learn, and adapt in rich, dynamic worlds.
 
