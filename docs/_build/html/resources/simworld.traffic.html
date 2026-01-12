@@ -1,0 +1,319 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>simworld.traffic package &mdash; SimWorld 0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=6cecdd3b" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=2709fde1"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="simworld.traffic.ad_algorithm package" href="simworld.traffic.ad_algorithm.html" />
+    <link rel="prev" title="simworld.map package" href="simworld.map.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            SimWorld
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">GETTING STARTED</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/minimal_example.html">Minimal Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/additional_environments.html">Additional Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/make_your_own_pak.html">Make Your Own Pak Files</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">SIMWORLD COMPONENTS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../components/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../components/ue_detail.html">Unreal Engine Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../components/citygen.html">Procedural City Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../components/waypoint_system.html">Waypoint System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../components/traffic_system.html">Traffic System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../components/agent_system.html">Agent System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../components/unrealcv%2B.html">UnrealCV+</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">PYTHON API REFERENCE</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">Python API</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="simworld.html">simworld package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="simworld.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="simworld.agent.html">simworld.agent package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simworld.assets_rp.html">simworld.assets_rp package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simworld.citygen.html">simworld.citygen package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simworld.communicator.html">simworld.communicator package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simworld.config.html">simworld.config package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simworld.llm.html">simworld.llm package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simworld.local_planner.html">simworld.local_planner package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simworld.map.html">simworld.map package</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">simworld.traffic package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simworld.utils.html">simworld.utils package</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">SIMWORLD ROBOTICS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../simworld-robotics/simworld_robotics.html">SimWorld-Robotics</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">SimWorld</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">Python API</a></li>
+          <li class="breadcrumb-item"><a href="simworld.html">simworld package</a></li>
+      <li class="breadcrumb-item active">simworld.traffic package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/resources/simworld.traffic.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="simworld-traffic-package">
+<h1>simworld.traffic package<a class="headerlink" href="#simworld-traffic-package" title="Link to this heading"></a></h1>
+<section id="subpackages">
+<h2>Subpackages<a class="headerlink" href="#subpackages" title="Link to this heading"></a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="simworld.traffic.ad_algorithm.html">simworld.traffic.ad_algorithm package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="simworld.traffic.ad_algorithm.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="simworld.traffic.ad_algorithm.html#module-simworld.traffic.ad_algorithm.pid_controller">simworld.traffic.ad_algorithm.pid_controller module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="simworld.traffic.ad_algorithm.html#simworld.traffic.ad_algorithm.pid_controller.PIDController"><code class="docutils literal notranslate"><span class="pre">PIDController</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="simworld.traffic.ad_algorithm.html#simworld.traffic.ad_algorithm.pid_controller.PIDController.reset"><code class="docutils literal notranslate"><span class="pre">PIDController.reset()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="simworld.traffic.ad_algorithm.html#simworld.traffic.ad_algorithm.pid_controller.PIDController.update"><code class="docutils literal notranslate"><span class="pre">PIDController.update()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="simworld.traffic.base.html">simworld.traffic.base package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="simworld.traffic.base.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="simworld.traffic.base.html#module-simworld.traffic.base.crosswalk">simworld.traffic.base.crosswalk module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="simworld.traffic.base.html#simworld.traffic.base.crosswalk.Crosswalk"><code class="docutils literal notranslate"><span class="pre">Crosswalk</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="simworld.traffic.base.html#simworld.traffic.base.crosswalk.Crosswalk.reset_id_counter"><code class="docutils literal notranslate"><span class="pre">Crosswalk.reset_id_counter()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="simworld.traffic.base.html#module-simworld.traffic.base.intersection">simworld.traffic.base.intersection module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="simworld.traffic.base.html#simworld.traffic.base.intersection.Intersection"><code class="docutils literal notranslate"><span class="pre">Intersection</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="simworld.traffic.base.html#simworld.traffic.base.intersection.Intersection.add_traffic_signals"><code class="docutils literal notranslate"><span class="pre">Intersection.add_traffic_signals()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="simworld.traffic.base.html#simworld.traffic.base.intersection.Intersection.all_traffic_lights_red"><code class="docutils literal notranslate"><span class="pre">Intersection.all_traffic_lights_red()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="simworld.traffic.base.html#simworld.traffic.base.intersection.Intersection.connect_lanes"><code class="docutils literal notranslate"><span class="pre">Intersection.connect_lanes()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="simworld.traffic.base.html#simworld.traffic.base.intersection.Intersection.connect_sidewalks"><code class="docutils literal notranslate"><span class="pre">Intersection.connect_sidewalks()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="simworld.traffic.base.html#simworld.traffic.base.intersection.Intersection.get_crosswalk_light_state"><code class="docutils literal notranslate"><span class="pre">Intersection.get_crosswalk_light_state()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="simworld.traffic.base.html#simworld.traffic.base.intersection.Intersection.get_traffic_light_state"><code class="docutils literal notranslate"><span class="pre">Intersection.get_traffic_light_state()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="simworld.traffic.base.html#simworld.traffic.base.intersection.Intersection.has_completed_cycle"><code class="docutils literal notranslate"><span class="pre">Intersection.has_completed_cycle()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="simworld.traffic.base.html#simworld.traffic.base.intersection.Intersection.increment_cycle_count"><code class="docutils literal notranslate"><span class="pre">Intersection.increment_cycle_count()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="simworld.traffic.base.html#simworld.traffic.base.intersection.Intersection.init_intersection"><code class="docutils literal notranslate"><span class="pre">Intersection.init_intersection()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="simworld.traffic.base.html#simworld.traffic.base.intersection.Intersection.lanes"><code class="docutils literal notranslate"><span class="pre">Intersection.lanes</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="simworld.traffic.base.html#simworld.traffic.base.intersection.Intersection.reset_cycle_count"><code class="docutils literal notranslate"><span class="pre">Intersection.reset_cycle_count()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="simworld.traffic.base.html#simworld.traffic.base.intersection.Intersection.reset_id_counter"><code class="docutils literal notranslate"><span class="pre">Intersection.reset_id_counter()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="simworld.traffic.base.html#simworld.traffic.base.intersection.Intersection.sidewalks"><code class="docutils literal notranslate"><span class="pre">Intersection.sidewalks</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="simworld.traffic.base.html#module-simworld.traffic.base.road">simworld.traffic.base.road module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="simworld.traffic.base.html#simworld.traffic.base.road.Road"><code class="docutils literal notranslate"><span class="pre">Road</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="simworld.traffic.base.html#simworld.traffic.base.road.Road.add_crosswalks"><code class="docutils literal notranslate"><span class="pre">Road.add_crosswalks()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="simworld.traffic.base.html#simworld.traffic.base.road.Road.add_lanes"><code class="docutils literal notranslate"><span class="pre">Road.add_lanes()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="simworld.traffic.base.html#simworld.traffic.base.road.Road.add_sidewalks"><code class="docutils literal notranslate"><span class="pre">Road.add_sidewalks()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="simworld.traffic.base.html#simworld.traffic.base.road.Road.get_center"><code class="docutils literal notranslate"><span class="pre">Road.get_center()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="simworld.traffic.base.html#simworld.traffic.base.road.Road.get_direction"><code class="docutils literal notranslate"><span class="pre">Road.get_direction()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="simworld.traffic.base.html#simworld.traffic.base.road.Road.init_road"><code class="docutils literal notranslate"><span class="pre">Road.init_road()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="simworld.traffic.base.html#simworld.traffic.base.road.Road.reset_id_counter"><code class="docutils literal notranslate"><span class="pre">Road.reset_id_counter()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="simworld.traffic.base.html#module-simworld.traffic.base.sidewalk">simworld.traffic.base.sidewalk module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="simworld.traffic.base.html#simworld.traffic.base.sidewalk.Sidewalk"><code class="docutils literal notranslate"><span class="pre">Sidewalk</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="simworld.traffic.base.html#simworld.traffic.base.sidewalk.Sidewalk.add_pedestrian"><code class="docutils literal notranslate"><span class="pre">Sidewalk.add_pedestrian()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="simworld.traffic.base.html#simworld.traffic.base.sidewalk.Sidewalk.get_direction"><code class="docutils literal notranslate"><span class="pre">Sidewalk.get_direction()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="simworld.traffic.base.html#simworld.traffic.base.sidewalk.Sidewalk.remove_pedestrian"><code class="docutils literal notranslate"><span class="pre">Sidewalk.remove_pedestrian()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="simworld.traffic.base.html#simworld.traffic.base.sidewalk.Sidewalk.reset_id_counter"><code class="docutils literal notranslate"><span class="pre">Sidewalk.reset_id_counter()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="simworld.traffic.base.html#module-simworld.traffic.base.traffic_lane">simworld.traffic.base.traffic_lane module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="simworld.traffic.base.html#simworld.traffic.base.traffic_lane.TrafficLane"><code class="docutils literal notranslate"><span class="pre">TrafficLane</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="simworld.traffic.base.html#simworld.traffic.base.traffic_lane.TrafficLane.add_vehicle"><code class="docutils literal notranslate"><span class="pre">TrafficLane.add_vehicle()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="simworld.traffic.base.html#simworld.traffic.base.traffic_lane.TrafficLane.get_direction"><code class="docutils literal notranslate"><span class="pre">TrafficLane.get_direction()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="simworld.traffic.base.html#simworld.traffic.base.traffic_lane.TrafficLane.remove_vehicle"><code class="docutils literal notranslate"><span class="pre">TrafficLane.remove_vehicle()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="simworld.traffic.base.html#simworld.traffic.base.traffic_lane.TrafficLane.reset_id_counter"><code class="docutils literal notranslate"><span class="pre">TrafficLane.reset_id_counter()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="simworld.traffic.base.html#module-simworld.traffic.base.traffic_signal">simworld.traffic.base.traffic_signal module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="simworld.traffic.base.html#simworld.traffic.base.traffic_signal.TrafficSignal"><code class="docutils literal notranslate"><span class="pre">TrafficSignal</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="simworld.traffic.base.html#simworld.traffic.base.traffic_signal.TrafficSignal.get_left_time"><code class="docutils literal notranslate"><span class="pre">TrafficSignal.get_left_time()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="simworld.traffic.base.html#simworld.traffic.base.traffic_signal.TrafficSignal.get_state"><code class="docutils literal notranslate"><span class="pre">TrafficSignal.get_state()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="simworld.traffic.base.html#simworld.traffic.base.traffic_signal.TrafficSignal.reset_id_counter"><code class="docutils literal notranslate"><span class="pre">TrafficSignal.reset_id_counter()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="simworld.traffic.base.html#simworld.traffic.base.traffic_signal.TrafficSignal.set_left_time"><code class="docutils literal notranslate"><span class="pre">TrafficSignal.set_left_time()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="simworld.traffic.base.html#simworld.traffic.base.traffic_signal.TrafficSignal.set_state"><code class="docutils literal notranslate"><span class="pre">TrafficSignal.set_state()</span></code></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="simworld.traffic.base.html#simworld.traffic.base.traffic_signal.TrafficSignalState"><code class="docutils literal notranslate"><span class="pre">TrafficSignalState</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="simworld.traffic.base.html#simworld.traffic.base.traffic_signal.TrafficSignalState.PEDESTRIAN_GREEN"><code class="docutils literal notranslate"><span class="pre">TrafficSignalState.PEDESTRIAN_GREEN</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="simworld.traffic.base.html#simworld.traffic.base.traffic_signal.TrafficSignalState.PEDESTRIAN_RED"><code class="docutils literal notranslate"><span class="pre">TrafficSignalState.PEDESTRIAN_RED</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="simworld.traffic.base.html#simworld.traffic.base.traffic_signal.TrafficSignalState.VEHICLE_GREEN"><code class="docutils literal notranslate"><span class="pre">TrafficSignalState.VEHICLE_GREEN</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="simworld.traffic.base.html#simworld.traffic.base.traffic_signal.TrafficSignalState.VEHICLE_RED"><code class="docutils literal notranslate"><span class="pre">TrafficSignalState.VEHICLE_RED</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="simworld.traffic.controller.html">simworld.traffic.controller package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="simworld.traffic.controller.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="simworld.traffic.controller.html#module-simworld.traffic.controller.traffic_controller">simworld.traffic.controller.traffic_controller module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="simworld.traffic.controller.html#simworld.traffic.controller.traffic_controller.TrafficController"><code class="docutils literal notranslate"><span class="pre">TrafficController</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="simworld.traffic.controller.html#simworld.traffic.controller.traffic_controller.TrafficController.crosswalks"><code class="docutils literal notranslate"><span class="pre">TrafficController.crosswalks</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="simworld.traffic.controller.html#simworld.traffic.controller.traffic_controller.TrafficController.disconnect_communicator"><code class="docutils literal notranslate"><span class="pre">TrafficController.disconnect_communicator()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="simworld.traffic.controller.html#simworld.traffic.controller.traffic_controller.TrafficController.init_communicator"><code class="docutils literal notranslate"><span class="pre">TrafficController.init_communicator()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="simworld.traffic.controller.html#simworld.traffic.controller.traffic_controller.TrafficController.init_roadnet_from_file"><code class="docutils literal notranslate"><span class="pre">TrafficController.init_roadnet_from_file()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="simworld.traffic.controller.html#simworld.traffic.controller.traffic_controller.TrafficController.lanes"><code class="docutils literal notranslate"><span class="pre">TrafficController.lanes</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="simworld.traffic.controller.html#simworld.traffic.controller.traffic_controller.TrafficController.pedestrians"><code class="docutils literal notranslate"><span class="pre">TrafficController.pedestrians</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="simworld.traffic.controller.html#simworld.traffic.controller.traffic_controller.TrafficController.reset"><code class="docutils literal notranslate"><span class="pre">TrafficController.reset()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="simworld.traffic.controller.html#simworld.traffic.controller.traffic_controller.TrafficController.sidewalks"><code class="docutils literal notranslate"><span class="pre">TrafficController.sidewalks</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="simworld.traffic.controller.html#simworld.traffic.controller.traffic_controller.TrafficController.simulation"><code class="docutils literal notranslate"><span class="pre">TrafficController.simulation()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="simworld.traffic.controller.html#simworld.traffic.controller.traffic_controller.TrafficController.spawn_objects_in_unreal_engine"><code class="docutils literal notranslate"><span class="pre">TrafficController.spawn_objects_in_unreal_engine()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="simworld.traffic.controller.html#simworld.traffic.controller.traffic_controller.TrafficController.spawn_pedestrians"><code class="docutils literal notranslate"><span class="pre">TrafficController.spawn_pedestrians()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="simworld.traffic.controller.html#simworld.traffic.controller.traffic_controller.TrafficController.spawn_traffic_signals"><code class="docutils literal notranslate"><span class="pre">TrafficController.spawn_traffic_signals()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="simworld.traffic.controller.html#simworld.traffic.controller.traffic_controller.TrafficController.spawn_vehicles"><code class="docutils literal notranslate"><span class="pre">TrafficController.spawn_vehicles()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="simworld.traffic.controller.html#simworld.traffic.controller.traffic_controller.TrafficController.stop_simulation"><code class="docutils literal notranslate"><span class="pre">TrafficController.stop_simulation()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="simworld.traffic.controller.html#simworld.traffic.controller.traffic_controller.TrafficController.traffic_signals"><code class="docutils literal notranslate"><span class="pre">TrafficController.traffic_signals</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="simworld.traffic.controller.html#simworld.traffic.controller.traffic_controller.TrafficController.update_states"><code class="docutils literal notranslate"><span class="pre">TrafficController.update_states()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="simworld.traffic.controller.html#simworld.traffic.controller.traffic_controller.TrafficController.vehicles"><code class="docutils literal notranslate"><span class="pre">TrafficController.vehicles</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="simworld.traffic.manager.html">simworld.traffic.manager package</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="simworld.traffic.manager.html#submodules">Submodules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="simworld.traffic.manager.html#module-simworld.traffic.manager.intersection_manager">simworld.traffic.manager.intersection_manager module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="simworld.traffic.manager.html#simworld.traffic.manager.intersection_manager.IntersectionManager"><code class="docutils literal notranslate"><span class="pre">IntersectionManager</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="simworld.traffic.manager.html#simworld.traffic.manager.intersection_manager.IntersectionManager.get_intersection_by_lane"><code class="docutils literal notranslate"><span class="pre">IntersectionManager.get_intersection_by_lane()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="simworld.traffic.manager.html#simworld.traffic.manager.intersection_manager.IntersectionManager.get_intersection_by_sidewalk"><code class="docutils literal notranslate"><span class="pre">IntersectionManager.get_intersection_by_sidewalk()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="simworld.traffic.manager.html#simworld.traffic.manager.intersection_manager.IntersectionManager.get_next_lane_for_vehicle"><code class="docutils literal notranslate"><span class="pre">IntersectionManager.get_next_lane_for_vehicle()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="simworld.traffic.manager.html#simworld.traffic.manager.intersection_manager.IntersectionManager.get_waypoints_for_pedestrian"><code class="docutils literal notranslate"><span class="pre">IntersectionManager.get_waypoints_for_pedestrian()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="simworld.traffic.manager.html#simworld.traffic.manager.intersection_manager.IntersectionManager.get_waypoints_for_vehicle"><code class="docutils literal notranslate"><span class="pre">IntersectionManager.get_waypoints_for_vehicle()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="simworld.traffic.manager.html#simworld.traffic.manager.intersection_manager.IntersectionManager.init_intersections"><code class="docutils literal notranslate"><span class="pre">IntersectionManager.init_intersections()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="simworld.traffic.manager.html#simworld.traffic.manager.intersection_manager.IntersectionManager.set_traffic_signal_duration"><code class="docutils literal notranslate"><span class="pre">IntersectionManager.set_traffic_signal_duration()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="simworld.traffic.manager.html#simworld.traffic.manager.intersection_manager.IntersectionManager.spawn_traffic_signals"><code class="docutils literal notranslate"><span class="pre">IntersectionManager.spawn_traffic_signals()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="simworld.traffic.manager.html#simworld.traffic.manager.intersection_manager.IntersectionManager.update_intersections"><code class="docutils literal notranslate"><span class="pre">IntersectionManager.update_intersections()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="simworld.traffic.manager.html#module-simworld.traffic.manager.pedestrian_manager">simworld.traffic.manager.pedestrian_manager module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="simworld.traffic.manager.html#simworld.traffic.manager.pedestrian_manager.PedestrianManager"><code class="docutils literal notranslate"><span class="pre">PedestrianManager</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="simworld.traffic.manager.html#simworld.traffic.manager.pedestrian_manager.PedestrianManager.init_pedestrians"><code class="docutils literal notranslate"><span class="pre">PedestrianManager.init_pedestrians()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="simworld.traffic.manager.html#simworld.traffic.manager.pedestrian_manager.PedestrianManager.set_pedestrians_max_speed"><code class="docutils literal notranslate"><span class="pre">PedestrianManager.set_pedestrians_max_speed()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="simworld.traffic.manager.html#simworld.traffic.manager.pedestrian_manager.PedestrianManager.spawn_pedestrians"><code class="docutils literal notranslate"><span class="pre">PedestrianManager.spawn_pedestrians()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="simworld.traffic.manager.html#simworld.traffic.manager.pedestrian_manager.PedestrianManager.stop_pedestrians"><code class="docutils literal notranslate"><span class="pre">PedestrianManager.stop_pedestrians()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="simworld.traffic.manager.html#simworld.traffic.manager.pedestrian_manager.PedestrianManager.update_pedestrians"><code class="docutils literal notranslate"><span class="pre">PedestrianManager.update_pedestrians()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="simworld.traffic.manager.html#module-simworld.traffic.manager.vehicle_manager">simworld.traffic.manager.vehicle_manager module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="simworld.traffic.manager.html#simworld.traffic.manager.vehicle_manager.VehicleManager"><code class="docutils literal notranslate"><span class="pre">VehicleManager</span></code></a><ul>
+<li class="toctree-l4"><a class="reference internal" href="simworld.traffic.manager.html#simworld.traffic.manager.vehicle_manager.VehicleManager.init_vehicles"><code class="docutils literal notranslate"><span class="pre">VehicleManager.init_vehicles()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="simworld.traffic.manager.html#simworld.traffic.manager.vehicle_manager.VehicleManager.spawn_vehicles"><code class="docutils literal notranslate"><span class="pre">VehicleManager.spawn_vehicles()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="simworld.traffic.manager.html#simworld.traffic.manager.vehicle_manager.VehicleManager.stop_vehicles"><code class="docutils literal notranslate"><span class="pre">VehicleManager.stop_vehicles()</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="simworld.traffic.manager.html#simworld.traffic.manager.vehicle_manager.VehicleManager.update_vehicles"><code class="docutils literal notranslate"><span class="pre">VehicleManager.update_vehicles()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="simworld.map.html" class="btn btn-neutral float-left" title="simworld.map package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="simworld.traffic.ad_algorithm.html" class="btn btn-neutral float-right" title="simworld.traffic.ad_algorithm package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, SimWorld Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

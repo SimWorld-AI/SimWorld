@@ -1,0 +1,355 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>simworld.citygen.city package &mdash; SimWorld 0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=6cecdd3b" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=2709fde1"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="simworld.citygen.dataclass package" href="simworld.citygen.dataclass.html" />
+    <link rel="prev" title="simworld.citygen.building package" href="simworld.citygen.building.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            SimWorld
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">GETTING STARTED</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/minimal_example.html">Minimal Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/additional_environments.html">Additional Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/make_your_own_pak.html">Make Your Own Pak Files</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">SIMWORLD COMPONENTS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../components/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../components/ue_detail.html">Unreal Engine Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../components/citygen.html">Procedural City Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../components/waypoint_system.html">Waypoint System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../components/traffic_system.html">Traffic System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../components/agent_system.html">Agent System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../components/unrealcv%2B.html">UnrealCV+</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">PYTHON API REFERENCE</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">Python API</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="simworld.html">simworld package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="simworld.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="simworld.agent.html">simworld.agent package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simworld.assets_rp.html">simworld.assets_rp package</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="simworld.citygen.html">simworld.citygen package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simworld.communicator.html">simworld.communicator package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simworld.config.html">simworld.config package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simworld.llm.html">simworld.llm package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simworld.local_planner.html">simworld.local_planner package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simworld.map.html">simworld.map package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simworld.traffic.html">simworld.traffic package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simworld.utils.html">simworld.utils package</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">SIMWORLD ROBOTICS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../simworld-robotics/simworld_robotics.html">SimWorld-Robotics</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">SimWorld</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">Python API</a></li>
+          <li class="breadcrumb-item"><a href="simworld.html">simworld package</a></li>
+          <li class="breadcrumb-item"><a href="simworld.citygen.html">simworld.citygen package</a></li>
+      <li class="breadcrumb-item active">simworld.citygen.city package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/resources/simworld.citygen.city.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="simworld-citygen-city-package">
+<h1>simworld.citygen.city package<a class="headerlink" href="#simworld-citygen-city-package" title="Link to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
+</section>
+<section id="module-simworld.citygen.city.city_generator">
+<span id="simworld-citygen-city-city-generator-module"></span><h2>simworld.citygen.city.city_generator module<a class="headerlink" href="#module-simworld.citygen.city.city_generator" title="Link to this heading"></a></h2>
+<p>City generator module for generating cities with roads, buildings, and elements.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="simworld.citygen.city.city_generator.CityGenerator">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">simworld.citygen.city.city_generator.</span></span><span class="sig-name descname"><span class="pre">CityGenerator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_segments</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">generate_element</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">generate_route</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.citygen.city.city_generator.CityGenerator" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Manages the complete city generation process including roads, buildings, and elements.</p>
+<dl class="py property">
+<dt class="sig sig-object py" id="simworld.citygen.city.city_generator.CityGenerator.building_manager">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">building_manager</span></span><a class="headerlink" href="#simworld.citygen.city.city_generator.CityGenerator.building_manager" title="Link to this definition"></a></dt>
+<dd><p>Get the building manager.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>BuildingManager: Manager for building operations.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="simworld.citygen.city.city_generator.CityGenerator.building_quadtree">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">building_quadtree</span></span><a class="headerlink" href="#simworld.citygen.city.city_generator.CityGenerator.building_quadtree" title="Link to this definition"></a></dt>
+<dd><p>Get the building quadtree.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>Quadtree: Quadtree for efficient building queries.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="simworld.citygen.city.city_generator.CityGenerator.buildings">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">buildings</span></span><a class="headerlink" href="#simworld.citygen.city.city_generator.CityGenerator.buildings" title="Link to this definition"></a></dt>
+<dd><p>Get all buildings.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>list: List of buildings.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="simworld.citygen.city.city_generator.CityGenerator.city_quadtrees">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">city_quadtrees</span></span><a class="headerlink" href="#simworld.citygen.city.city_generator.CityGenerator.city_quadtrees" title="Link to this definition"></a></dt>
+<dd><p>Get all city quadtrees.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>list: List of road, building, and element quadtrees.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="simworld.citygen.city.city_generator.CityGenerator.element_manager">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">element_manager</span></span><a class="headerlink" href="#simworld.citygen.city.city_generator.CityGenerator.element_manager" title="Link to this definition"></a></dt>
+<dd><p>Get the element manager.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>ElementManager: Manager for element operations.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="simworld.citygen.city.city_generator.CityGenerator.element_quadtree">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">element_quadtree</span></span><a class="headerlink" href="#simworld.citygen.city.city_generator.CityGenerator.element_quadtree" title="Link to this definition"></a></dt>
+<dd><p>Get the element quadtree.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>Quadtree: Quadtree for efficient element queries.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="simworld.citygen.city.city_generator.CityGenerator.elements">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">elements</span></span><a class="headerlink" href="#simworld.citygen.city.city_generator.CityGenerator.elements" title="Link to this definition"></a></dt>
+<dd><p>Get all elements.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>list: List of elements.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.citygen.city.city_generator.CityGenerator.generate">
+<span class="sig-name descname"><span class="pre">generate</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#simworld.citygen.city.city_generator.CityGenerator.generate" title="Link to this definition"></a></dt>
+<dd><p>Generate the city.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.citygen.city.city_generator.CityGenerator.generate_step">
+<span class="sig-name descname"><span class="pre">generate_step</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#simworld.citygen.city.city_generator.CityGenerator.generate_step" title="Link to this definition"></a></dt>
+<dd><p>Generate one step of the city.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>bool: True if generation is complete.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="simworld.citygen.city.city_generator.CityGenerator.intersections">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">intersections</span></span><a class="headerlink" href="#simworld.citygen.city.city_generator.CityGenerator.intersections" title="Link to this definition"></a></dt>
+<dd><p>Get all intersections.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>list: List of road intersections.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.citygen.city.city_generator.CityGenerator.is_generation_complete">
+<span class="sig-name descname"><span class="pre">is_generation_complete</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#simworld.citygen.city.city_generator.CityGenerator.is_generation_complete" title="Link to this definition"></a></dt>
+<dd><p>Check if city generation is complete.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>bool: True if generation is complete.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="simworld.citygen.city.city_generator.CityGenerator.road_manager">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">road_manager</span></span><a class="headerlink" href="#simworld.citygen.city.city_generator.CityGenerator.road_manager" title="Link to this definition"></a></dt>
+<dd><p>Get the road manager.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>RoadManager: Manager for road operations.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="simworld.citygen.city.city_generator.CityGenerator.road_quadtree">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">road_quadtree</span></span><a class="headerlink" href="#simworld.citygen.city.city_generator.CityGenerator.road_quadtree" title="Link to this definition"></a></dt>
+<dd><p>Get the road quadtree.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>Quadtree: Quadtree for efficient road queries.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="simworld.citygen.city.city_generator.CityGenerator.roads">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">roads</span></span><a class="headerlink" href="#simworld.citygen.city.city_generator.CityGenerator.roads" title="Link to this definition"></a></dt>
+<dd><p>Get all roads.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>list: List of road segments.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="simworld.citygen.city.city_generator.CityGenerator.route_manager">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">route_manager</span></span><a class="headerlink" href="#simworld.citygen.city.city_generator.CityGenerator.route_manager" title="Link to this definition"></a></dt>
+<dd><p>Get the route manager.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>RouteManager: Manager for route operations.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="simworld.citygen.city.city_generator.CityGenerator.routes">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">routes</span></span><a class="headerlink" href="#simworld.citygen.city.city_generator.CityGenerator.routes" title="Link to this definition"></a></dt>
+<dd><p>Get all routes.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>list: List of routes.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="simworld.citygen.city.city_generator.GenerationState">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">simworld.citygen.city.city_generator.</span></span><span class="sig-name descname"><span class="pre">GenerationState</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">values</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.citygen.city.city_generator.GenerationState" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/enum.html#enum.Enum" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></a></p>
+<p>Enum to track the generation state.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="simworld.citygen.city.city_generator.GenerationState.COMPLETED">
+<span class="sig-name descname"><span class="pre">COMPLETED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">5</span></em><a class="headerlink" href="#simworld.citygen.city.city_generator.GenerationState.COMPLETED" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="simworld.citygen.city.city_generator.GenerationState.GENERATING_BUILDINGS">
+<span class="sig-name descname"><span class="pre">GENERATING_BUILDINGS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></em><a class="headerlink" href="#simworld.citygen.city.city_generator.GenerationState.GENERATING_BUILDINGS" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="simworld.citygen.city.city_generator.GenerationState.GENERATING_ELEMENTS">
+<span class="sig-name descname"><span class="pre">GENERATING_ELEMENTS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">3</span></em><a class="headerlink" href="#simworld.citygen.city.city_generator.GenerationState.GENERATING_ELEMENTS" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="simworld.citygen.city.city_generator.GenerationState.GENERATING_ROADS">
+<span class="sig-name descname"><span class="pre">GENERATING_ROADS</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#simworld.citygen.city.city_generator.GenerationState.GENERATING_ROADS" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="simworld.citygen.city.city_generator.GenerationState.GENERATING_ROUTES">
+<span class="sig-name descname"><span class="pre">GENERATING_ROUTES</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">4</span></em><a class="headerlink" href="#simworld.citygen.city.city_generator.GenerationState.GENERATING_ROUTES" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="simworld.citygen.building.html" class="btn btn-neutral float-left" title="simworld.citygen.building package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="simworld.citygen.dataclass.html" class="btn btn-neutral float-right" title="simworld.citygen.dataclass package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, SimWorld Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

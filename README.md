@@ -70,17 +70,16 @@ pip install -e .
 ```
 
 + UE server
-Download the SimWorld server executable from S3:
+Download the SimWorld server executable from huggingface. Choose the version according to your OS and the edition you want to use.:
 
 We offer two versions of the SimWorld UE package: the base version, which comes with an empty map, and the additional environments version, which provides extra pre-defined environments for more diverse simulation scenarios. Both versions include all the core features of SimWorld.
 
 | Platform | Package | Scenes/Maps Included | Download | Notes |
 | --- | --- | --- | --- | --- |
-| Windows | Base | Empty map for procedural generation | [Download (Base)](https://simworld-release.s3.us-east-1.amazonaws.com/SimWorld-Win64-v0_1_0-Foundation.zip) | Full agent features; smaller download. |
-| Windows | Additional Environments | 100+ maps (including the empty one) | [Download (100+ Maps)](https://simworld-release.s3.us-east-1.amazonaws.com/SimWorld-Win64-v0_1_0-100Maps.zip) | Full agent features; larger download. |
-| Linux | Base | Empty map for procedural generation | [Download (Base)](https://simworld-release.s3.us-east-1.amazonaws.com/SimWorld-Linux-v0_1_0-Foundation.zip) | Full agent features; smaller download. |
-| Linux | Additional Environments | 100+ maps (including the empty one) | [Download (100+ Maps)](https://simworld-release.s3.us-east-1.amazonaws.com/SimWorld-Linux-v0_1_0-100Maps.zip) | Full agent features; larger download. |
+| Windows | Base | Empty map for procedural generation | [Download (Base)](https://huggingface.co/SimWorld-AI/SimWorld/resolve/main/Linux.zip) | Full agent features; smaller download. |
+| Linux | Base | Empty map for procedural generation | [Download (Base)](https://huggingface.co/SimWorld-AI/SimWorld/resolve/main/Windows.zip) | Full agent features; smaller download. |
 
+Additional environment paks are available on the [environments paks page](https://huggingface.co/SimWorld-AI/SimWorld/tree/main). You may download them as needed according to the OS you are using.
 
 **Note:**
 1. Please check the [documentation](https://simworld.readthedocs.io/en/latest/getting_started/additional_environments.html#usage) for usage instructions of the **100+ Maps** version.

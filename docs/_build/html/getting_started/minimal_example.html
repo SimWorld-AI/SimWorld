@@ -1,0 +1,288 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Minimal Example &mdash; SimWorld 0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=6cecdd3b" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=2709fde1"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Additional Environments" href="additional_environments.html" />
+    <link rel="prev" title="Installation" href="installation.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            SimWorld
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">GETTING STARTED</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Minimal Example</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#import-and-configure">1. Import and configure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#define-a-simple-llm-agent">2. Define a simple LLM agent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#build-the-environment-wrapper">3. Build the environment wrapper</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#run-a-short-rollout">4. Run a short rollout</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#next-steps">Next steps</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="additional_environments.html">Additional Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="make_your_own_pak.html">Make Your Own Pak Files</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">SIMWORLD COMPONENTS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../components/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../components/ue_detail.html">Unreal Engine Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../components/citygen.html">Procedural City Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../components/waypoint_system.html">Waypoint System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../components/traffic_system.html">Traffic System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../components/agent_system.html">Agent System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../components/unrealcv%2B.html">UnrealCV+</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">PYTHON API REFERENCE</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../resources/modules.html">Python API</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">SIMWORLD ROBOTICS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../simworld-robotics/simworld_robotics.html">SimWorld-Robotics</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">SimWorld</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Minimal Example</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/getting_started/minimal_example.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="minimal-example">
+<h1>Minimal Example<a class="headerlink" href="#minimal-example" title="Link to this heading"></a></h1>
+<p>Walk through the <code class="docutils literal notranslate"><span class="pre">examples/gym_interface_demo.ipynb</span></code> notebook with a step-by-step setup. This example launches a simple LLM-driven humanoid that plans in natural language and executes via the Local Planner.</p>
+<section id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Install the Python client and have the UE backend running (see <a class="reference internal" href="installation.html"><span class="doc">Installation</span></a>).</p></li>
+<li><p>Ensure the backend is reachable (default ports 9000). If you changed ports, pass them through command line arguments <code class="docutils literal notranslate"><span class="pre">--cvport</span> <span class="pre">9001</span></code> or change the <code class="docutils literal notranslate"><span class="pre">/gym_citynav/Binaries/Win64/unrealcv.ini</span></code>.</p></li>
+<li><p>Set an OpenAI-compatible API key in your environment (the demo uses <code class="docutils literal notranslate"><span class="pre">gpt-4o</span></code> for the agent and <code class="docutils literal notranslate"><span class="pre">gpt-4o-mini</span></code> for the planner).</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">export</span><span class="w"> </span><span class="nv">OPENAI_API_KEY</span><span class="o">=</span><span class="s2">&quot;&lt;your_api_key&gt;&quot;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You can swap models or providers by changing <code class="docutils literal notranslate"><span class="pre">BaseLLM</span></code> / <code class="docutils literal notranslate"><span class="pre">A2ALLM</span></code> parameters. See <a class="reference internal" href="../components/agent_system.html"><span class="doc">Agent System</span></a> for interfaces.</p>
+</div>
+</section>
+<section id="import-and-configure">
+<h2>1. Import and configure<a class="headerlink" href="#import-and-configure" title="Link to this heading"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">sys</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+
+<span class="n">sys</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">Path</span><span class="p">()</span><span class="o">.</span><span class="n">resolve</span><span class="p">()</span><span class="o">.</span><span class="n">parent</span><span class="p">))</span>  <span class="c1"># make repo importable</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">simworld.config</span><span class="w"> </span><span class="kn">import</span> <span class="n">Config</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">simworld.communicator.communicator</span><span class="w"> </span><span class="kn">import</span> <span class="n">Communicator</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">simworld.communicator.unrealcv</span><span class="w"> </span><span class="kn">import</span> <span class="n">UnrealCV</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">simworld.llm.base_llm</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseLLM</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">simworld.llm.a2a_llm</span><span class="w"> </span><span class="kn">import</span> <span class="n">A2ALLM</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">simworld.map.map</span><span class="w"> </span><span class="kn">import</span> <span class="n">Map</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">simworld.agent.humanoid</span><span class="w"> </span><span class="kn">import</span> <span class="n">Humanoid</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">simworld.utils.vector</span><span class="w"> </span><span class="kn">import</span> <span class="n">Vector</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">simworld.local_planner.local_planner</span><span class="w"> </span><span class="kn">import</span> <span class="n">LocalPlanner</span>
+</pre></div>
+</div>
+<p>Create the communicator to talk to the UE backend:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">communicator</span> <span class="o">=</span> <span class="n">Communicator</span><span class="p">(</span><span class="n">UnrealCV</span><span class="p">())</span>
+</pre></div>
+</div>
+</section>
+<section id="define-a-simple-llm-agent">
+<h2>2. Define a simple LLM agent<a class="headerlink" href="#define-a-simple-llm-agent" title="Link to this heading"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span><span class="w"> </span><span class="nc">Agent</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">goal</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">goal</span> <span class="o">=</span> <span class="n">goal</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">llm</span> <span class="o">=</span> <span class="n">BaseLLM</span><span class="p">(</span><span class="s2">&quot;gpt-4o&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">system_prompt</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;You are an intelligent agent in a 3D world. Your goal is to: </span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">goal</span><span class="si">}</span><span class="s2">.&quot;</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">action</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">obs</span><span class="p">):</span>
+        <span class="n">prompt</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">system_prompt</span><span class="si">}</span><span class="se">\n</span><span class="s2"> You are currently at: </span><span class="si">{</span><span class="n">obs</span><span class="si">}</span><span class="se">\n</span><span class="s2">What is your next goal?&quot;</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">llm</span><span class="o">.</span><span class="n">generate_text</span><span class="p">(</span><span class="n">system_prompt</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">system_prompt</span><span class="p">,</span> <span class="n">user_prompt</span><span class="o">=</span><span class="n">prompt</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>To add memory or richer observations, extend this class and see <a class="reference internal" href="../components/agent_system.html"><span class="doc">Agent System</span></a> and <a class="reference internal" href="../components/unrealcv%2B.html"><span class="doc">UnrealCV+</span></a>.</p>
+</div>
+</section>
+<section id="build-the-environment-wrapper">
+<h2>3. Build the environment wrapper<a class="headerlink" href="#build-the-environment-wrapper" title="Link to this heading"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Environment</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">communicator</span><span class="p">,</span> <span class="n">config</span><span class="o">=</span><span class="n">Config</span><span class="p">()):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">communicator</span> <span class="o">=</span> <span class="n">communicator</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">config</span> <span class="o">=</span> <span class="n">config</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">action_planner_llm</span> <span class="o">=</span> <span class="n">A2ALLM</span><span class="p">(</span><span class="n">model_name</span><span class="o">=</span><span class="s2">&quot;gpt-4o-mini&quot;</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">map</span> <span class="o">=</span> <span class="n">Map</span><span class="p">(</span><span class="n">config</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">map</span><span class="o">.</span><span class="n">initialize_map_from_file</span><span class="p">(</span><span class="n">roads_file</span><span class="o">=</span><span class="s2">&quot;../data/sample_data/road.json&quot;</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">reset</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">communicator</span><span class="o">.</span><span class="n">clear_env</span><span class="p">()</span>
+
+        <span class="n">agent_bp</span> <span class="o">=</span> <span class="s2">&quot;/Game/TrafficSystem/Pedestrian/Base_User_Agent.Base_User_Agent_C&quot;</span>
+        <span class="n">spawn_location</span> <span class="o">=</span> <span class="n">Vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="n">spawn_forward</span> <span class="o">=</span> <span class="n">Vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">agent</span> <span class="o">=</span> <span class="n">Humanoid</span><span class="p">(</span>
+            <span class="n">communicator</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">communicator</span><span class="p">,</span>
+            <span class="n">position</span><span class="o">=</span><span class="n">spawn_location</span><span class="p">,</span>
+            <span class="n">direction</span><span class="o">=</span><span class="n">spawn_forward</span><span class="p">,</span>
+            <span class="n">config</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">config</span><span class="p">,</span>
+            <span class="nb">map</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">map</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">action_planner</span> <span class="o">=</span> <span class="n">LocalPlanner</span><span class="p">(</span>
+            <span class="n">agent</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">agent</span><span class="p">,</span>
+            <span class="n">model</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">action_planner_llm</span><span class="p">,</span>
+            <span class="n">rule_based</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">communicator</span><span class="o">.</span><span class="n">spawn_agent</span><span class="p">(</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">agent</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">model_path</span><span class="o">=</span><span class="n">agent_bp</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;humanoid&quot;</span>
+        <span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">agent_name</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">communicator</span><span class="o">.</span><span class="n">get_humanoid_name</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">agent</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+
+        <span class="bp">self</span><span class="o">.</span><span class="n">target</span> <span class="o">=</span> <span class="n">Vector</span><span class="p">(</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">communicator</span><span class="o">.</span><span class="n">unrealcv</span><span class="o">.</span><span class="n">get_location</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">agent_name</span><span class="p">)</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="nf">step</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">action</span><span class="p">):</span>
+        <span class="n">primitive_actions</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">action_planner</span><span class="o">.</span><span class="n">parse</span><span class="p">(</span><span class="n">action</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">action_planner</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">primitive_actions</span><span class="p">)</span>
+
+        <span class="n">loc_3d</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">communicator</span><span class="o">.</span><span class="n">unrealcv</span><span class="o">.</span><span class="n">get_location</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">agent_name</span><span class="p">)</span>
+        <span class="n">location</span> <span class="o">=</span> <span class="n">Vector</span><span class="p">(</span><span class="n">loc_3d</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">loc_3d</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+        <span class="n">reward</span> <span class="o">=</span> <span class="o">-</span><span class="n">location</span><span class="o">.</span><span class="n">distance</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">target</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">location</span><span class="p">,</span> <span class="n">reward</span>
+</pre></div>
+</div>
+<p>Key things to customize:</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Customization Options</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">roads_file</span></code>: swap in your own map data for different layouts.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">agent_bp</span></code>: point to a different UE blueprint if you have custom characters.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rule_based</span></code>: set to <code class="docutils literal notranslate"><span class="pre">True</span></code> to use deterministic navigation; see <a class="reference internal" href="../components/agent_system.html"><span class="doc">Agent System</span></a>.</p></li>
+</ul>
+</div>
+</section>
+<section id="run-a-short-rollout">
+<h2>4. Run a short rollout<a class="headerlink" href="#run-a-short-rollout" title="Link to this heading"></a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">agent</span> <span class="o">=</span> <span class="n">Agent</span><span class="p">(</span><span class="n">goal</span><span class="o">=</span><span class="s2">&quot;Go to (1700, -1700) and pick up GEN_BP_Box_1_C.&quot;</span><span class="p">)</span>
+<span class="n">env</span> <span class="o">=</span> <span class="n">Environment</span><span class="p">(</span><span class="n">communicator</span><span class="p">)</span>
+
+<span class="n">obs</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">reset</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
+    <span class="n">action</span> <span class="o">=</span> <span class="n">agent</span><span class="o">.</span><span class="n">action</span><span class="p">(</span><span class="n">obs</span><span class="p">)</span>
+    <span class="n">obs</span><span class="p">,</span> <span class="n">reward</span> <span class="o">=</span> <span class="n">env</span><span class="o">.</span><span class="n">step</span><span class="p">(</span><span class="n">action</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;obs: </span><span class="si">{</span><span class="n">obs</span><span class="si">}</span><span class="s2">, reward: </span><span class="si">{</span><span class="n">reward</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">communicator</span><span class="o">.</span><span class="n">disconnect</span><span class="p">()</span>
+</pre></div>
+</div>
+<p>You now have a minimal loop: observe the world, let the LLM suggest the next move, execute it through the Local Planner, and log rewards.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For action space details and planner behavior, read <a class="reference internal" href="../components/agent_system.html"><span class="doc">Agent System</span></a>, <a class="reference internal" href="../components/traffic_system.html"><span class="doc">Traffic System</span></a>, and <a class="reference internal" href="../components/ue_detail.html"><span class="doc">Unreal Engine Backend</span></a>.</p>
+</div>
+</section>
+<section id="next-steps">
+<h2>Next steps<a class="headerlink" href="#next-steps" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Try different goals or shorter loops to debug.</p></li>
+<li><p>Replace <code class="docutils literal notranslate"><span class="pre">A2ALLM</span></code> with your own model wrapper for planning.</p></li>
+<li><p>Incorporate image observations via <code class="docutils literal notranslate"><span class="pre">UnrealCV.get_image</span></code> for VLM-based agents; see <a class="reference internal" href="../components/ue_detail.html"><span class="doc">Unreal Engine Backend</span></a> for view modes and camera controls.</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="installation.html" class="btn btn-neutral float-left" title="Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="additional_environments.html" class="btn btn-neutral float-right" title="Additional Environments" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, SimWorld Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

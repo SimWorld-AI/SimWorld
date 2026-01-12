@@ -1,0 +1,930 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>simworld.utils package &mdash; SimWorld 0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=6cecdd3b" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=2709fde1"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="SimWorld-Robotics" href="../simworld-robotics/simworld_robotics.html" />
+    <link rel="prev" title="simworld.traffic.manager package" href="simworld.traffic.manager.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            SimWorld
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">GETTING STARTED</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/minimal_example.html">Minimal Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/additional_environments.html">Additional Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/make_your_own_pak.html">Make Your Own Pak Files</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">SIMWORLD COMPONENTS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../components/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../components/ue_detail.html">Unreal Engine Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../components/citygen.html">Procedural City Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../components/waypoint_system.html">Waypoint System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../components/traffic_system.html">Traffic System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../components/agent_system.html">Agent System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../components/unrealcv%2B.html">UnrealCV+</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">PYTHON API REFERENCE</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">Python API</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="simworld.html">simworld package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="simworld.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="simworld.agent.html">simworld.agent package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simworld.assets_rp.html">simworld.assets_rp package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simworld.citygen.html">simworld.citygen package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simworld.communicator.html">simworld.communicator package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simworld.config.html">simworld.config package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simworld.llm.html">simworld.llm package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simworld.local_planner.html">simworld.local_planner package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simworld.map.html">simworld.map package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simworld.traffic.html">simworld.traffic package</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">simworld.utils package</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">SIMWORLD ROBOTICS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../simworld-robotics/simworld_robotics.html">SimWorld-Robotics</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">SimWorld</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">Python API</a></li>
+          <li class="breadcrumb-item"><a href="simworld.html">simworld package</a></li>
+      <li class="breadcrumb-item active">simworld.utils package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/resources/simworld.utils.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="simworld-utils-package">
+<h1>simworld.utils package<a class="headerlink" href="#simworld-utils-package" title="Link to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
+</section>
+<section id="module-simworld.utils.bbox_utils">
+<span id="simworld-utils-bbox-utils-module"></span><h2>simworld.utils.bbox_utils module<a class="headerlink" href="#module-simworld.utils.bbox_utils" title="Link to this heading"></a></h2>
+<p>Utility module for bounding box calculations and operations.</p>
+<p>This module provides functionality for checking intersections between rotated bounding boxes
+and other geometric operations without external dependencies.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="simworld.utils.bbox_utils.BboxUtils">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">simworld.utils.bbox_utils.</span></span><span class="sig-name descname"><span class="pre">BboxUtils</span></span><a class="headerlink" href="#simworld.utils.bbox_utils.BboxUtils" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Utility class for bounding box operations.</p>
+<p>Provides static methods for geometric operations on bounding boxes,
+particularly for detecting collisions between rotated rectangles.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.utils.bbox_utils.BboxUtils.bbox_overlap">
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">bbox_overlap</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="simworld.citygen.dataclass.html#simworld.citygen.dataclass.dataclass.Bounds" title="simworld.citygen.dataclass.dataclass.Bounds"><span class="pre">Bounds</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="simworld.citygen.dataclass.html#simworld.citygen.dataclass.dataclass.Bounds" title="simworld.citygen.dataclass.dataclass.Bounds"><span class="pre">Bounds</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#simworld.utils.bbox_utils.BboxUtils.bbox_overlap" title="Link to this definition"></a></dt>
+<dd><p>Check if two rotated bounding boxes overlap without using shapely.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>a: First bounding box.
+b: Second bounding box.</p>
+</dd>
+<dt>Returns:</dt><dd><p>True if the bounding boxes overlap, False otherwise.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-simworld.utils.data_exporter">
+<span id="simworld-utils-data-exporter-module"></span><h2>simworld.utils.data_exporter module<a class="headerlink" href="#module-simworld.utils.data_exporter" title="Link to this heading"></a></h2>
+<p>Module for exporting city data to various file formats.</p>
+<p>This module provides functionality to export city data including roads, buildings, and
+elements to JSON files for visualization and integration with external tools.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="simworld.utils.data_exporter.DataExporter">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">simworld.utils.data_exporter.</span></span><span class="sig-name descname"><span class="pre">DataExporter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">city_generator</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.utils.data_exporter.DataExporter" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Manages the export of city data to various file formats.</p>
+<p>This class provides methods to export roads, buildings, and other city elements
+to structured data formats for external use.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.utils.data_exporter.DataExporter.convert_layout_to_world">
+<span class="sig-name descname"><span class="pre">convert_layout_to_world</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">buildings_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">roads_data</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">elements_data</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.utils.data_exporter.DataExporter.convert_layout_to_world" title="Link to this definition"></a></dt>
+<dd><p>Convert the city layout to a world format compatible with the simulation engine.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>output_dir: Directory path where the world JSON file will be written.
+buildings_data: Dictionary containing building data.
+roads_data: Dictionary containing road data.
+elements_data: Dictionary containing element data.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.utils.data_exporter.DataExporter.export_building_data">
+<span class="sig-name descname"><span class="pre">export_building_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.14)"><span class="pre">Dict</span></a></span></span><a class="headerlink" href="#simworld.utils.data_exporter.DataExporter.export_building_data" title="Link to this definition"></a></dt>
+<dd><p>Export all building data.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>Dictionary containing building data.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.utils.data_exporter.DataExporter.export_element_data">
+<span class="sig-name descname"><span class="pre">export_element_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.14)"><span class="pre">Dict</span></a></span></span><a class="headerlink" href="#simworld.utils.data_exporter.DataExporter.export_element_data" title="Link to this definition"></a></dt>
+<dd><p>Export all element data.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>Dictionary containing element data.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.utils.data_exporter.DataExporter.export_road_data">
+<span class="sig-name descname"><span class="pre">export_road_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.14)"><span class="pre">Dict</span></a></span></span><a class="headerlink" href="#simworld.utils.data_exporter.DataExporter.export_road_data" title="Link to this definition"></a></dt>
+<dd><p>Export all road data.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>Dictionary containing road segment data.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.utils.data_exporter.DataExporter.export_routes_data">
+<span class="sig-name descname"><span class="pre">export_routes_data</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Dict" title="(in Python v3.14)"><span class="pre">Dict</span></a></span></span><a class="headerlink" href="#simworld.utils.data_exporter.DataExporter.export_routes_data" title="Link to this definition"></a></dt>
+<dd><p>Export all route data.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>Dictionary containing route data.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.utils.data_exporter.DataExporter.export_to_json">
+<span class="sig-name descname"><span class="pre">export_to_json</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">output_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.utils.data_exporter.DataExporter.export_to_json" title="Link to this definition"></a></dt>
+<dd><p>Export all data to JSON files.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>output_dir: Directory path where the JSON files will be written.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-simworld.utils.data_importer">
+<span id="simworld-utils-data-importer-module"></span><h2>simworld.utils.data_importer module<a class="headerlink" href="#module-simworld.utils.data_importer" title="Link to this heading"></a></h2>
+<p>This module imports the city data and reconstruct the city generator.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="simworld.utils.data_importer.DataImporter">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">simworld.utils.data_importer.</span></span><span class="sig-name descname"><span class="pre">DataImporter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="simworld.config.html#simworld.config.config_loader.Config" title="simworld.config.config_loader.Config"><span class="pre">Config</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.utils.data_importer.DataImporter" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>The DataImporter class imports city data based on the configuration.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.utils.data_importer.DataImporter.import_city_data">
+<span class="sig-name descname"><span class="pre">import_city_data</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">input_dir</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.utils.data_importer.DataImporter.import_city_data" title="Link to this definition"></a></dt>
+<dd><p>Rebuild the city_generator with the provided json file and print the result.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>city_generator: The city generator object containing city data.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.utils.data_importer.DataImporter.import_from_file">
+<span class="sig-name descname"><span class="pre">import_from_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">filepath</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.utils.data_importer.DataImporter.import_from_file" title="Link to this definition"></a></dt>
+<dd><p>Rebuild the city_generator with the provided json file.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>filepath: The json file that contain the city data.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-simworld.utils.load_json">
+<span id="simworld-utils-load-json-module"></span><h2>simworld.utils.load_json module<a class="headerlink" href="#module-simworld.utils.load_json" title="Link to this heading"></a></h2>
+<p>This module provides functions to load JSON files from a default location or a specific path.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="simworld.utils.load_json.load_default_json">
+<span class="sig-prename descclassname"><span class="pre">simworld.utils.load_json.</span></span><span class="sig-name descname"><span class="pre">load_default_json</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">default_package</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">'simworld.data'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.utils.load_json.load_default_json" title="Link to this definition"></a></dt>
+<dd><p>Load a JSON file from the default location.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>file_name: The name of the JSON file to load.
+default_package: The package to load the JSON file from.</p>
+</dd>
+<dt>Returns:</dt><dd><p>The JSON data from the file.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="simworld.utils.load_json.load_json">
+<span class="sig-prename descclassname"><span class="pre">simworld.utils.load_json.</span></span><span class="sig-name descname"><span class="pre">load_json</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.utils.load_json.load_json" title="Link to this definition"></a></dt>
+<dd><p>Load a JSON file from a specific path or the default location.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>file_path: The path to the JSON file to load.</p>
+</dd>
+<dt>Returns:</dt><dd><p>The JSON data from the file.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-simworld.utils.logger">
+<span id="simworld-utils-logger-module"></span><h2>simworld.utils.logger module<a class="headerlink" href="#module-simworld.utils.logger" title="Link to this heading"></a></h2>
+<p>Logger utility module for logging messages with configurable logging levels and handlers.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="simworld.utils.logger.Logger">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">simworld.utils.logger.</span></span><span class="sig-name descname"><span class="pre">Logger</span></span><a class="headerlink" href="#simworld.utils.logger.Logger" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Singleton logger class for the simulation application.</p>
+<p>This class provides a centralized logging mechanism with configurable options
+for enabling/disabling logging and console output.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.utils.logger.Logger.configure">
+<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">configure</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">logging_enabled</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log_to_console</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">log_to_file</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.utils.logger.Logger.configure" title="Link to this definition"></a></dt>
+<dd><p>Configure global logging settings.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>logging_enabled: Whether logging is enabled globally.
+log_to_console: Whether to output logs to console.
+log_to_file: Whether to output logs to file.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.utils.logger.Logger.get_logger">
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_logger</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.utils.logger.Logger.get_logger" title="Link to this definition"></a></dt>
+<dd><p>Get a logger instance, optionally as a child logger with the specified name.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>name: Optional name for child logger.</p>
+</dd>
+<dt>Returns:</dt><dd><p>A configured logger instance.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="simworld.utils.logger.Logger.logger">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">logger</span></span><a class="headerlink" href="#simworld.utils.logger.Logger.logger" title="Link to this definition"></a></dt>
+<dd><p>Delay creating logger instance.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-simworld.utils.math_utils">
+<span id="simworld-utils-math-utils-module"></span><h2>simworld.utils.math_utils module<a class="headerlink" href="#module-simworld.utils.math_utils" title="Link to this heading"></a></h2>
+<p>Mathematical utility functions for vector and geometric operations.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="simworld.utils.math_utils.MathUtils">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">simworld.utils.math_utils.</span></span><span class="sig-name descname"><span class="pre">MathUtils</span></span><a class="headerlink" href="#simworld.utils.math_utils.MathUtils" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Collection of mathematical utility functions for geometric operations.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.utils.math_utils.MathUtils.add_points">
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">add_points</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="simworld.citygen.dataclass.html#simworld.citygen.dataclass.dataclass.Point" title="simworld.citygen.dataclass.dataclass.Point"><span class="pre">Point</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">p2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="simworld.citygen.dataclass.html#simworld.citygen.dataclass.dataclass.Point" title="simworld.citygen.dataclass.dataclass.Point"><span class="pre">Point</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="simworld.citygen.dataclass.html#simworld.citygen.dataclass.dataclass.Point" title="simworld.citygen.dataclass.dataclass.Point"><span class="pre">Point</span></a></span></span><a class="headerlink" href="#simworld.utils.math_utils.MathUtils.add_points" title="Link to this definition"></a></dt>
+<dd><p>Add two points together (vector addition).</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>p1: First point.
+p2: Second point.</p>
+</dd>
+<dt>Returns:</dt><dd><p>A new Point representing p1 + p2.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.utils.math_utils.MathUtils.angle_between">
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">angle_between</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="simworld.citygen.dataclass.html#simworld.citygen.dataclass.dataclass.Point" title="simworld.citygen.dataclass.dataclass.Point"><span class="pre">Point</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="simworld.citygen.dataclass.html#simworld.citygen.dataclass.dataclass.Point" title="simworld.citygen.dataclass.dataclass.Point"><span class="pre">Point</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></span><a class="headerlink" href="#simworld.utils.math_utils.MathUtils.angle_between" title="Link to this definition"></a></dt>
+<dd><p>Calculate the angle between two vectors in degrees.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>a: First vector.
+b: Second vector.</p>
+</dd>
+<dt>Returns:</dt><dd><p>The angle between vectors a and b in degrees.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.utils.math_utils.MathUtils.angle_difference">
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">angle_difference</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">angle1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">angle2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></span><a class="headerlink" href="#simworld.utils.math_utils.MathUtils.angle_difference" title="Link to this definition"></a></dt>
+<dd><p>Calculate the smallest angle difference between two angles.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>angle1: First angle in degrees.
+angle2: Second angle in degrees.</p>
+</dd>
+<dt>Returns:</dt><dd><p>The smallest angle difference between angle1 and angle2 (0-180).</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.utils.math_utils.MathUtils.cross_product">
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">cross_product</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="simworld.citygen.dataclass.html#simworld.citygen.dataclass.dataclass.Point" title="simworld.citygen.dataclass.dataclass.Point"><span class="pre">Point</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="simworld.citygen.dataclass.html#simworld.citygen.dataclass.dataclass.Point" title="simworld.citygen.dataclass.dataclass.Point"><span class="pre">Point</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></span><a class="headerlink" href="#simworld.utils.math_utils.MathUtils.cross_product" title="Link to this definition"></a></dt>
+<dd><p>Calculate the 2D cross product of two points.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>a: First point.
+b: Second point.</p>
+</dd>
+<dt>Returns:</dt><dd><p>The cross product a × b.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.utils.math_utils.MathUtils.do_line_segments_intersect">
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">do_line_segments_intersect</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="simworld.citygen.dataclass.html#simworld.citygen.dataclass.dataclass.Point" title="simworld.citygen.dataclass.dataclass.Point"><span class="pre">Point</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="simworld.citygen.dataclass.html#simworld.citygen.dataclass.dataclass.Point" title="simworld.citygen.dataclass.dataclass.Point"><span class="pre">Point</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">p</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="simworld.citygen.dataclass.html#simworld.citygen.dataclass.dataclass.Point" title="simworld.citygen.dataclass.dataclass.Point"><span class="pre">Point</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">d</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="simworld.citygen.dataclass.html#simworld.citygen.dataclass.dataclass.Point" title="simworld.citygen.dataclass.dataclass.Point"><span class="pre">Point</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">buffer</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.001</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Tuple" title="(in Python v3.14)"><span class="pre">Tuple</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="simworld.citygen.dataclass.html#simworld.citygen.dataclass.dataclass.Point" title="simworld.citygen.dataclass.dataclass.Point"><span class="pre">Point</span></a><span class="p"><span class="pre">,</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#simworld.utils.math_utils.MathUtils.do_line_segments_intersect" title="Link to this definition"></a></dt>
+<dd><p>Determine if two line segments intersect and find the intersection point.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>a: First point of first segment.
+b: Second point of first segment.
+p: First point of second segment.
+d: Second point of second segment.
+buffer: Small buffer to avoid detecting intersections too close to endpoints.</p>
+</dd>
+<dt>Returns:</dt><dd><p>If segments intersect, returns (intersection_point, parameter_value).
+If segments don’t intersect, returns None.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.utils.math_utils.MathUtils.dot_product">
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">dot_product</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="simworld.citygen.dataclass.html#simworld.citygen.dataclass.dataclass.Point" title="simworld.citygen.dataclass.dataclass.Point"><span class="pre">Point</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="simworld.citygen.dataclass.html#simworld.citygen.dataclass.dataclass.Point" title="simworld.citygen.dataclass.dataclass.Point"><span class="pre">Point</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></span><a class="headerlink" href="#simworld.utils.math_utils.MathUtils.dot_product" title="Link to this definition"></a></dt>
+<dd><p>Calculate the dot product of two points.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>a: First point.
+b: Second point.</p>
+</dd>
+<dt>Returns:</dt><dd><p>The dot product a · b.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.utils.math_utils.MathUtils.get_direction_description_for_points">
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_direction_description_for_points</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">point_a</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="simworld.citygen.dataclass.html#simworld.citygen.dataclass.dataclass.Point" title="simworld.citygen.dataclass.dataclass.Point"><span class="pre">Point</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">point_b</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="simworld.citygen.dataclass.html#simworld.citygen.dataclass.dataclass.Point" title="simworld.citygen.dataclass.dataclass.Point"><span class="pre">Point</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></span><a class="headerlink" href="#simworld.utils.math_utils.MathUtils.get_direction_description_for_points" title="Link to this definition"></a></dt>
+<dd><p>Get the relative direction description for two points.</p>
+<p>point_a is the pivot point, point_b is the target point.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>point_a: The reference (pivot) point.
+point_b: The target point.</p>
+</dd>
+<dt>Returns:</dt><dd><p>A string describing the direction (‘North’, ‘SouthEast’, etc.).</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.utils.math_utils.MathUtils.interpolate_point">
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">interpolate_point</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="simworld.citygen.dataclass.html#simworld.citygen.dataclass.dataclass.Point" title="simworld.citygen.dataclass.dataclass.Point"><span class="pre">Point</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">end</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="simworld.citygen.dataclass.html#simworld.citygen.dataclass.dataclass.Point" title="simworld.citygen.dataclass.dataclass.Point"><span class="pre">Point</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">t</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="simworld.citygen.dataclass.html#simworld.citygen.dataclass.dataclass.Point" title="simworld.citygen.dataclass.dataclass.Point"><span class="pre">Point</span></a></span></span><a class="headerlink" href="#simworld.utils.math_utils.MathUtils.interpolate_point" title="Link to this definition"></a></dt>
+<dd><p>Interpolate a point between two points.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>start: Starting point.
+end: Ending point.
+t: Interpolation parameter (0-1).</p>
+</dd>
+<dt>Returns:</dt><dd><p>A new Point representing the interpolated position.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.utils.math_utils.MathUtils.length">
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">length</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="simworld.citygen.dataclass.html#simworld.citygen.dataclass.dataclass.Point" title="simworld.citygen.dataclass.dataclass.Point"><span class="pre">Point</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">b</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="simworld.citygen.dataclass.html#simworld.citygen.dataclass.dataclass.Point" title="simworld.citygen.dataclass.dataclass.Point"><span class="pre">Point</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></span><a class="headerlink" href="#simworld.utils.math_utils.MathUtils.length" title="Link to this definition"></a></dt>
+<dd><p>Calculate the Euclidean distance between two points.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>a: First point.
+b: Second point.</p>
+</dd>
+<dt>Returns:</dt><dd><p>The distance between points a and b.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.utils.math_utils.MathUtils.length_v">
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">length_v</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">a</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="simworld.citygen.dataclass.html#simworld.citygen.dataclass.dataclass.Point" title="simworld.citygen.dataclass.dataclass.Point"><span class="pre">Point</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></span><a class="headerlink" href="#simworld.utils.math_utils.MathUtils.length_v" title="Link to this definition"></a></dt>
+<dd><p>Calculate the magnitude (length) of a vector.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>a: The point (vector) to calculate magnitude for.</p>
+</dd>
+<dt>Returns:</dt><dd><p>The magnitude of the vector.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.utils.math_utils.MathUtils.min_degree_difference">
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">min_degree_difference</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">val1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">val2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></span><a class="headerlink" href="#simworld.utils.math_utils.MathUtils.min_degree_difference" title="Link to this definition"></a></dt>
+<dd><p>Calculate the minimum difference between two angles in degrees.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>val1: First angle in degrees.
+val2: Second angle in degrees.</p>
+</dd>
+<dt>Returns:</dt><dd><p>The minimum difference between the angles (always &lt; 180).</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.utils.math_utils.MathUtils.point_segment_distance">
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">point_segment_distance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">point</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="simworld.citygen.dataclass.html#simworld.citygen.dataclass.dataclass.Point" title="simworld.citygen.dataclass.dataclass.Point"><span class="pre">Point</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">segment</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="simworld.citygen.dataclass.html#simworld.citygen.dataclass.dataclass.Segment" title="simworld.citygen.dataclass.dataclass.Segment"><span class="pre">Segment</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></span><a class="headerlink" href="#simworld.utils.math_utils.MathUtils.point_segment_distance" title="Link to this definition"></a></dt>
+<dd><p>Calculate the minimum distance from a point to a line segment.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>point: The point to calculate distance from.
+segment: The line segment to calculate distance to.</p>
+</dd>
+<dt>Returns:</dt><dd><p>The minimum distance from the point to the segment.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.utils.math_utils.MathUtils.rotate_point">
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">rotate_point</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">center</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="simworld.citygen.dataclass.html#simworld.citygen.dataclass.dataclass.Point" title="simworld.citygen.dataclass.dataclass.Point"><span class="pre">Point</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">point</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="simworld.citygen.dataclass.html#simworld.citygen.dataclass.dataclass.Point" title="simworld.citygen.dataclass.dataclass.Point"><span class="pre">Point</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">angle</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="simworld.citygen.dataclass.html#simworld.citygen.dataclass.dataclass.Point" title="simworld.citygen.dataclass.dataclass.Point"><span class="pre">Point</span></a></span></span><a class="headerlink" href="#simworld.utils.math_utils.MathUtils.rotate_point" title="Link to this definition"></a></dt>
+<dd><p>Rotate a point around a center by a given angle in degrees.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>center: The center point to rotate around.
+point: The point to rotate.
+angle: The rotation angle in degrees.</p>
+</dd>
+<dt>Returns:</dt><dd><p>A new Point representing the rotated point.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.utils.math_utils.MathUtils.subtract_points">
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">subtract_points</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">p1</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="simworld.citygen.dataclass.html#simworld.citygen.dataclass.dataclass.Point" title="simworld.citygen.dataclass.dataclass.Point"><span class="pre">Point</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">p2</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="simworld.citygen.dataclass.html#simworld.citygen.dataclass.dataclass.Point" title="simworld.citygen.dataclass.dataclass.Point"><span class="pre">Point</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="simworld.citygen.dataclass.html#simworld.citygen.dataclass.dataclass.Point" title="simworld.citygen.dataclass.dataclass.Point"><span class="pre">Point</span></a></span></span><a class="headerlink" href="#simworld.utils.math_utils.MathUtils.subtract_points" title="Link to this definition"></a></dt>
+<dd><p>Subtract p2 from p1 (vector subtraction).</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>p1: First point.
+p2: Second point to subtract.</p>
+</dd>
+<dt>Returns:</dt><dd><p>A new Point representing p1 - p2.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-simworld.utils.priority_queue">
+<span id="simworld-utils-priority-queue-module"></span><h2>simworld.utils.priority_queue module<a class="headerlink" href="#module-simworld.utils.priority_queue" title="Link to this heading"></a></h2>
+<p>Priority queue implementation for managing segments.</p>
+<p>This module provides a priority queue implementation specifically designed for
+managing segments in the simulation. It supports basic queue operations with
+priority-based dequeuing.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="simworld.utils.priority_queue.PriorityQueue">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">simworld.utils.priority_queue.</span></span><span class="sig-name descname"><span class="pre">PriorityQueue</span></span><a class="headerlink" href="#simworld.utils.priority_queue.PriorityQueue" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>A priority queue implementation for managing segments.</p>
+<p>This class implements a priority queue where segments are ordered based on their
+t value. It provides standard queue operations with priority-based dequeuing.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.utils.priority_queue.PriorityQueue.dequeue">
+<span class="sig-name descname"><span class="pre">dequeue</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="simworld.citygen.dataclass.html#simworld.citygen.dataclass.dataclass.Segment" title="simworld.citygen.dataclass.dataclass.Segment"><span class="pre">Segment</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#simworld.utils.priority_queue.PriorityQueue.dequeue" title="Link to this definition"></a></dt>
+<dd><p>Get the segment with the minimum t value.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>The segment with the minimum t value, or None if the queue is empty.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.utils.priority_queue.PriorityQueue.empty">
+<span class="sig-name descname"><span class="pre">empty</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#simworld.utils.priority_queue.PriorityQueue.empty" title="Link to this definition"></a></dt>
+<dd><p>Check if the queue is empty.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>True if the queue is empty, False otherwise.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.utils.priority_queue.PriorityQueue.enqueue">
+<span class="sig-name descname"><span class="pre">enqueue</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">segment</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="simworld.citygen.dataclass.html#simworld.citygen.dataclass.dataclass.Segment" title="simworld.citygen.dataclass.dataclass.Segment"><span class="pre">Segment</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.utils.priority_queue.PriorityQueue.enqueue" title="Link to this definition"></a></dt>
+<dd><p>Add a segment to the queue.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>segment: The segment to add to the queue.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="simworld.utils.priority_queue.PriorityQueue.size">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">size</span></span><a class="headerlink" href="#simworld.utils.priority_queue.PriorityQueue.size" title="Link to this definition"></a></dt>
+<dd><p>Get the number of elements in the queue.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>The number of elements in the queue.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-simworld.utils.quadtree">
+<span id="simworld-utils-quadtree-module"></span><h2>simworld.utils.quadtree module<a class="headerlink" href="#module-simworld.utils.quadtree" title="Link to this heading"></a></h2>
+<p>Quadtree implementation for efficient spatial partitioning and querying.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="simworld.utils.quadtree.QuadTree">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">simworld.utils.quadtree.</span></span><span class="sig-name descname"><span class="pre">QuadTree</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bounds</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="simworld.citygen.dataclass.html#simworld.citygen.dataclass.dataclass.Bounds" title="simworld.citygen.dataclass.dataclass.Bounds"><span class="pre">Bounds</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_objects</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">max_levels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">level</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.utils.quadtree.QuadTree" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Generic" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Generic</span></code></a>[<code class="xref py py-obj docutils literal notranslate"><span class="pre">T</span></code>]</p>
+<p>Quadtree data structure for efficient spatial partitioning and querying.</p>
+<p>A quadtree recursively divides space into four quadrants to efficiently store and
+query spatial data.</p>
+<dl class="simple">
+<dt>Attributes:</dt><dd><p>bounds: The spatial bounds of this quadtree node.
+max_objects: Maximum number of objects before splitting.
+max_levels: Maximum depth of the quadtree.
+level: Current depth level of this node.
+objects: List of object bounds in this node.
+items: List of items corresponding to the bounds.
+nodes: Child nodes of this quadtree.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.utils.quadtree.QuadTree.clear">
+<span class="sig-name descname"><span class="pre">clear</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#simworld.utils.quadtree.QuadTree.clear" title="Link to this definition"></a></dt>
+<dd><p>Clear the quadtree, removing all items and resetting to initial state.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.utils.quadtree.QuadTree.get_relevant_nodes">
+<span class="sig-name descname"><span class="pre">get_relevant_nodes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rect</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="simworld.citygen.dataclass.html#simworld.citygen.dataclass.dataclass.Bounds" title="simworld.citygen.dataclass.dataclass.Bounds"><span class="pre">Bounds</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.14)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#simworld.utils.quadtree.QuadTree" title="simworld.utils.quadtree.QuadTree"><span class="pre">QuadTree</span></a><span class="p"><span class="pre">[</span></span><span class="pre">T</span><span class="p"><span class="pre">]</span></span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#simworld.utils.quadtree.QuadTree.get_relevant_nodes" title="Link to this definition"></a></dt>
+<dd><p>Get the child nodes that intersect with the given rectangle.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>rect: The bounding rectangle to test intersection with.</p>
+</dd>
+<dt>Returns:</dt><dd><p>List of child nodes that intersect with the rectangle.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.utils.quadtree.QuadTree.insert">
+<span class="sig-name descname"><span class="pre">insert</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rect</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="simworld.citygen.dataclass.html#simworld.citygen.dataclass.dataclass.Bounds" title="simworld.citygen.dataclass.dataclass.Bounds"><span class="pre">Bounds</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">item</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.utils.quadtree.QuadTree.insert" title="Link to this definition"></a></dt>
+<dd><p>Insert an item with its bounds into the quadtree.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>rect: The bounding rectangle of the item.
+item: The item to insert.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.utils.quadtree.QuadTree.remove">
+<span class="sig-name descname"><span class="pre">remove</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">bounds</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="simworld.citygen.dataclass.html#simworld.citygen.dataclass.dataclass.Bounds" title="simworld.citygen.dataclass.dataclass.Bounds"><span class="pre">Bounds</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">item</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><span class="pre">T</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#simworld.utils.quadtree.QuadTree.remove" title="Link to this definition"></a></dt>
+<dd><p>Remove an item and its bounds from the quadtree.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>bounds: The bounding rectangle of the item.
+item: The item to remove.</p>
+</dd>
+<dt>Returns:</dt><dd><p>True if item was found and removed, False otherwise.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.utils.quadtree.QuadTree.retrieve">
+<span class="sig-name descname"><span class="pre">retrieve</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rect</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="simworld.citygen.dataclass.html#simworld.citygen.dataclass.dataclass.Bounds" title="simworld.citygen.dataclass.dataclass.Bounds"><span class="pre">Bounds</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.14)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><span class="pre">T</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#simworld.utils.quadtree.QuadTree.retrieve" title="Link to this definition"></a></dt>
+<dd><p>Retrieve all items that might intersect with the given rectangle.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>rect: The bounding rectangle to query.</p>
+</dd>
+<dt>Returns:</dt><dd><p>List of items that might intersect with the rectangle.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.utils.quadtree.QuadTree.retrieve_exact">
+<span class="sig-name descname"><span class="pre">retrieve_exact</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">query_rect</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="simworld.citygen.dataclass.html#simworld.citygen.dataclass.dataclass.Bounds" title="simworld.citygen.dataclass.dataclass.Bounds"><span class="pre">Bounds</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.14)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><span class="pre">T</span><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#simworld.utils.quadtree.QuadTree.retrieve_exact" title="Link to this definition"></a></dt>
+<dd><p>Retrieve all items that have an exact intersection with the given rectangle.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>query_rect: The bounding rectangle to query.</p>
+</dd>
+<dt>Returns:</dt><dd><p>List of items that intersect with the rectangle.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.utils.quadtree.QuadTree.split">
+<span class="sig-name descname"><span class="pre">split</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#simworld.utils.quadtree.QuadTree.split" title="Link to this definition"></a></dt>
+<dd><p>Split this node into four child nodes.</p>
+<p>Divides the current node into four equal quadrants and redistributes
+the contained objects among them.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-simworld.utils.road_utils">
+<span id="simworld-utils-road-utils-module"></span><h2>simworld.utils.road_utils module<a class="headerlink" href="#module-simworld.utils.road_utils" title="Link to this heading"></a></h2>
+<p>Road utilities module, providing functions for handling road segments and points.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="simworld.utils.road_utils.RoadUtils">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">simworld.utils.road_utils.</span></span><span class="sig-name descname"><span class="pre">RoadUtils</span></span><a class="headerlink" href="#simworld.utils.road_utils.RoadUtils" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Provide static utility methods for handling road networks.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.utils.road_utils.RoadUtils.create_bounds_for_segment">
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">create_bounds_for_segment</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">segment</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="simworld.citygen.dataclass.html#simworld.citygen.dataclass.dataclass.Segment" title="simworld.citygen.dataclass.dataclass.Segment"><span class="pre">Segment</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="simworld.citygen.dataclass.html#simworld.citygen.dataclass.dataclass.Bounds" title="simworld.citygen.dataclass.dataclass.Bounds"><span class="pre">Bounds</span></a></span></span><a class="headerlink" href="#simworld.utils.road_utils.RoadUtils.create_bounds_for_segment" title="Link to this definition"></a></dt>
+<dd><p>Create bounds object for a segment (used for quadtree).</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>segment: The road segment to create bounds for</p>
+</dd>
+<dt>Returns:</dt><dd><p>A Bounds object representing the area around the segment</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.utils.road_utils.RoadUtils.find_nearby_endpoint">
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">find_nearby_endpoint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">point</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="simworld.citygen.dataclass.html#simworld.citygen.dataclass.dataclass.Point" title="simworld.citygen.dataclass.dataclass.Point"><span class="pre">Point</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">segments</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.14)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="simworld.citygen.dataclass.html#simworld.citygen.dataclass.dataclass.Segment" title="simworld.citygen.dataclass.dataclass.Segment"><span class="pre">Segment</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">queue_elements</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.14)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="simworld.citygen.dataclass.html#simworld.citygen.dataclass.dataclass.Segment" title="simworld.citygen.dataclass.dataclass.Segment"><span class="pre">Segment</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">merge_distance</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="simworld.citygen.dataclass.html#simworld.citygen.dataclass.dataclass.Point" title="simworld.citygen.dataclass.dataclass.Point"><span class="pre">Point</span></a><span class="w"> </span><span class="p"><span class="pre">|</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/constants.html#None" title="(in Python v3.14)"><span class="pre">None</span></a></span></span><a class="headerlink" href="#simworld.utils.road_utils.RoadUtils.find_nearby_endpoint" title="Link to this definition"></a></dt>
+<dd><p>Find existing road endpoint near the given point.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>point: The point to check against
+segments: List of existing road segments
+queue_elements: Queue of segments being processed
+merge_distance: Maximum distance to consider for merging</p>
+</dd>
+<dt>Returns:</dt><dd><p>The closest endpoint if found within merge distance, None otherwise</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.utils.road_utils.RoadUtils.get_current_angles">
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">get_current_angles</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">segment</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="simworld.citygen.dataclass.html#simworld.citygen.dataclass.dataclass.Segment" title="simworld.citygen.dataclass.dataclass.Segment"><span class="pre">Segment</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">segments</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.14)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="simworld.citygen.dataclass.html#simworld.citygen.dataclass.dataclass.Segment" title="simworld.citygen.dataclass.dataclass.Segment"><span class="pre">Segment</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">queue_elements</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.14)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="simworld.citygen.dataclass.html#simworld.citygen.dataclass.dataclass.Segment" title="simworld.citygen.dataclass.dataclass.Segment"><span class="pre">Segment</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">merge_distance</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.14)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#simworld.utils.road_utils.RoadUtils.get_current_angles" title="Link to this definition"></a></dt>
+<dd><p>Get all current angles at the segment end point.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>segment: The segment to check angles from
+segments: List of existing road segments
+queue_elements: Queue of segments being processed
+merge_distance: Maximum distance to consider for angle calculation</p>
+</dd>
+<dt>Returns:</dt><dd><p>List of angles in degrees from the segment end point</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.utils.road_utils.RoadUtils.merge_point_if_close">
+<em class="property"><span class="k"><span class="pre">static</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">merge_point_if_close</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">segment</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="simworld.citygen.dataclass.html#simworld.citygen.dataclass.dataclass.Segment" title="simworld.citygen.dataclass.dataclass.Segment"><span class="pre">Segment</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">point_type</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">segments</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.List" title="(in Python v3.14)"><span class="pre">List</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="simworld.citygen.dataclass.html#simworld.citygen.dataclass.dataclass.Segment" title="simworld.citygen.dataclass.dataclass.Segment"><span class="pre">Segment</span></a><span class="p"><span class="pre">]</span></span></span></em>, <em class="sig-param"><span class="n"><span class="pre">merge_distance</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#bool" title="(in Python v3.14)"><span class="pre">bool</span></a></span></span><a class="headerlink" href="#simworld.utils.road_utils.RoadUtils.merge_point_if_close" title="Link to this definition"></a></dt>
+<dd><p>Merge a segment’s endpoint with nearby existing points.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>segment: The segment to check for merging
+point_type: ‘start’ or ‘end’
+segments: List of existing road segments
+merge_distance: Maximum distance to consider for merging</p>
+</dd>
+<dt>Returns:</dt><dd><p>True if merged, False otherwise</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-simworld.utils.traffic_utils">
+<span id="simworld-utils-traffic-utils-module"></span><h2>simworld.utils.traffic_utils module<a class="headerlink" href="#module-simworld.utils.traffic_utils" title="Link to this heading"></a></h2>
+<p>Utility functions for traffic simulation and route generation.</p>
+<dl class="py function">
+<dt class="sig sig-object py" id="simworld.utils.traffic_utils.bezier">
+<span class="sig-prename descclassname"><span class="pre">simworld.utils.traffic_utils.</span></span><span class="sig-name descname"><span class="pre">bezier</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#simworld.utils.vector.Vector" title="simworld.utils.vector.Vector"><span class="pre">Vector</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">end</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#simworld.utils.vector.Vector" title="simworld.utils.vector.Vector"><span class="pre">Vector</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">control_point</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#simworld.utils.vector.Vector" title="simworld.utils.vector.Vector"><span class="pre">Vector</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">t</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#simworld.utils.vector.Vector" title="simworld.utils.vector.Vector"><span class="pre">Vector</span></a></span></span><a class="headerlink" href="#simworld.utils.traffic_utils.bezier" title="Link to this definition"></a></dt>
+<dd><p>Calculate a point on a quadratic Bezier curve.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>start: Starting point of the curve.
+end: Ending point of the curve.
+control_point: Control point that influences the curve shape.
+t: Parameter value between 0 and 1 representing position along the curve.</p>
+</dd>
+<dt>Returns:</dt><dd><p>A Vector representing the point on the Bezier curve at parameter t.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="simworld.utils.traffic_utils.cal_waypoints">
+<span class="sig-prename descclassname"><span class="pre">simworld.utils.traffic_utils.</span></span><span class="sig-name descname"><span class="pre">cal_waypoints</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#simworld.utils.vector.Vector" title="simworld.utils.vector.Vector"><span class="pre">Vector</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">end</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#simworld.utils.vector.Vector" title="simworld.utils.vector.Vector"><span class="pre">Vector</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">gap_between_waypoints</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#simworld.utils.vector.Vector" title="simworld.utils.vector.Vector"><span class="pre">Vector</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#simworld.utils.traffic_utils.cal_waypoints" title="Link to this definition"></a></dt>
+<dd><p>Add waypoints between start and end at regular intervals.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>start: Starting point.
+end: Ending point.
+gap_between_waypoints: Distance between consecutive waypoints.</p>
+</dd>
+<dt>Returns:</dt><dd><p>List of waypoints between start and end (including end point).</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="simworld.utils.traffic_utils.extend_control_point">
+<span class="sig-prename descclassname"><span class="pre">simworld.utils.traffic_utils.</span></span><span class="sig-name descname"><span class="pre">extend_control_point</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#simworld.utils.vector.Vector" title="simworld.utils.vector.Vector"><span class="pre">Vector</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">end</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#simworld.utils.vector.Vector" title="simworld.utils.vector.Vector"><span class="pre">Vector</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">intersection</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#simworld.utils.vector.Vector" title="simworld.utils.vector.Vector"><span class="pre">Vector</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">extension_factor</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">0.1</span></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#simworld.utils.vector.Vector" title="simworld.utils.vector.Vector"><span class="pre">Vector</span></a></span></span><a class="headerlink" href="#simworld.utils.traffic_utils.extend_control_point" title="Link to this definition"></a></dt>
+<dd><p>Extend the control point from the intersection for smoother curves.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>start: Starting point of the curve.
+end: Ending point of the curve.
+intersection: Intersection point (typically junction center).
+extension_factor: Extension factor, larger values produce smoother curves.</p>
+</dd>
+<dt>Returns:</dt><dd><p>The extended control point as a Vector.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt class="sig sig-object py" id="simworld.utils.traffic_utils.get_bezier_points">
+<span class="sig-prename descclassname"><span class="pre">simworld.utils.traffic_utils.</span></span><span class="sig-name descname"><span class="pre">get_bezier_points</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">start</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#simworld.utils.vector.Vector" title="simworld.utils.vector.Vector"><span class="pre">Vector</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">end</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#simworld.utils.vector.Vector" title="simworld.utils.vector.Vector"><span class="pre">Vector</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">control_point</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#simworld.utils.vector.Vector" title="simworld.utils.vector.Vector"><span class="pre">Vector</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_points</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="#simworld.utils.vector.Vector" title="simworld.utils.vector.Vector"><span class="pre">Vector</span></a><span class="p"><span class="pre">]</span></span></span></span><a class="headerlink" href="#simworld.utils.traffic_utils.get_bezier_points" title="Link to this definition"></a></dt>
+<dd><p>Generate waypoints on a quadratic Bezier curve.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>start: Starting point of the curve.
+end: Ending point of the curve.
+control_point: Control point that influences the curve shape.
+num_points: Number of points to sample along the curve.</p>
+</dd>
+<dt>Returns:</dt><dd><p>List of waypoints on the Bezier curve (excluding the start point).</p>
+</dd>
+</dl>
+</dd></dl>
+
+</section>
+<section id="module-simworld.utils.vector">
+<span id="simworld-utils-vector-module"></span><h2>simworld.utils.vector module<a class="headerlink" href="#module-simworld.utils.vector" title="Link to this heading"></a></h2>
+<p>Two-dimensional vector utilities module, providing Vector class and related operations.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="simworld.utils.vector.Vector">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">simworld.utils.vector.</span></span><span class="sig-name descname"><span class="pre">Vector</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">x</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">y</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.utils.vector.Vector" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Two-dimensional vector class.</p>
+<p>Used for representing and manipulating 2D vectors, providing basic vector operations.</p>
+<dl class="simple">
+<dt>Attributes:</dt><dd><p>x: X coordinate.
+y: Y coordinate.</p>
+</dd>
+</dl>
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.utils.vector.Vector.cross">
+<span class="sig-name descname"><span class="pre">cross</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#simworld.utils.vector.Vector" title="simworld.utils.vector.Vector"><span class="pre">Vector</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></span><a class="headerlink" href="#simworld.utils.vector.Vector.cross" title="Link to this definition"></a></dt>
+<dd><p>Calculate cross product with another vector.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>other: Another vector.</p>
+</dd>
+<dt>Returns:</dt><dd><p>Cross product of the two vectors.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.utils.vector.Vector.distance">
+<span class="sig-name descname"><span class="pre">distance</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#simworld.utils.vector.Vector" title="simworld.utils.vector.Vector"><span class="pre">Vector</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></span><a class="headerlink" href="#simworld.utils.vector.Vector.distance" title="Link to this definition"></a></dt>
+<dd><p>Calculate distance to another vector.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>other: Another vector.</p>
+</dd>
+<dt>Returns:</dt><dd><p>Euclidean distance between the two vectors.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.utils.vector.Vector.dot">
+<span class="sig-name descname"><span class="pre">dot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">other</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#simworld.utils.vector.Vector" title="simworld.utils.vector.Vector"><span class="pre">Vector</span></a></span></em><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></span><a class="headerlink" href="#simworld.utils.vector.Vector.dot" title="Link to this definition"></a></dt>
+<dd><p>Calculate dot product with another vector.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>other: Another vector.</p>
+</dd>
+<dt>Returns:</dt><dd><p>Dot product of the two vectors.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.utils.vector.Vector.length">
+<span class="sig-name descname"><span class="pre">length</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></span><a class="headerlink" href="#simworld.utils.vector.Vector.length" title="Link to this definition"></a></dt>
+<dd><p>Calculate length of the vector.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>Length of the vector.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.utils.vector.Vector.normalize">
+<span class="sig-name descname"><span class="pre">normalize</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span> <span class="sig-return"><span class="sig-return-icon">&#x2192;</span> <span class="sig-return-typehint"><a class="reference internal" href="#simworld.utils.vector.Vector" title="simworld.utils.vector.Vector"><span class="pre">Vector</span></a></span></span><a class="headerlink" href="#simworld.utils.vector.Vector.normalize" title="Link to this definition"></a></dt>
+<dd><p>Normalize the vector.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>Normalized vector.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="simworld.utils.vector.Vector.x">
+<span class="sig-name descname"><span class="pre">x</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></em><a class="headerlink" href="#simworld.utils.vector.Vector.x" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="simworld.utils.vector.Vector.y">
+<span class="sig-name descname"><span class="pre">y</span></span><em class="property"><span class="p"><span class="pre">:</span></span><span class="w"> </span><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></em><a class="headerlink" href="#simworld.utils.vector.Vector.y" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="simworld.traffic.manager.html" class="btn btn-neutral float-left" title="simworld.traffic.manager package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../simworld-robotics/simworld_robotics.html" class="btn btn-neutral float-right" title="SimWorld-Robotics" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, SimWorld Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

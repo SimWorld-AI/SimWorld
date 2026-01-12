@@ -1,0 +1,1823 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>simworld.communicator package &mdash; SimWorld 0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=6cecdd3b" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=2709fde1"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="simworld.config package" href="simworld.config.html" />
+    <link rel="prev" title="simworld.citygen.route package" href="simworld.citygen.route.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            SimWorld
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">GETTING STARTED</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/minimal_example.html">Minimal Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/additional_environments.html">Additional Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/make_your_own_pak.html">Make Your Own Pak Files</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">SIMWORLD COMPONENTS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../components/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../components/ue_detail.html">Unreal Engine Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../components/citygen.html">Procedural City Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../components/waypoint_system.html">Waypoint System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../components/traffic_system.html">Traffic System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../components/agent_system.html">Agent System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../components/unrealcv%2B.html">UnrealCV+</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">PYTHON API REFERENCE</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">Python API</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="simworld.html">simworld package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="simworld.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="simworld.agent.html">simworld.agent package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simworld.assets_rp.html">simworld.assets_rp package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simworld.citygen.html">simworld.citygen package</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">simworld.communicator package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simworld.config.html">simworld.config package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simworld.llm.html">simworld.llm package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simworld.local_planner.html">simworld.local_planner package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simworld.map.html">simworld.map package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simworld.traffic.html">simworld.traffic package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simworld.utils.html">simworld.utils package</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">SIMWORLD ROBOTICS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../simworld-robotics/simworld_robotics.html">SimWorld-Robotics</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">SimWorld</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">Python API</a></li>
+          <li class="breadcrumb-item"><a href="simworld.html">simworld package</a></li>
+      <li class="breadcrumb-item active">simworld.communicator package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/resources/simworld.communicator.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="simworld-communicator-package">
+<h1>simworld.communicator package<a class="headerlink" href="#simworld-communicator-package" title="Link to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
+</section>
+<section id="module-simworld.communicator.communicator">
+<span id="simworld-communicator-communicator-module"></span><h2>simworld.communicator.communicator module<a class="headerlink" href="#module-simworld.communicator.communicator" title="Link to this heading"></a></h2>
+<p>Communicator module for interfacing with Unreal Engine.</p>
+<p>This module provides a high-level communication interface with Unreal Engine
+through the UnrealCV client, handling vehicle, pedestrian, and traffic signal management.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="simworld.communicator.communicator.Communicator">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">simworld.communicator.communicator.</span></span><span class="sig-name descname"><span class="pre">Communicator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">unrealcv</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="#simworld.communicator.unrealcv.UnrealCV" title="simworld.communicator.unrealcv.UnrealCV"><span class="pre">UnrealCV</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.communicator.Communicator" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Class for communicating with Unreal Engine through UnrealCV.</p>
+<p>This class is responsible for handling communication with Unreal Engine,
+including the management of vehicles, pedestrians, and traffic signals.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.communicator.Communicator.add_traffic_signal">
+<span class="sig-name descname"><span class="pre">add_traffic_signal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">intersection_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">traffic_signal</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.communicator.Communicator.add_traffic_signal" title="Link to this definition"></a></dt>
+<dd><p>Add traffic signal.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>intersection_name: Name of the intersection to add the traffic signal to.
+traffic_signal: Traffic signal object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.communicator.Communicator.clean_traffic_only">
+<span class="sig-name descname"><span class="pre">clean_traffic_only</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vehicles</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pedestrians</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">traffic_signals</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.communicator.Communicator.clean_traffic_only" title="Link to this definition"></a></dt>
+<dd><p>Clean traffic objects only.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>vehicles: List of vehicles.
+pedestrians: List of pedestrians.
+traffic_signals: List of traffic signals.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.communicator.Communicator.clear_env">
+<span class="sig-name descname"><span class="pre">clear_env</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">keep_roads</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.communicator.Communicator.clear_env" title="Link to this definition"></a></dt>
+<dd><p>Clear all objects in the environment.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.communicator.Communicator.disconnect">
+<span class="sig-name descname"><span class="pre">disconnect</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.communicator.Communicator.disconnect" title="Link to this definition"></a></dt>
+<dd><p>Disconnect from Unreal Engine.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.communicator.Communicator.generate_world">
+<span class="sig-name descname"><span class="pre">generate_world</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">world_json</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ue_asset_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">run_time</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.communicator.Communicator.generate_world" title="Link to this definition"></a></dt>
+<dd><p>Generate world.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>world_json: World configuration JSON file path.
+ue_asset_path: Unreal Engine asset path.
+run_time: Whether to run the world generation in real time.</p>
+</dd>
+<dt>Returns:</dt><dd><p>set: A set of generated object IDs.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.communicator.Communicator.get_atmosphere">
+<span class="sig-name descname"><span class="pre">get_atmosphere</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">weather_manager_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.communicator.Communicator.get_atmosphere" title="Link to this definition"></a></dt>
+<dd><p>Get atmosphere parameters.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>weather_manager_name: Name of the weather manager.</p>
+</dd>
+<dt>Returns:</dt><dd><p>tuple: (rayleigh_scattering_scale, mie_scattering_scale), or (None, None) if parsing fails.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.communicator.Communicator.get_camera_observation">
+<span class="sig-name descname"><span class="pre">get_camera_observation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cam_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">viewmode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'direct'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.communicator.Communicator.get_camera_observation" title="Link to this definition"></a></dt>
+<dd><p>Get camera observation.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>cam_id: Camera ID.
+viewmode: View mode.
+mode: Mode, possible values are ‘direct’, ‘file’, ‘fast’.</p>
+</dd>
+<dt>Returns:</dt><dd><p>Image data.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.communicator.Communicator.get_camera_observation_multicam">
+<span class="sig-name descname"><span class="pre">get_camera_observation_multicam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cam_ids</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">viewmode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'direct'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.communicator.Communicator.get_camera_observation_multicam" title="Link to this definition"></a></dt>
+<dd><p>Get camera observation batch.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.communicator.Communicator.get_collision_number">
+<span class="sig-name descname"><span class="pre">get_collision_number</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">humanoid_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.communicator.Communicator.get_collision_number" title="Link to this definition"></a></dt>
+<dd><p>Get collision number.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>humanoid_id: Humanoid ID.</p>
+</dd>
+<dt>Returns:</dt><dd><p>Human collision number, object collision number, building collision number, vehicle collision number.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.communicator.Communicator.get_fog">
+<span class="sig-name descname"><span class="pre">get_fog</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">weather_manager_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.communicator.Communicator.get_fog" title="Link to this definition"></a></dt>
+<dd><p>Get fog parameters.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>weather_manager_name: Name of the weather manager.</p>
+</dd>
+<dt>Returns:</dt><dd><p>tuple: (density, distance, falloff), or (None, None, None) if parsing fails.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.communicator.Communicator.get_humanoid_name">
+<span class="sig-name descname"><span class="pre">get_humanoid_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">humanoid_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.communicator.Communicator.get_humanoid_name" title="Link to this definition"></a></dt>
+<dd><p>Get humanoid name.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>humanoid_id: humanoid ID.</p>
+</dd>
+<dt>Returns:</dt><dd><p>str: The formatted humanoid name.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.communicator.Communicator.get_pedestrian_name">
+<span class="sig-name descname"><span class="pre">get_pedestrian_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pedestrian_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.communicator.Communicator.get_pedestrian_name" title="Link to this definition"></a></dt>
+<dd><p>Get pedestrian name.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>pedestrian_id: Pedestrian ID.</p>
+</dd>
+<dt>Returns:</dt><dd><p>Pedestrian name.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.communicator.Communicator.get_position_and_direction">
+<span class="sig-name descname"><span class="pre">get_position_and_direction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vehicle_ids</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pedestrian_ids</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">traffic_signal_ids</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">humanoid_ids</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scooter_ids</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">[]</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.communicator.Communicator.get_position_and_direction" title="Link to this definition"></a></dt>
+<dd><p>Get position and direction of vehicles, pedestrians, and traffic signals.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>vehicle_ids: List of vehicle IDs.
+pedestrian_ids: List of pedestrian IDs.
+traffic_signal_ids: List of traffic signal IDs.
+humanoid_ids: Optional list of humanoid IDs to get their positions and directions.
+scooter_ids: Optional list of scooter IDs to get their positions and directions.</p>
+</dd>
+<dt>Returns:</dt><dd><p>Dictionary containing position and direction information for all objects.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.communicator.Communicator.get_scooter_name">
+<span class="sig-name descname"><span class="pre">get_scooter_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scooter_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.communicator.Communicator.get_scooter_name" title="Link to this definition"></a></dt>
+<dd><p>Get scooter name.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>scooter_id: Scooter ID.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.communicator.Communicator.get_sun_direction">
+<span class="sig-name descname"><span class="pre">get_sun_direction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">weather_manager_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.communicator.Communicator.get_sun_direction" title="Link to this definition"></a></dt>
+<dd><p>Get sun direction.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>weather_manager_name: Name of the weather manager.</p>
+</dd>
+<dt>Returns:</dt><dd><p>tuple: (pitch, yaw) in degrees, or (None, None) if parsing fails.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.communicator.Communicator.get_sun_intensity">
+<span class="sig-name descname"><span class="pre">get_sun_intensity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">weather_manager_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.communicator.Communicator.get_sun_intensity" title="Link to this definition"></a></dt>
+<dd><p>Get sun intensity.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>weather_manager_name: Name of the weather manager.</p>
+</dd>
+<dt>Returns:</dt><dd><p>float: Sun intensity value, or 0.0 if parsing fails.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.communicator.Communicator.get_traffic_signal_name">
+<span class="sig-name descname"><span class="pre">get_traffic_signal_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">traffic_signal_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.communicator.Communicator.get_traffic_signal_name" title="Link to this definition"></a></dt>
+<dd><p>Get traffic signal name.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>traffic_signal_id: Traffic signal ID.</p>
+</dd>
+<dt>Returns:</dt><dd><p>Traffic signal name.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.communicator.Communicator.get_vehicle_name">
+<span class="sig-name descname"><span class="pre">get_vehicle_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vehicle_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.communicator.Communicator.get_vehicle_name" title="Link to this definition"></a></dt>
+<dd><p>Get vehicle name.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>vehicle_id: Vehicle ID.</p>
+</dd>
+<dt>Returns:</dt><dd><p>Vehicle name.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.communicator.Communicator.get_waypoint_mark_name">
+<span class="sig-name descname"><span class="pre">get_waypoint_mark_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">waypoint_mark_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.communicator.Communicator.get_waypoint_mark_name" title="Link to this definition"></a></dt>
+<dd><p>Get waypoint mark name.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>waypoint_mark_id: Waypoint mark ID.</p>
+</dd>
+<dt>Returns:</dt><dd><p>Waypoint mark name.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.communicator.Communicator.get_weather_info">
+<span class="sig-name descname"><span class="pre">get_weather_info</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">weather_manager_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.communicator.Communicator.get_weather_info" title="Link to this definition"></a></dt>
+<dd><p>Get all weather information.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>weather_manager_name: Name of the weather manager.</p>
+</dd>
+<dt>Returns:</dt><dd><p>dict: Dictionary containing all weather parameters, or None if any parsing fails.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.communicator.Communicator.humanoid_get_off_scooter">
+<span class="sig-name descname"><span class="pre">humanoid_get_off_scooter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">humanoid_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">scooter_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.communicator.Communicator.humanoid_get_off_scooter" title="Link to this definition"></a></dt>
+<dd><p>Get off scooter.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>humanoid_id: humanoid ID.
+scooter_id: Scooter ID of the humanoid to get off.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.communicator.Communicator.humanoid_get_on_scooter">
+<span class="sig-name descname"><span class="pre">humanoid_get_on_scooter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">humanoid_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.communicator.Communicator.humanoid_get_on_scooter" title="Link to this definition"></a></dt>
+<dd><p>Get on scooter.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>humanoid_id: humanoid ID.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.communicator.Communicator.humanoid_move_forward">
+<span class="sig-name descname"><span class="pre">humanoid_move_forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">humanoid_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.communicator.Communicator.humanoid_move_forward" title="Link to this definition"></a></dt>
+<dd><p>Move humanoid forward.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>humanoid_id: The unique identifier of the humanoid to move forward.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.communicator.Communicator.humanoid_pick_up_object">
+<span class="sig-name descname"><span class="pre">humanoid_pick_up_object</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">humanoid_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">object_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.communicator.Communicator.humanoid_pick_up_object" title="Link to this definition"></a></dt>
+<dd><p>Pick up object.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>humanoid_id: humanoid ID.
+object_name: Object name.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.communicator.Communicator.humanoid_rotate">
+<span class="sig-name descname"><span class="pre">humanoid_rotate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">humanoid_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angle</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">direction</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.communicator.Communicator.humanoid_rotate" title="Link to this definition"></a></dt>
+<dd><p>Rotate humanoid.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>humanoid_id: humanoid ID.
+angle: Rotation angle.
+direction: Rotation direction.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.communicator.Communicator.humanoid_set_speed">
+<span class="sig-name descname"><span class="pre">humanoid_set_speed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">humanoid_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">speed</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.communicator.Communicator.humanoid_set_speed" title="Link to this definition"></a></dt>
+<dd><p>Set humanoid speed.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>humanoid_id: humanoid ID.
+speed: Speed.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.communicator.Communicator.humanoid_sit_down">
+<span class="sig-name descname"><span class="pre">humanoid_sit_down</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">humanoid_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.communicator.Communicator.humanoid_sit_down" title="Link to this definition"></a></dt>
+<dd><p>Sit down.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>humanoid_id: humanoid ID.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.communicator.Communicator.humanoid_stand_up">
+<span class="sig-name descname"><span class="pre">humanoid_stand_up</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">humanoid_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.communicator.Communicator.humanoid_stand_up" title="Link to this definition"></a></dt>
+<dd><p>Stand up.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>humanoid_id: humanoid ID.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.communicator.Communicator.humanoid_step_forward">
+<span class="sig-name descname"><span class="pre">humanoid_step_forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">humanoid_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">duration</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">direction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.communicator.Communicator.humanoid_step_forward" title="Link to this definition"></a></dt>
+<dd><p>Step forward.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>humanoid_id: humanoid ID.
+duration: Duration.
+direction: Direction.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.communicator.Communicator.humanoid_stop">
+<span class="sig-name descname"><span class="pre">humanoid_stop</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">humanoid_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.communicator.Communicator.humanoid_stop" title="Link to this definition"></a></dt>
+<dd><p>Stop humanoid.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>humanoid_id: humanoid ID.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.communicator.Communicator.p_set_waypoints">
+<span class="sig-name descname"><span class="pre">p_set_waypoints</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pedestrian_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">waypoints</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.communicator.Communicator.p_set_waypoints" title="Link to this definition"></a></dt>
+<dd><p>Set pedestrian waypoints.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>pedestrian_id: Pedestrian ID.
+waypoints: List of waypoints (Vector).</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.communicator.Communicator.pedestrian_move_forward">
+<span class="sig-name descname"><span class="pre">pedestrian_move_forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pedestrian_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.communicator.Communicator.pedestrian_move_forward" title="Link to this definition"></a></dt>
+<dd><p>Move pedestrian forward.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>pedestrian_id: Pedestrian ID.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.communicator.Communicator.pedestrian_rotate">
+<span class="sig-name descname"><span class="pre">pedestrian_rotate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pedestrian_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angle</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">direction</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.communicator.Communicator.pedestrian_rotate" title="Link to this definition"></a></dt>
+<dd><p>Rotate pedestrian.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>pedestrian_id: Pedestrian ID.
+angle: Rotation angle.
+direction: Rotation direction.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.communicator.Communicator.pedestrian_stop">
+<span class="sig-name descname"><span class="pre">pedestrian_stop</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pedestrian_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.communicator.Communicator.pedestrian_stop" title="Link to this definition"></a></dt>
+<dd><p>Stop pedestrian movement.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>pedestrian_id: Pedestrian ID.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.communicator.Communicator.set_atmosphere">
+<span class="sig-name descname"><span class="pre">set_atmosphere</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">weather_manager_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rayleigh</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mie</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.communicator.Communicator.set_atmosphere" title="Link to this definition"></a></dt>
+<dd><p>Set atmosphere parameters.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>weather_manager_name: Name of the weather manager.
+rayleigh: Rayleigh scattering scale. Range: 0-2.
+mie: Mie scattering scale. Range: 0-5.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.communicator.Communicator.set_fog">
+<span class="sig-name descname"><span class="pre">set_fog</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">weather_manager_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">density</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">distance</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">falloff</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.communicator.Communicator.set_fog" title="Link to this definition"></a></dt>
+<dd><p>Set fog parameters.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>weather_manager_name: Name of the weather manager.
+density: Fog density. Range: 0-100.
+distance: Fog distance in cm. Range: 0-5000.
+falloff: Fog falloff. Range: 0-2.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.communicator.Communicator.set_pedestrian_speed">
+<span class="sig-name descname"><span class="pre">set_pedestrian_speed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pedestrian_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">speed</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.communicator.Communicator.set_pedestrian_speed" title="Link to this definition"></a></dt>
+<dd><p>Set pedestrian speed.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>pedestrian_id: Pedestrian ID.
+speed: Pedestrian speed.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.communicator.Communicator.set_scooter_attributes">
+<span class="sig-name descname"><span class="pre">set_scooter_attributes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scooter_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">throttle</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">brake</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">steering</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.communicator.Communicator.set_scooter_attributes" title="Link to this definition"></a></dt>
+<dd><p>Set scooter attributes.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>scooter_id: Scooter ID.
+throttle: Throttle.
+brake: Brake.
+steering: Steering.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.communicator.Communicator.set_sun_direction">
+<span class="sig-name descname"><span class="pre">set_sun_direction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">weather_manager_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pitch</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">yaw</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.communicator.Communicator.set_sun_direction" title="Link to this definition"></a></dt>
+<dd><p>Set sun direction.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>weather_manager_name: Name of the weather manager.
+pitch: Pitch of the sun. Range: -89 to 89 degrees.
+yaw: Yaw of the sun. Range: 0 to 360 degrees.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.communicator.Communicator.set_sun_intensity">
+<span class="sig-name descname"><span class="pre">set_sun_intensity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">weather_manager_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">intensity</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.communicator.Communicator.set_sun_intensity" title="Link to this definition"></a></dt>
+<dd><p>Set sun intensity.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>weather_manager_name: Name of the weather manager.
+intensity: Intensity of the sun. 0 - 100</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.communicator.Communicator.show_img">
+<span class="sig-name descname"><span class="pre">show_img</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">image</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.communicator.Communicator.show_img" title="Link to this definition"></a></dt>
+<dd><p>Show image.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>image: Image data.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.communicator.Communicator.spawn_agent">
+<span class="sig-name descname"><span class="pre">spawn_agent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">agent</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">position</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'/Game/TrafficSystem/Pedestrian/Base_User_Agent.Base_User_Agent_C'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">type</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'humanoid'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.communicator.Communicator.spawn_agent" title="Link to this definition"></a></dt>
+<dd><p>Spawn agent.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>agent: Agent object.
+name: Agent name.
+position: Position. If None, use agent’s position.
+model_path: Model path.
+type: Agent type, possible values: ‘humanoid’, ‘dog’, …</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.communicator.Communicator.spawn_intersection">
+<span class="sig-name descname"><span class="pre">spawn_intersection</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">intersection_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.communicator.Communicator.spawn_intersection" title="Link to this definition"></a></dt>
+<dd><p>Spawn intersection.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>intersection_name: Name of the intersection to spawn.
+model_path: Model path.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.communicator.Communicator.spawn_object">
+<span class="sig-name descname"><span class="pre">spawn_object</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">object_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">position</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">direction</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.communicator.Communicator.spawn_object" title="Link to this definition"></a></dt>
+<dd><p>Spawn object.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>object_name: Object name.
+model_path: Model path.
+position: Position. Tuple (x, y, z).
+direction: Direction. Tuple (pitch, yaw, roll).</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.communicator.Communicator.spawn_pedestrians">
+<span class="sig-name descname"><span class="pre">spawn_pedestrians</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">pedestrians</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'/Game/TrafficSystem/Pedestrian/Base_Pedestrian.Base_Pedestrian_C'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.communicator.Communicator.spawn_pedestrians" title="Link to this definition"></a></dt>
+<dd><p>Spawn pedestrians.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>pedestrians: List of pedestrian objects.
+model_path: Pedestrian model path.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.communicator.Communicator.spawn_scooter">
+<span class="sig-name descname"><span class="pre">spawn_scooter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scooter</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.communicator.Communicator.spawn_scooter" title="Link to this definition"></a></dt>
+<dd><p>Spawn scooter.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>scooter: Scooter object.
+model_path: Model path.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.communicator.Communicator.spawn_traffic_signals">
+<span class="sig-name descname"><span class="pre">spawn_traffic_signals</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">traffic_signals</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">traffic_light_model_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'/Game/city_props/BP/props/street_light/BP_street_light.BP_street_light_C'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pedestrian_light_model_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'/Game/city_props/BP/props/street_light/BP_street_light_ped.BP_street_light_ped_C'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.communicator.Communicator.spawn_traffic_signals" title="Link to this definition"></a></dt>
+<dd><p>Spawn traffic signals.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>traffic_signals: List of traffic signal objects to spawn.
+traffic_light_model_path: Path to the traffic light model asset.
+pedestrian_light_model_path: Path to the pedestrian signal light model asset.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.communicator.Communicator.spawn_ue_manager">
+<span class="sig-name descname"><span class="pre">spawn_ue_manager</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">ue_manager_path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.communicator.Communicator.spawn_ue_manager" title="Link to this definition"></a></dt>
+<dd><p>Spawn UE manager.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>ue_manager_path: Path to the UE manager asset in the content browser.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.communicator.Communicator.spawn_vehicles">
+<span class="sig-name descname"><span class="pre">spawn_vehicles</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vehicles</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.communicator.Communicator.spawn_vehicles" title="Link to this definition"></a></dt>
+<dd><p>Spawn vehicles.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>vehicles: List of vehicle objects.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.communicator.Communicator.spawn_waypoint_mark">
+<span class="sig-name descname"><span class="pre">spawn_waypoint_mark</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">waypoints</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">model_path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.communicator.Communicator.spawn_waypoint_mark" title="Link to this definition"></a></dt>
+<dd><p>Spawn waypoint marks.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>waypoints: List of waypoint objects.
+model_path: Waypoint mark model path.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.communicator.Communicator.spawn_weather_manager">
+<span class="sig-name descname"><span class="pre">spawn_weather_manager</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">weather_manager_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">weather_manager_model_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'/Game/Weather/BP_WeatherManager.BP_WeatherManager_C'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.communicator.Communicator.spawn_weather_manager" title="Link to this definition"></a></dt>
+<dd><p>Spawn weather manager.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>weather_manager_name: Name of the weather manager.
+weather_manager_model_path: Path to the weather manager model.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.communicator.Communicator.traffic_signal_set_duration">
+<span class="sig-name descname"><span class="pre">traffic_signal_set_duration</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">traffic_signal_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">green_duration</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">yellow_duration</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pedestrian_green_duration</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.communicator.Communicator.traffic_signal_set_duration" title="Link to this definition"></a></dt>
+<dd><p>Set traffic signal duration.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>traffic_signal_id: Traffic signal ID.
+green_duration: Green duration.
+yellow_duration: Yellow duration.
+pedestrian_green_duration: Pedestrian green duration.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.communicator.Communicator.traffic_signal_start_simulation">
+<span class="sig-name descname"><span class="pre">traffic_signal_start_simulation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">intersection_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.communicator.Communicator.traffic_signal_start_simulation" title="Link to this definition"></a></dt>
+<dd><p>Start traffic signal simulation.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>intersection_name: Name of the intersection to start simulation for.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.communicator.Communicator.traffic_signal_switch_to">
+<span class="sig-name descname"><span class="pre">traffic_signal_switch_to</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">traffic_signal_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">state</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'green'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.communicator.Communicator.traffic_signal_switch_to" title="Link to this definition"></a></dt>
+<dd><p>Switch traffic signal state.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>traffic_signal_id: Traffic signal ID.
+state: Target state, possible values: ‘green’ or ‘pedestrian walk’.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.communicator.Communicator.update_objects">
+<span class="sig-name descname"><span class="pre">update_objects</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.communicator.Communicator.update_objects" title="Link to this definition"></a></dt>
+<dd><p>Update objects.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.communicator.Communicator.update_pedestrians">
+<span class="sig-name descname"><span class="pre">update_pedestrians</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">states</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.communicator.Communicator.update_pedestrians" title="Link to this definition"></a></dt>
+<dd><p>Batch update multiple pedestrian states.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><dl class="simple">
+<dt>states: Dictionary containing multiple pedestrian states,</dt><dd><p>where keys are pedestrian IDs and values are states.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.communicator.Communicator.update_vehicle">
+<span class="sig-name descname"><span class="pre">update_vehicle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vehicle_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">throttle</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">brake</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">steering</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.communicator.Communicator.update_vehicle" title="Link to this definition"></a></dt>
+<dd><p>Update vehicle state.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>vehicle_id: Vehicle ID.
+throttle: Throttle value.
+brake: Brake value.
+steering: Steering value.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.communicator.Communicator.update_vehicles">
+<span class="sig-name descname"><span class="pre">update_vehicles</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">states</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.communicator.Communicator.update_vehicles" title="Link to this definition"></a></dt>
+<dd><p>Batch update multiple vehicle states.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><dl class="simple">
+<dt>states: Dictionary containing multiple vehicle states,</dt><dd><p>where keys are vehicle IDs and values are state tuples.</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.communicator.Communicator.vehicle_make_u_turn">
+<span class="sig-name descname"><span class="pre">vehicle_make_u_turn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vehicle_id</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.communicator.Communicator.vehicle_make_u_turn" title="Link to this definition"></a></dt>
+<dd><p>Make vehicle perform a U-turn.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>vehicle_id: Vehicle ID.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-simworld.communicator.unrealcv">
+<span id="simworld-communicator-unrealcv-module"></span><h2>simworld.communicator.unrealcv module<a class="headerlink" href="#module-simworld.communicator.unrealcv" title="Link to this heading"></a></h2>
+<p>UnrealCV communication module.</p>
+<p>This module provides a client interface for communicating with Unreal Engine,
+allowing for various operations such as object spawning, movement, and image
+capture.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="simworld.communicator.unrealcv.UnrealCV">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">simworld.communicator.unrealcv.</span></span><span class="sig-name descname"><span class="pre">UnrealCV</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">port</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">9000</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">ip</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'127.0.0.1'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resolution</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(1280,</span> <span class="pre">720)</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.unrealcv.UnrealCV" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Interface class for communication with Unreal Engine.</p>
+<p>This class provides various functionalities for communicating with Unreal Engine,
+including basic operations and traffic system operations.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.unrealcv.UnrealCV.add_pedestrian_signal">
+<span class="sig-name descname"><span class="pre">add_pedestrian_signal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">intersection_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pedestrian_signal_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.unrealcv.UnrealCV.add_pedestrian_signal" title="Link to this definition"></a></dt>
+<dd><p>Add pedestrian signal.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>intersection_name: Name of the intersection to add pedestrian signal to.
+pedestrian_signal_name: Name of the pedestrian signal to add.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.unrealcv.UnrealCV.add_vehicle_signal">
+<span class="sig-name descname"><span class="pre">add_vehicle_signal</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">intersection_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vehicle_signal_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.unrealcv.UnrealCV.add_vehicle_signal" title="Link to this definition"></a></dt>
+<dd><p>Add vehicle signal.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>intersection_name: Name of the intersection to add traffic signal to.
+vehicle_signal_name: Name of the vehicle signal to add.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.unrealcv.UnrealCV.check_connection">
+<span class="sig-name descname"><span class="pre">check_connection</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.unrealcv.UnrealCV.check_connection" title="Link to this definition"></a></dt>
+<dd><p>Check connection status, attempt to reconnect if not connected.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.unrealcv.UnrealCV.clean_garbage">
+<span class="sig-name descname"><span class="pre">clean_garbage</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.unrealcv.UnrealCV.clean_garbage" title="Link to this definition"></a></dt>
+<dd><p>Clean garbage objects.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.unrealcv.UnrealCV.destroy">
+<span class="sig-name descname"><span class="pre">destroy</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">actor_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.unrealcv.UnrealCV.destroy" title="Link to this definition"></a></dt>
+<dd><p>Destroy an object.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>actor_name: Actor name.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.unrealcv.UnrealCV.disconnect">
+<span class="sig-name descname"><span class="pre">disconnect</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.unrealcv.UnrealCV.disconnect" title="Link to this definition"></a></dt>
+<dd><p>Disconnect from Unreal Engine.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.unrealcv.UnrealCV.dog_look_down">
+<span class="sig-name descname"><span class="pre">dog_look_down</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">robot_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.unrealcv.UnrealCV.dog_look_down" title="Link to this definition"></a></dt>
+<dd><p>Apply look down action.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>robot_name: Robot name.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.unrealcv.UnrealCV.dog_look_up">
+<span class="sig-name descname"><span class="pre">dog_look_up</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">robot_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.unrealcv.UnrealCV.dog_look_up" title="Link to this definition"></a></dt>
+<dd><p>Apply look up action.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>robot_name: Robot name.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.unrealcv.UnrealCV.dog_move">
+<span class="sig-name descname"><span class="pre">dog_move</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">robot_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">action</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.unrealcv.UnrealCV.dog_move" title="Link to this definition"></a></dt>
+<dd><p>Apply transition action.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>robot_name: Robot name.
+action: Action in the form [speed, duration, direction].</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.unrealcv.UnrealCV.dog_rotate">
+<span class="sig-name descname"><span class="pre">dog_rotate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">robot_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">action</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.unrealcv.UnrealCV.dog_rotate" title="Link to this definition"></a></dt>
+<dd><p>Apply rotation action.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>robot_name: Robot name.
+action: Action in the form [duration, angle, direction].</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.unrealcv.UnrealCV.enable_controller">
+<span class="sig-name descname"><span class="pre">enable_controller</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">enable_controller</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.unrealcv.UnrealCV.enable_controller" title="Link to this definition"></a></dt>
+<dd><p>Enable or disable controller.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>name: Object name.
+enable_controller: Whether to enable controller.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.unrealcv.UnrealCV.get_atmosphere">
+<span class="sig-name descname"><span class="pre">get_atmosphere</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">weather_manager_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.unrealcv.UnrealCV.get_atmosphere" title="Link to this definition"></a></dt>
+<dd><p>Get atmosphere.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>weather_manager_name: Name of the weather manager.</p>
+</dd>
+<dt>Returns:</dt><dd><p>Atmosphere.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.unrealcv.UnrealCV.get_camera_fov">
+<span class="sig-name descname"><span class="pre">get_camera_fov</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">camera_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.unrealcv.UnrealCV.get_camera_fov" title="Link to this definition"></a></dt>
+<dd><p>Get camera field of view.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>camera_id: ID of the camera to get field of view.</p>
+</dd>
+<dt>Returns:</dt><dd><p>Horizontal field of view of the camera.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.unrealcv.UnrealCV.get_camera_location">
+<span class="sig-name descname"><span class="pre">get_camera_location</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">camera_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.unrealcv.UnrealCV.get_camera_location" title="Link to this definition"></a></dt>
+<dd><p>Get camera location.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>camera_id: ID of the camera to get location.</p>
+</dd>
+<dt>Returns:</dt><dd><p>Location (x, y, z) of the camera.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.unrealcv.UnrealCV.get_camera_location_multicam">
+<span class="sig-name descname"><span class="pre">get_camera_location_multicam</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">camera_ids</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><span class="pre">list</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.unrealcv.UnrealCV.get_camera_location_multicam" title="Link to this definition"></a></dt>
+<dd><p>Get camera location batch.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.unrealcv.UnrealCV.get_camera_resolution">
+<span class="sig-name descname"><span class="pre">get_camera_resolution</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">camera_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.unrealcv.UnrealCV.get_camera_resolution" title="Link to this definition"></a></dt>
+<dd><p>Get camera resolution.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>camera_id: ID of the camera to get resolution.</p>
+</dd>
+<dt>Returns:</dt><dd><p>Resolution (width, height) of the camera.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.unrealcv.UnrealCV.get_camera_rotation">
+<span class="sig-name descname"><span class="pre">get_camera_rotation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">camera_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.unrealcv.UnrealCV.get_camera_rotation" title="Link to this definition"></a></dt>
+<dd><p>Get camera rotation.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>camera_id: ID of the camera to get rotation.</p>
+</dd>
+<dt>Returns:</dt><dd><p>Rotation (yaw, pitch, roll) of the camera.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.unrealcv.UnrealCV.get_cameras">
+<span class="sig-name descname"><span class="pre">get_cameras</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.unrealcv.UnrealCV.get_cameras" title="Link to this definition"></a></dt>
+<dd><p>Get all cameras.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>List of camera names.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.unrealcv.UnrealCV.get_collision_num">
+<span class="sig-name descname"><span class="pre">get_collision_num</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">actor_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.unrealcv.UnrealCV.get_collision_num" title="Link to this definition"></a></dt>
+<dd><p>Get collision number.</p>
+<dl>
+<dt>Args:</dt><dd><p>actor_name: Actor name.</p>
+</dd>
+<dt>Returns:</dt><dd><dl class="simple">
+<dt>json: {</dt><dd><p>“HumanCollision”: 0,
+“ObjectCollision”: 0,
+“BuildingCollision”: 0,
+“VehicleCollision”: 0</p>
+</dd>
+</dl>
+<p>}</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.unrealcv.UnrealCV.get_fog">
+<span class="sig-name descname"><span class="pre">get_fog</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">weather_manager_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.unrealcv.UnrealCV.get_fog" title="Link to this definition"></a></dt>
+<dd><p>Get fog.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>weather_manager_name: Name of the weather manager.</p>
+</dd>
+<dt>Returns:</dt><dd><p>Fog.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.unrealcv.UnrealCV.get_image">
+<span class="sig-name descname"><span class="pre">get_image</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">cam_id</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">viewmode</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'direct'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">img_path</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.unrealcv.UnrealCV.get_image" title="Link to this definition"></a></dt>
+<dd><p>Get image.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>cam_id: Camera ID.
+viewmode: View mode.
+mode: Mode.
+img_path: Image path.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.unrealcv.UnrealCV.get_informations">
+<span class="sig-name descname"><span class="pre">get_informations</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">manager_object_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.unrealcv.UnrealCV.get_informations" title="Link to this definition"></a></dt>
+<dd><p>Get information.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>manager_object_name: Name of the manager object to get information from.</p>
+</dd>
+<dt>Returns:</dt><dd><p>str: Information string containing the current state of the environment.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.unrealcv.UnrealCV.get_location">
+<span class="sig-name descname"><span class="pre">get_location</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">actor_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.unrealcv.UnrealCV.get_location" title="Link to this definition"></a></dt>
+<dd><p>Get object location.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>actor_name: Actor name.</p>
+</dd>
+<dt>Returns:</dt><dd><p>Location coordinates array.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.unrealcv.UnrealCV.get_location_batch">
+<span class="sig-name descname"><span class="pre">get_location_batch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">actor_names</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.unrealcv.UnrealCV.get_location_batch" title="Link to this definition"></a></dt>
+<dd><p>Batch get object locations.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>actor_names: List of actor names.</p>
+</dd>
+<dt>Returns:</dt><dd><p>List of location coordinate arrays.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.unrealcv.UnrealCV.get_objects">
+<span class="sig-name descname"><span class="pre">get_objects</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.unrealcv.UnrealCV.get_objects" title="Link to this definition"></a></dt>
+<dd><p>Get all objects.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>List of objects.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.unrealcv.UnrealCV.get_orientation">
+<span class="sig-name descname"><span class="pre">get_orientation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">actor_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.unrealcv.UnrealCV.get_orientation" title="Link to this definition"></a></dt>
+<dd><p>Get object orientation.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>actor_name: Actor name.</p>
+</dd>
+<dt>Returns:</dt><dd><p>Orientation array.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.unrealcv.UnrealCV.get_orientation_batch">
+<span class="sig-name descname"><span class="pre">get_orientation_batch</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">actor_names</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.unrealcv.UnrealCV.get_orientation_batch" title="Link to this definition"></a></dt>
+<dd><p>Batch get object orientations.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>actor_names: List of actor names.</p>
+</dd>
+<dt>Returns:</dt><dd><p>List of orientation arrays.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.unrealcv.UnrealCV.get_sun_direction">
+<span class="sig-name descname"><span class="pre">get_sun_direction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">weather_manager_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.unrealcv.UnrealCV.get_sun_direction" title="Link to this definition"></a></dt>
+<dd><p>Get sun direction.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>weather_manager_name: Name of the weather manager.</p>
+</dd>
+<dt>Returns:</dt><dd><p>Sun direction.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.unrealcv.UnrealCV.get_sun_intensity">
+<span class="sig-name descname"><span class="pre">get_sun_intensity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">weather_manager_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.unrealcv.UnrealCV.get_sun_intensity" title="Link to this definition"></a></dt>
+<dd><p>Get sun intensity.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>weather_manager_name: Name of the weather manager.</p>
+</dd>
+<dt>Returns:</dt><dd><p>Sun intensity.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.unrealcv.UnrealCV.humanoid_argue">
+<span class="sig-name descname"><span class="pre">humanoid_argue</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">humanoid_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">argue_type</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.unrealcv.UnrealCV.humanoid_argue" title="Link to this definition"></a></dt>
+<dd><p>Argue.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>humanoid_name: Name of the humanoid to argue.
+argue_type: Type of arguing. Can be [0, 1]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.unrealcv.UnrealCV.humanoid_directing_path">
+<span class="sig-name descname"><span class="pre">humanoid_directing_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">humanoid_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.unrealcv.UnrealCV.humanoid_directing_path" title="Link to this definition"></a></dt>
+<dd><p>Directing path.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>humanoid_name: Name of the humanoid to directing path.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.unrealcv.UnrealCV.humanoid_discuss">
+<span class="sig-name descname"><span class="pre">humanoid_discuss</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">humanoid_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">discuss_type</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.unrealcv.UnrealCV.humanoid_discuss" title="Link to this definition"></a></dt>
+<dd><p>Discuss.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>humanoid_name: Name of the humanoid to discuss.
+discuss_type: Type of discussion. Can be [0, 1]</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.unrealcv.UnrealCV.humanoid_drop_object">
+<span class="sig-name descname"><span class="pre">humanoid_drop_object</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">humanoid_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.unrealcv.UnrealCV.humanoid_drop_object" title="Link to this definition"></a></dt>
+<dd><p>Drop object.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>humanoid_name: Name of the humanoid to drop object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.unrealcv.UnrealCV.humanoid_enter_vehicle">
+<span class="sig-name descname"><span class="pre">humanoid_enter_vehicle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">humanoid_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vehicle_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.unrealcv.UnrealCV.humanoid_enter_vehicle" title="Link to this definition"></a></dt>
+<dd><p>Enter vehicle.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>humanoid_name: Name of the humanoid to enter vehicle.
+vehicle_name: Name of the vehicle to enter.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.unrealcv.UnrealCV.humanoid_exit_vehicle">
+<span class="sig-name descname"><span class="pre">humanoid_exit_vehicle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">humanoid_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vehicle_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.unrealcv.UnrealCV.humanoid_exit_vehicle" title="Link to this definition"></a></dt>
+<dd><p>Exit vehicle.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>humanoid_name: Name of the humanoid to enter vehicle.
+vehicle_name: Name of the vehicle to exit.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.unrealcv.UnrealCV.humanoid_follow_path">
+<span class="sig-name descname"><span class="pre">humanoid_follow_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">object_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.unrealcv.UnrealCV.humanoid_follow_path" title="Link to this definition"></a></dt>
+<dd><p>Follow path.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>object_name: Name of the humanoid object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.unrealcv.UnrealCV.humanoid_get_off_scooter">
+<span class="sig-name descname"><span class="pre">humanoid_get_off_scooter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">object_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.unrealcv.UnrealCV.humanoid_get_off_scooter" title="Link to this definition"></a></dt>
+<dd><p>Get off scooter.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>object_name: Name of the humanoid object to get off scooter.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.unrealcv.UnrealCV.humanoid_get_on_scooter">
+<span class="sig-name descname"><span class="pre">humanoid_get_on_scooter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">object_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.unrealcv.UnrealCV.humanoid_get_on_scooter" title="Link to this definition"></a></dt>
+<dd><p>Get on scooter.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>object_name: Name of the humanoid object to get on scooter.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.unrealcv.UnrealCV.humanoid_listen">
+<span class="sig-name descname"><span class="pre">humanoid_listen</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">humanoid_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.unrealcv.UnrealCV.humanoid_listen" title="Link to this definition"></a></dt>
+<dd><p>Listen.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>humanoid_name: Name of the humanoid to discuss.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.unrealcv.UnrealCV.humanoid_move_forward">
+<span class="sig-name descname"><span class="pre">humanoid_move_forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">object_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.unrealcv.UnrealCV.humanoid_move_forward" title="Link to this definition"></a></dt>
+<dd><p>Move humanoid forward.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>object_name: Name of the humanoid object to move forward.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.unrealcv.UnrealCV.humanoid_pick_up_object">
+<span class="sig-name descname"><span class="pre">humanoid_pick_up_object</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">humanoid_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">object_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.unrealcv.UnrealCV.humanoid_pick_up_object" title="Link to this definition"></a></dt>
+<dd><p>Pick up object.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>humanoid_name: Name of the humanoid to pick up object.
+object_name: Name of the object to pick up.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.unrealcv.UnrealCV.humanoid_rotate">
+<span class="sig-name descname"><span class="pre">humanoid_rotate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">object_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angle</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">direction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'left'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.unrealcv.UnrealCV.humanoid_rotate" title="Link to this definition"></a></dt>
+<dd><p>Rotate humanoid.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>object_name: Name of the humanoid object to rotate.
+angle: Rotation angle in degrees.
+direction: Direction of rotation, either ‘left’ or ‘right’. Defaults to ‘left’.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.unrealcv.UnrealCV.humanoid_set_path">
+<span class="sig-name descname"><span class="pre">humanoid_set_path</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">object_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.unrealcv.UnrealCV.humanoid_set_path" title="Link to this definition"></a></dt>
+<dd><p>Set humanoid path.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>object_name: Name of the humanoid object.
+path: String of path. Use semicolon to separate waypoints and use comma to separate coordinates. Example: “100,100;200,200;300,300”</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.unrealcv.UnrealCV.humanoid_set_speed">
+<span class="sig-name descname"><span class="pre">humanoid_set_speed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">object_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">speed</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.unrealcv.UnrealCV.humanoid_set_speed" title="Link to this definition"></a></dt>
+<dd><p>Set humanoid speed.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>object_name: Name of the humanoid object to set speed.
+speed: Speed to set.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.unrealcv.UnrealCV.humanoid_sit_down">
+<span class="sig-name descname"><span class="pre">humanoid_sit_down</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">object_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.unrealcv.UnrealCV.humanoid_sit_down" title="Link to this definition"></a></dt>
+<dd><p>Sit down.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>object_name: Name of the humanoid object to sit down.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.unrealcv.UnrealCV.humanoid_stand_up">
+<span class="sig-name descname"><span class="pre">humanoid_stand_up</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">object_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.unrealcv.UnrealCV.humanoid_stand_up" title="Link to this definition"></a></dt>
+<dd><p>Stand up.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>object_name: Name of the humanoid object to sit down.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.unrealcv.UnrealCV.humanoid_step_forward">
+<span class="sig-name descname"><span class="pre">humanoid_step_forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">object_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">duration</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">direction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.unrealcv.UnrealCV.humanoid_step_forward" title="Link to this definition"></a></dt>
+<dd><p>Step forward.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>object_name: Name of the humanoid object to step forward.
+duration: Duration of the step forward movement in seconds.
+direction: Direction of the step forward movement.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.unrealcv.UnrealCV.humanoid_stop">
+<span class="sig-name descname"><span class="pre">humanoid_stop</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">object_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.unrealcv.UnrealCV.humanoid_stop" title="Link to this definition"></a></dt>
+<dd><p>Stop humanoid.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>object_name: Name of the humanoid object to stop.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.unrealcv.UnrealCV.humanoid_stop_current_action">
+<span class="sig-name descname"><span class="pre">humanoid_stop_current_action</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">humanoid_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.unrealcv.UnrealCV.humanoid_stop_current_action" title="Link to this definition"></a></dt>
+<dd><p>Stop current action.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>humanoid_name: Name of the humanoid to stop current action.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.unrealcv.UnrealCV.humanoid_wave_to_dog">
+<span class="sig-name descname"><span class="pre">humanoid_wave_to_dog</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">humanoid_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.unrealcv.UnrealCV.humanoid_wave_to_dog" title="Link to this definition"></a></dt>
+<dd><p>Wave to dog.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>humanoid_name: Name of the humanoid to wave to dog.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.unrealcv.UnrealCV.ini_unrealcv">
+<span class="sig-name descname"><span class="pre">ini_unrealcv</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">resolution</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">(320,</span> <span class="pre">240)</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.unrealcv.UnrealCV.ini_unrealcv" title="Link to this definition"></a></dt>
+<dd><p>Initialize UnrealCV settings.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>resolution: Resolution, defaults to (320, 240).</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.unrealcv.UnrealCV.p_move_forward">
+<span class="sig-name descname"><span class="pre">p_move_forward</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">object_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.unrealcv.UnrealCV.p_move_forward" title="Link to this definition"></a></dt>
+<dd><p>Move pedestrian forward.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>object_name: Object name.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.unrealcv.UnrealCV.p_movement_simulation">
+<span class="sig-name descname"><span class="pre">p_movement_simulation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">object_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.unrealcv.UnrealCV.p_movement_simulation" title="Link to this definition"></a></dt>
+<dd><p>Start pedestrian movement simulation.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>object_name: Object name.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.unrealcv.UnrealCV.p_rotate">
+<span class="sig-name descname"><span class="pre">p_rotate</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">object_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">angle</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">direction</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'left'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.unrealcv.UnrealCV.p_rotate" title="Link to this definition"></a></dt>
+<dd><p>Rotate pedestrian.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>object_name: Object name.
+angle: Angle.
+direction: Direction, defaults to ‘left’.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.unrealcv.UnrealCV.p_set_speed">
+<span class="sig-name descname"><span class="pre">p_set_speed</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">object_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">speed</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.unrealcv.UnrealCV.p_set_speed" title="Link to this definition"></a></dt>
+<dd><p>Set pedestrian speed.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>object_name: Object name.
+speed: Speed.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.unrealcv.UnrealCV.p_set_states">
+<span class="sig-name descname"><span class="pre">p_set_states</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">manager_object_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">states</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.unrealcv.UnrealCV.p_set_states" title="Link to this definition"></a></dt>
+<dd><p>Batch set pedestrian states.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>manager_object_name: Manager object name.
+states: States string.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.unrealcv.UnrealCV.p_set_waypoints">
+<span class="sig-name descname"><span class="pre">p_set_waypoints</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">object_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">waypoints</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.unrealcv.UnrealCV.p_set_waypoints" title="Link to this definition"></a></dt>
+<dd><p>Set pedestrian waypoints.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>object_name: Object name.
+waypoints: String of waypoints. Use semicolon to separate waypoints and use comma to separate coordinates. Example: “100,100;200,200;300,300”</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.unrealcv.UnrealCV.p_stop">
+<span class="sig-name descname"><span class="pre">p_stop</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">object_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.unrealcv.UnrealCV.p_stop" title="Link to this definition"></a></dt>
+<dd><p>Stop pedestrian movement.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>object_name: Object name.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.unrealcv.UnrealCV.s_set_state">
+<span class="sig-name descname"><span class="pre">s_set_state</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">object_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">throttle</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">brake</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">steering</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.unrealcv.UnrealCV.s_set_state" title="Link to this definition"></a></dt>
+<dd><p>Set scooter state.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>object_name: Name of the scooter object.
+throttle: Throttle value.
+brake: Brake value.
+steering: Steering value.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.unrealcv.UnrealCV.set_atmosphere">
+<span class="sig-name descname"><span class="pre">set_atmosphere</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">weather_manager_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">rayleigh</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">mie</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.unrealcv.UnrealCV.set_atmosphere" title="Link to this definition"></a></dt>
+<dd><p>Set atmosphere.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>weather_manager_name: Name of the weather manager.
+rayleigh: RayleighScatteringScale of the atmosphere. 0 - 2.
+mie: MieScatteringScale of the atmosphere. 0 - 5.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.unrealcv.UnrealCV.set_camera_fov">
+<span class="sig-name descname"><span class="pre">set_camera_fov</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">camera_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">fov</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.unrealcv.UnrealCV.set_camera_fov" title="Link to this definition"></a></dt>
+<dd><p>Set camera field of view.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>camera_id: ID of the camera to set field of view.
+fov: Horizontal field of view of the camera.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.unrealcv.UnrealCV.set_camera_location">
+<span class="sig-name descname"><span class="pre">set_camera_location</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">camera_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">location</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.14)"><span class="pre">tuple</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.unrealcv.UnrealCV.set_camera_location" title="Link to this definition"></a></dt>
+<dd><p>Set camera location.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>camera_id: ID of the camera to set location.
+location: Location (x, y, z) of the camera.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.unrealcv.UnrealCV.set_camera_resolution">
+<span class="sig-name descname"><span class="pre">set_camera_resolution</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">camera_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">resolution</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.14)"><span class="pre">tuple</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.unrealcv.UnrealCV.set_camera_resolution" title="Link to this definition"></a></dt>
+<dd><p>Set camera resolution.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>camera_id: ID of the camera to set resolution.
+resolution: Resolution (width, height) of the camera.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.unrealcv.UnrealCV.set_camera_rotation">
+<span class="sig-name descname"><span class="pre">set_camera_rotation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">camera_id</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">rotation</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#tuple" title="(in Python v3.14)"><span class="pre">tuple</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.unrealcv.UnrealCV.set_camera_rotation" title="Link to this definition"></a></dt>
+<dd><p>Set camera rotation.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>camera_id: ID of the camera to set rotation.
+rotation: Rotation (pitch, yaw, roll) of the camera.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.unrealcv.UnrealCV.set_collision">
+<span class="sig-name descname"><span class="pre">set_collision</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">actor_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hasCollision</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.unrealcv.UnrealCV.set_collision" title="Link to this definition"></a></dt>
+<dd><p>Set collision properties.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>actor_name: Actor name.
+hasCollision: Whether to enable collision.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.unrealcv.UnrealCV.set_color">
+<span class="sig-name descname"><span class="pre">set_color</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">actor_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">color</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.unrealcv.UnrealCV.set_color" title="Link to this definition"></a></dt>
+<dd><p>Set object color.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>actor_name: Object name.
+color: Color in the form [R, G, B].</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.unrealcv.UnrealCV.set_fog">
+<span class="sig-name descname"><span class="pre">set_fog</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">weather_manager_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">density</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">distance</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">falloff</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.unrealcv.UnrealCV.set_fog" title="Link to this definition"></a></dt>
+<dd><p>Set fog.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>weather_manager_name: Name of the weather manager.
+density: Density of the fog. 0 - 100
+distance: Distance of the fog. 0 - 5000, cm
+falloff: Falloff of the fog. 0 - 2</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.unrealcv.UnrealCV.set_fps">
+<span class="sig-name descname"><span class="pre">set_fps</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">fps</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.unrealcv.UnrealCV.set_fps" title="Link to this definition"></a></dt>
+<dd><p>Set FPS.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>fps: FPS.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.unrealcv.UnrealCV.set_location">
+<span class="sig-name descname"><span class="pre">set_location</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">loc</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.unrealcv.UnrealCV.set_location" title="Link to this definition"></a></dt>
+<dd><p>Set object location.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>loc: Location coordinates in the form [x, y, z].
+name: Object name.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.unrealcv.UnrealCV.set_mode">
+<span class="sig-name descname"><span class="pre">set_mode</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">mode</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'async'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tick_interval</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.05</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.unrealcv.UnrealCV.set_mode" title="Link to this definition"></a></dt>
+<dd><p>Set asynchronous or synchronous mode.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>mode: Mode.
+tick_interval: Tick interval if synchronous mode.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.unrealcv.UnrealCV.set_movable">
+<span class="sig-name descname"><span class="pre">set_movable</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">actor_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">isMovable</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.unrealcv.UnrealCV.set_movable" title="Link to this definition"></a></dt>
+<dd><p>Set movable properties.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>actor_name: Actor name.
+isMovable: Whether the object is movable.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.unrealcv.UnrealCV.set_object_name">
+<span class="sig-name descname"><span class="pre">set_object_name</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">new_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.unrealcv.UnrealCV.set_object_name" title="Link to this definition"></a></dt>
+<dd><p>Set object name.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>name: Object name.
+new_name: New object name.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.unrealcv.UnrealCV.set_orientation">
+<span class="sig-name descname"><span class="pre">set_orientation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">orientation</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.unrealcv.UnrealCV.set_orientation" title="Link to this definition"></a></dt>
+<dd><p>Set object orientation.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>orientation: Orientation in the form [pitch, yaw, roll].
+name: Object name.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.unrealcv.UnrealCV.set_physics">
+<span class="sig-name descname"><span class="pre">set_physics</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">actor_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">hasPhysics</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.unrealcv.UnrealCV.set_physics" title="Link to this definition"></a></dt>
+<dd><p>Set physics properties.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>actor_name: Actor name.
+hasPhysics: Whether to enable physics.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.unrealcv.UnrealCV.set_scale">
+<span class="sig-name descname"><span class="pre">set_scale</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">scale</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.unrealcv.UnrealCV.set_scale" title="Link to this definition"></a></dt>
+<dd><p>Set object scale.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>scale: Scale in the form [x, y, z].
+name: Object name.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.unrealcv.UnrealCV.set_sun_direction">
+<span class="sig-name descname"><span class="pre">set_sun_direction</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">weather_manager_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pitch</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">yaw</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.unrealcv.UnrealCV.set_sun_direction" title="Link to this definition"></a></dt>
+<dd><p>Set sun direction.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>weather_manager_name: Name of the weather manager.
+pitch: Pitch of the sun. -89 - 89
+yaw: Yaw of the sun. 0 - 360</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.unrealcv.UnrealCV.set_sun_intensity">
+<span class="sig-name descname"><span class="pre">set_sun_intensity</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">weather_manager_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">intensity</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.unrealcv.UnrealCV.set_sun_intensity" title="Link to this definition"></a></dt>
+<dd><p>Set sun intensity.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>weather_manager_name: Name of the weather manager.
+intensity: Intensity of the sun. 0 - 100</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.unrealcv.UnrealCV.set_tick_interval">
+<span class="sig-name descname"><span class="pre">set_tick_interval</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">interval</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.unrealcv.UnrealCV.set_tick_interval" title="Link to this definition"></a></dt>
+<dd><p>Set tick interval.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.unrealcv.UnrealCV.show_img">
+<span class="sig-name descname"><span class="pre">show_img</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">img</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'raw_img'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.unrealcv.UnrealCV.show_img" title="Link to this definition"></a></dt>
+<dd><p>Display an image.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>img: Image.
+title: Title, defaults to “raw_img”.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.unrealcv.UnrealCV.spawn">
+<span class="sig-name descname"><span class="pre">spawn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prefab</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.unrealcv.UnrealCV.spawn" title="Link to this definition"></a></dt>
+<dd><p>Spawn an object (deprecated).</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>prefab: Prefab.
+name: Object name.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.unrealcv.UnrealCV.spawn_bp_asset">
+<span class="sig-name descname"><span class="pre">spawn_bp_asset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">prefab_path</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.unrealcv.UnrealCV.spawn_bp_asset" title="Link to this definition"></a></dt>
+<dd><p>Spawn a blueprint asset.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>prefab_path: Prefab path.
+name: Object name.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.unrealcv.UnrealCV.tick">
+<span class="sig-name descname"><span class="pre">tick</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.unrealcv.UnrealCV.tick" title="Link to this definition"></a></dt>
+<dd><p>Tick.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.unrealcv.UnrealCV.tl_set_duration">
+<span class="sig-name descname"><span class="pre">tl_set_duration</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">object_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">green_duration</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">yellow_duration</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">pedestrian_green_duration</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.unrealcv.UnrealCV.tl_set_duration" title="Link to this definition"></a></dt>
+<dd><p>Set traffic light duration.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>object_name: Object name.
+green_duration: Green duration.
+yellow_duration: Yellow duration.
+pedestrian_green_duration: Pedestrian green duration.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.unrealcv.UnrealCV.tl_set_pedestrian_walk">
+<span class="sig-name descname"><span class="pre">tl_set_pedestrian_walk</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">object_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.unrealcv.UnrealCV.tl_set_pedestrian_walk" title="Link to this definition"></a></dt>
+<dd><p>Set pedestrian traffic light to walk.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>object_name: Object name.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.unrealcv.UnrealCV.tl_set_vehicle_green">
+<span class="sig-name descname"><span class="pre">tl_set_vehicle_green</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">object_name</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.unrealcv.UnrealCV.tl_set_vehicle_green" title="Link to this definition"></a></dt>
+<dd><p>Set vehicle traffic light to green.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>object_name: Object name.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.unrealcv.UnrealCV.traffic_signal_start_simulation">
+<span class="sig-name descname"><span class="pre">traffic_signal_start_simulation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">intersection_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.unrealcv.UnrealCV.traffic_signal_start_simulation" title="Link to this definition"></a></dt>
+<dd><p>Start traffic signal simulation.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.unrealcv.UnrealCV.update_objects">
+<span class="sig-name descname"><span class="pre">update_objects</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">object_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.unrealcv.UnrealCV.update_objects" title="Link to this definition"></a></dt>
+<dd><p>Update objects.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>object_name: UE_Manager object name.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.unrealcv.UnrealCV.update_ue_manager">
+<span class="sig-name descname"><span class="pre">update_ue_manager</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">manager_object_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.unrealcv.UnrealCV.update_ue_manager" title="Link to this definition"></a></dt>
+<dd><p>Update UE manager.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>manager_object_name: Name of the manager object to update.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.unrealcv.UnrealCV.v_make_u_turn">
+<span class="sig-name descname"><span class="pre">v_make_u_turn</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">object_name</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.unrealcv.UnrealCV.v_make_u_turn" title="Link to this definition"></a></dt>
+<dd><p>Make vehicle U-turn.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>object_name: Object name.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.unrealcv.UnrealCV.v_set_state">
+<span class="sig-name descname"><span class="pre">v_set_state</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">object_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">throttle</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">brake</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">steering</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.unrealcv.UnrealCV.v_set_state" title="Link to this definition"></a></dt>
+<dd><p>Set vehicle state.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>object_name: Object name.
+throttle: Throttle value.
+brake: Brake value.
+steering: Steering value.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.communicator.unrealcv.UnrealCV.v_set_states">
+<span class="sig-name descname"><span class="pre">v_set_states</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">manager_object_name</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">states</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.communicator.unrealcv.UnrealCV.v_set_states" title="Link to this definition"></a></dt>
+<dd><p>Batch set vehicle states.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>manager_object_name: Manager object name.
+states: States string.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="simworld.citygen.route.html" class="btn btn-neutral float-left" title="simworld.citygen.route package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="simworld.config.html" class="btn btn-neutral float-right" title="simworld.config package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, SimWorld Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -6,11 +6,11 @@ setup(
     name='simworld',
     version='0.1.0',
     author='SimWorld Team',
-    author_email='example@example.com',
+    author_email='xiaokang.ye@outlook.com',
     description='A simulation framework for urban environments and traffic',
     long_description=open('README.md', encoding='utf-8').read(),
     long_description_content_type='text/markdown',
-    url='https://github.com/example/simworld',
+    url='https://simworld.org/',
     packages=find_packages(),
     include_package_data=True,
     package_data={

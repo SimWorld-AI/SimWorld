@@ -1,0 +1,320 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>simworld.traffic.controller package &mdash; SimWorld 0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=6cecdd3b" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=2709fde1"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="simworld.traffic.manager package" href="simworld.traffic.manager.html" />
+    <link rel="prev" title="simworld.traffic.base package" href="simworld.traffic.base.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            SimWorld
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">GETTING STARTED</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/minimal_example.html">Minimal Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/additional_environments.html">Additional Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/make_your_own_pak.html">Make Your Own Pak Files</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">SIMWORLD COMPONENTS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../components/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../components/ue_detail.html">Unreal Engine Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../components/citygen.html">Procedural City Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../components/waypoint_system.html">Waypoint System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../components/traffic_system.html">Traffic System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../components/agent_system.html">Agent System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../components/unrealcv%2B.html">UnrealCV+</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">PYTHON API REFERENCE</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">Python API</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="simworld.html">simworld package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="simworld.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="simworld.agent.html">simworld.agent package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simworld.assets_rp.html">simworld.assets_rp package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simworld.citygen.html">simworld.citygen package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simworld.communicator.html">simworld.communicator package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simworld.config.html">simworld.config package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simworld.llm.html">simworld.llm package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simworld.local_planner.html">simworld.local_planner package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simworld.map.html">simworld.map package</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="simworld.traffic.html">simworld.traffic package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simworld.utils.html">simworld.utils package</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">SIMWORLD ROBOTICS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../simworld-robotics/simworld_robotics.html">SimWorld-Robotics</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">SimWorld</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">Python API</a></li>
+          <li class="breadcrumb-item"><a href="simworld.html">simworld package</a></li>
+          <li class="breadcrumb-item"><a href="simworld.traffic.html">simworld.traffic package</a></li>
+      <li class="breadcrumb-item active">simworld.traffic.controller package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/resources/simworld.traffic.controller.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="simworld-traffic-controller-package">
+<h1>simworld.traffic.controller package<a class="headerlink" href="#simworld-traffic-controller-package" title="Link to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
+</section>
+<section id="module-simworld.traffic.controller.traffic_controller">
+<span id="simworld-traffic-controller-traffic-controller-module"></span><h2>simworld.traffic.controller.traffic_controller module<a class="headerlink" href="#module-simworld.traffic.controller.traffic_controller" title="Link to this heading"></a></h2>
+<p>Traffic controller module for coordinating all traffic-related components.</p>
+<p>This module provides the main controller for the traffic simulation, handling initialization,
+spawning, and coordination of all traffic elements including vehicles, pedestrians, and traffic signals.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="simworld.traffic.controller.traffic_controller.TrafficController">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">simworld.traffic.controller.traffic_controller.</span></span><span class="sig-name descname"><span class="pre">TrafficController</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="simworld.config.html#simworld.config.config_loader.Config" title="simworld.config.config_loader.Config"><span class="pre">Config</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_vehicles</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_pedestrians</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">map</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">seed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dt</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.traffic.controller.traffic_controller.TrafficController" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Main controller class for the traffic simulation system.</p>
+<p>Coordinates all aspects of the traffic simulation including road network, vehicles,
+pedestrians, and traffic signals.</p>
+<dl class="py property">
+<dt class="sig sig-object py" id="simworld.traffic.controller.traffic_controller.TrafficController.crosswalks">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">crosswalks</span></span><a class="headerlink" href="#simworld.traffic.controller.traffic_controller.TrafficController.crosswalks" title="Link to this definition"></a></dt>
+<dd><p>Get all crosswalks in the simulation.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>List of all crosswalk objects.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.traffic.controller.traffic_controller.TrafficController.disconnect_communicator">
+<span class="sig-name descname"><span class="pre">disconnect_communicator</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#simworld.traffic.controller.traffic_controller.TrafficController.disconnect_communicator" title="Link to this definition"></a></dt>
+<dd><p>Disconnect the communication interface from the simulation environment.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.traffic.controller.traffic_controller.TrafficController.init_communicator">
+<span class="sig-name descname"><span class="pre">init_communicator</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">communicator</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.traffic.controller.traffic_controller.TrafficController.init_communicator" title="Link to this definition"></a></dt>
+<dd><p>Initialize the communication interface with the simulation environment.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>communicator: Optional communicator instance. If None, a new one is created.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.traffic.controller.traffic_controller.TrafficController.init_roadnet_from_file">
+<span class="sig-name descname"><span class="pre">init_roadnet_from_file</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">file_path</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.traffic.controller.traffic_controller.TrafficController.init_roadnet_from_file" title="Link to this definition"></a></dt>
+<dd><p>Initialize the road network from a JSON file.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>file_path: Path to the JSON file containing road network data.</p>
+</dd>
+<dt>Raises:</dt><dd><p>ValueError: If the file path is not absolute.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="simworld.traffic.controller.traffic_controller.TrafficController.lanes">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">lanes</span></span><a class="headerlink" href="#simworld.traffic.controller.traffic_controller.TrafficController.lanes" title="Link to this definition"></a></dt>
+<dd><p>Get all traffic lanes in the simulation.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>List of all traffic lane objects.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="simworld.traffic.controller.traffic_controller.TrafficController.pedestrians">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">pedestrians</span></span><a class="headerlink" href="#simworld.traffic.controller.traffic_controller.TrafficController.pedestrians" title="Link to this definition"></a></dt>
+<dd><p>Get all pedestrians in the simulation.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>List of all pedestrian objects.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.traffic.controller.traffic_controller.TrafficController.reset">
+<span class="sig-name descname"><span class="pre">reset</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">num_vehicles</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">num_pedestrians</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#int" title="(in Python v3.14)"><span class="pre">int</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">map</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.traffic.controller.traffic_controller.TrafficController.reset" title="Link to this definition"></a></dt>
+<dd><p>Reset the simulation with new parameters.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>num_vehicles: New number of vehicles to spawn.
+num_pedestrians: New number of pedestrians to spawn.
+map: Path to the new map file to use.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="simworld.traffic.controller.traffic_controller.TrafficController.sidewalks">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">sidewalks</span></span><a class="headerlink" href="#simworld.traffic.controller.traffic_controller.TrafficController.sidewalks" title="Link to this definition"></a></dt>
+<dd><p>Get all sidewalks in the simulation.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>List of all sidewalk objects.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.traffic.controller.traffic_controller.TrafficController.simulation">
+<span class="sig-name descname"><span class="pre">simulation</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">physical_update_function</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/typing.html#typing.Callable" title="(in Python v3.14)"><span class="pre">Callable</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">exit_event</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/threading.html#threading.Event" title="(in Python v3.14)"><span class="pre">Event</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">signal_event</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/threading.html#threading.Event" title="(in Python v3.14)"><span class="pre">Event</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.traffic.controller.traffic_controller.TrafficController.simulation" title="Link to this definition"></a></dt>
+<dd><p>Run the traffic simulation continuously.</p>
+<p>Continuously updates the state of all simulation components at fixed time intervals.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>physical_update_function: Function to update the physical state of the simulation.
+exit_event: Event to signal the end of the simulation.
+signal_event: Event to signal the end of the simulation.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.traffic.controller.traffic_controller.TrafficController.spawn_objects_in_unreal_engine">
+<span class="sig-name descname"><span class="pre">spawn_objects_in_unreal_engine</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#simworld.traffic.controller.traffic_controller.TrafficController.spawn_objects_in_unreal_engine" title="Link to this definition"></a></dt>
+<dd><p>Spawn all traffic-related objects in the Unreal Engine simulation.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.traffic.controller.traffic_controller.TrafficController.spawn_pedestrians">
+<span class="sig-name descname"><span class="pre">spawn_pedestrians</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#simworld.traffic.controller.traffic_controller.TrafficController.spawn_pedestrians" title="Link to this definition"></a></dt>
+<dd><p>Spawn pedestrians in the simulation environment.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.traffic.controller.traffic_controller.TrafficController.spawn_traffic_signals">
+<span class="sig-name descname"><span class="pre">spawn_traffic_signals</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#simworld.traffic.controller.traffic_controller.TrafficController.spawn_traffic_signals" title="Link to this definition"></a></dt>
+<dd><p>Spawn traffic signals in the simulation environment.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.traffic.controller.traffic_controller.TrafficController.spawn_vehicles">
+<span class="sig-name descname"><span class="pre">spawn_vehicles</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#simworld.traffic.controller.traffic_controller.TrafficController.spawn_vehicles" title="Link to this definition"></a></dt>
+<dd><p>Spawn vehicles in the simulation environment.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.traffic.controller.traffic_controller.TrafficController.stop_simulation">
+<span class="sig-name descname"><span class="pre">stop_simulation</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#simworld.traffic.controller.traffic_controller.TrafficController.stop_simulation" title="Link to this definition"></a></dt>
+<dd><p>Stop the traffic simulation.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="simworld.traffic.controller.traffic_controller.TrafficController.traffic_signals">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">traffic_signals</span></span><a class="headerlink" href="#simworld.traffic.controller.traffic_controller.TrafficController.traffic_signals" title="Link to this definition"></a></dt>
+<dd><p>Get all traffic signals in the simulation.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>List of all traffic signal objects.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.traffic.controller.traffic_controller.TrafficController.update_states">
+<span class="sig-name descname"><span class="pre">update_states</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#simworld.traffic.controller.traffic_controller.TrafficController.update_states" title="Link to this definition"></a></dt>
+<dd><p>Update the states of all traffic components from the simulation.</p>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="simworld.traffic.controller.traffic_controller.TrafficController.vehicles">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">vehicles</span></span><a class="headerlink" href="#simworld.traffic.controller.traffic_controller.TrafficController.vehicles" title="Link to this definition"></a></dt>
+<dd><p>Get all vehicles in the simulation.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>List of all vehicle objects.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="simworld.traffic.base.html" class="btn btn-neutral float-left" title="simworld.traffic.base package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="simworld.traffic.manager.html" class="btn btn-neutral float-right" title="simworld.traffic.manager package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, SimWorld Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

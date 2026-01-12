@@ -1,0 +1,475 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>simworld.agent package &mdash; SimWorld 0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=6cecdd3b" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=2709fde1"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="simworld.assets_rp package" href="simworld.assets_rp.html" />
+    <link rel="prev" title="simworld package" href="simworld.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            SimWorld
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">GETTING STARTED</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/minimal_example.html">Minimal Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/additional_environments.html">Additional Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/make_your_own_pak.html">Make Your Own Pak Files</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">SIMWORLD COMPONENTS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../components/overview.html">Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../components/ue_detail.html">Unreal Engine Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../components/citygen.html">Procedural City Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../components/waypoint_system.html">Waypoint System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../components/traffic_system.html">Traffic System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../components/agent_system.html">Agent System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../components/unrealcv%2B.html">UnrealCV+</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">PYTHON API REFERENCE</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="modules.html">Python API</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="simworld.html">simworld package</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="simworld.html#subpackages">Subpackages</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="#">simworld.agent package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simworld.assets_rp.html">simworld.assets_rp package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simworld.citygen.html">simworld.citygen package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simworld.communicator.html">simworld.communicator package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simworld.config.html">simworld.config package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simworld.llm.html">simworld.llm package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simworld.local_planner.html">simworld.local_planner package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simworld.map.html">simworld.map package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simworld.traffic.html">simworld.traffic package</a></li>
+<li class="toctree-l4"><a class="reference internal" href="simworld.utils.html">simworld.utils package</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">SIMWORLD ROBOTICS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../simworld-robotics/simworld_robotics.html">SimWorld-Robotics</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">SimWorld</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="modules.html">Python API</a></li>
+          <li class="breadcrumb-item"><a href="simworld.html">simworld package</a></li>
+      <li class="breadcrumb-item active">simworld.agent package</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/resources/simworld.agent.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="simworld-agent-package">
+<h1>simworld.agent package<a class="headerlink" href="#simworld-agent-package" title="Link to this heading"></a></h1>
+<section id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Link to this heading"></a></h2>
+</section>
+<section id="module-simworld.agent.base_agent">
+<span id="simworld-agent-base-agent-module"></span><h2>simworld.agent.base_agent module<a class="headerlink" href="#module-simworld.agent.base_agent" title="Link to this heading"></a></h2>
+<p>Base agent class for all agents in the simulation.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="simworld.agent.base_agent.BaseAgent">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">simworld.agent.base_agent.</span></span><span class="sig-name descname"><span class="pre">BaseAgent</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">position</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="simworld.utils.html#simworld.utils.vector.Vector" title="simworld.utils.vector.Vector"><span class="pre">Vector</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">direction</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="simworld.utils.html#simworld.utils.vector.Vector" title="simworld.utils.vector.Vector"><span class="pre">Vector</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.agent.base_agent.BaseAgent" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/functions.html#object" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></a></p>
+<p>Base class for all agents in the simulation.</p>
+<dl class="py property">
+<dt class="sig sig-object py" id="simworld.agent.base_agent.BaseAgent.direction">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">direction</span></span><a class="headerlink" href="#simworld.agent.base_agent.BaseAgent.direction" title="Link to this definition"></a></dt>
+<dd><p>Get the direction of the agent.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>Vector: The direction of the agent.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="simworld.agent.base_agent.BaseAgent.position">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">position</span></span><a class="headerlink" href="#simworld.agent.base_agent.BaseAgent.position" title="Link to this definition"></a></dt>
+<dd><p>Get the position of the agent.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>Vector: The position of the agent.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="simworld.agent.base_agent.BaseAgent.yaw">
+<em class="property"><span class="k"><span class="pre">property</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">yaw</span></span><a class="headerlink" href="#simworld.agent.base_agent.BaseAgent.yaw" title="Link to this definition"></a></dt>
+<dd><p>Get the yaw of the agent.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>float: The yaw of the agent.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-simworld.agent.humanoid">
+<span id="simworld-agent-humanoid-module"></span><h2>simworld.agent.humanoid module<a class="headerlink" href="#module-simworld.agent.humanoid" title="Link to this heading"></a></h2>
+<p>Humanoid agent class.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="simworld.agent.humanoid.Humanoid">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">simworld.agent.humanoid.</span></span><span class="sig-name descname"><span class="pre">Humanoid</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">position</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="simworld.utils.html#simworld.utils.vector.Vector" title="simworld.utils.vector.Vector"><span class="pre">Vector</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">direction</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="simworld.utils.html#simworld.utils.vector.Vector" title="simworld.utils.vector.Vector"><span class="pre">Vector</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">map</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="simworld.map.html#simworld.map.map.Map" title="simworld.map.map.Map"><span class="pre">Map</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">communicator</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="simworld.communicator.html#simworld.communicator.communicator.Communicator" title="simworld.communicator.communicator.Communicator"><span class="pre">Communicator</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="simworld.config.html#simworld.config.config_loader.Config" title="simworld.config.config_loader.Config"><span class="pre">Config</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.agent.humanoid.Humanoid" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#simworld.agent.base_agent.BaseAgent" title="simworld.agent.base_agent.BaseAgent"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseAgent</span></code></a></p>
+<p>Humanoid agent class.</p>
+</dd></dl>
+
+</section>
+<section id="module-simworld.agent.pedestrian">
+<span id="simworld-agent-pedestrian-module"></span><h2>simworld.agent.pedestrian module<a class="headerlink" href="#module-simworld.agent.pedestrian" title="Link to this heading"></a></h2>
+<p>Pedestrian agent module for simulating pedestrians in traffic.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="simworld.agent.pedestrian.Pedestrian">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">simworld.agent.pedestrian.</span></span><span class="sig-name descname"><span class="pre">Pedestrian</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">position</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="simworld.utils.html#simworld.utils.vector.Vector" title="simworld.utils.vector.Vector"><span class="pre">Vector</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">direction</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="simworld.utils.html#simworld.utils.vector.Vector" title="simworld.utils.vector.Vector"><span class="pre">Vector</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">current_sidewalk</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="simworld.traffic.base.html#simworld.traffic.base.sidewalk.Sidewalk" title="simworld.traffic.base.sidewalk.Sidewalk"><span class="pre">Sidewalk</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">speed</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">100</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.agent.pedestrian.Pedestrian" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#simworld.agent.base_agent.BaseAgent" title="simworld.agent.base_agent.BaseAgent"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseAgent</span></code></a></p>
+<p>Pedestrian agent for traffic simulation.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.agent.pedestrian.Pedestrian.add_waypoint">
+<span class="sig-name descname"><span class="pre">add_waypoint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">waypoints</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="simworld.utils.html#simworld.utils.vector.Vector" title="simworld.utils.vector.Vector"><span class="pre">Vector</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.agent.pedestrian.Pedestrian.add_waypoint" title="Link to this definition"></a></dt>
+<dd><p>Add waypoints to the pedestrian’s path.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>waypoints: List of waypoint vectors to add.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.agent.pedestrian.Pedestrian.change_to_next_sidewalk">
+<span class="sig-name descname"><span class="pre">change_to_next_sidewalk</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">next_sidewalk</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.agent.pedestrian.Pedestrian.change_to_next_sidewalk" title="Link to this definition"></a></dt>
+<dd><p>Change the pedestrian’s current sidewalk to the next sidewalk.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>next_sidewalk: The sidewalk to change to.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.agent.pedestrian.Pedestrian.complete_turn">
+<span class="sig-name descname"><span class="pre">complete_turn</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#simworld.agent.pedestrian.Pedestrian.complete_turn" title="Link to this definition"></a></dt>
+<dd><p>Check if the pedestrian has completed turning around.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>bool: True if the turn is completed.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.agent.pedestrian.Pedestrian.compute_control">
+<span class="sig-name descname"><span class="pre">compute_control</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">waypoint</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="simworld.utils.html#simworld.utils.vector.Vector" title="simworld.utils.vector.Vector"><span class="pre">Vector</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.agent.pedestrian.Pedestrian.compute_control" title="Link to this definition"></a></dt>
+<dd><p>Compute control values for pedestrian movement.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>waypoint: Target waypoint to move towards.</p>
+</dd>
+<dt>Returns:</dt><dd><p>tuple: Angle to turn and direction to turn (‘left’, ‘right’, or None).</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.agent.pedestrian.Pedestrian.is_close_to_end">
+<span class="sig-name descname"><span class="pre">is_close_to_end</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">waypoint_distance_threshold</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.agent.pedestrian.Pedestrian.is_close_to_end" title="Link to this definition"></a></dt>
+<dd><p>Check if the pedestrian is close to the end of the sidewalk.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>waypoint_distance_threshold: Distance threshold to consider close to waypoint.</p>
+</dd>
+<dt>Returns:</dt><dd><p>bool: True if pedestrian is close to end of the sidewalk.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.agent.pedestrian.Pedestrian.pop_waypoint">
+<span class="sig-name descname"><span class="pre">pop_waypoint</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#simworld.agent.pedestrian.Pedestrian.pop_waypoint" title="Link to this definition"></a></dt>
+<dd><p>Remove and return the first waypoint.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>Vector: The first waypoint.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.agent.pedestrian.Pedestrian.reset_id_counter">
+<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">reset_id_counter</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#simworld.agent.pedestrian.Pedestrian.reset_id_counter" title="Link to this definition"></a></dt>
+<dd><p>Reset the pedestrian ID counter to zero.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="simworld.agent.pedestrian.PedestrianState">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">simworld.agent.pedestrian.</span></span><span class="sig-name descname"><span class="pre">PedestrianState</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">values</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.agent.pedestrian.PedestrianState" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/enum.html#enum.Enum" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></a></p>
+<p>Enumeration of possible pedestrian states.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="simworld.agent.pedestrian.PedestrianState.MOVE_FORWARD">
+<span class="sig-name descname"><span class="pre">MOVE_FORWARD</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></em><a class="headerlink" href="#simworld.agent.pedestrian.PedestrianState.MOVE_FORWARD" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="simworld.agent.pedestrian.PedestrianState.STOP">
+<span class="sig-name descname"><span class="pre">STOP</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#simworld.agent.pedestrian.PedestrianState.STOP" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="simworld.agent.pedestrian.PedestrianState.TURN_AROUND">
+<span class="sig-name descname"><span class="pre">TURN_AROUND</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">3</span></em><a class="headerlink" href="#simworld.agent.pedestrian.PedestrianState.TURN_AROUND" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-simworld.agent.scooter">
+<span id="simworld-agent-scooter-module"></span><h2>simworld.agent.scooter module<a class="headerlink" href="#module-simworld.agent.scooter" title="Link to this heading"></a></h2>
+<p>Scooter agent module.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="simworld.agent.scooter.Scooter">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">simworld.agent.scooter.</span></span><span class="sig-name descname"><span class="pre">Scooter</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">position</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="simworld.utils.html#simworld.utils.vector.Vector" title="simworld.utils.vector.Vector"><span class="pre">Vector</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">direction</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="simworld.utils.html#simworld.utils.vector.Vector" title="simworld.utils.vector.Vector"><span class="pre">Vector</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.agent.scooter.Scooter" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#simworld.agent.base_agent.BaseAgent" title="simworld.agent.base_agent.BaseAgent"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseAgent</span></code></a></p>
+<p>Scooter agent for traffic simulation.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.agent.scooter.Scooter.get_attributes">
+<span class="sig-name descname"><span class="pre">get_attributes</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#simworld.agent.scooter.Scooter.get_attributes" title="Link to this definition"></a></dt>
+<dd><p>Get the attributes of the scooter.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.agent.scooter.Scooter.set_attributes">
+<span class="sig-name descname"><span class="pre">set_attributes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">throttle</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">brake</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">steering</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.agent.scooter.Scooter.set_attributes" title="Link to this definition"></a></dt>
+<dd><p>Set the attributes of the scooter.</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+<section id="module-simworld.agent.vehicle">
+<span id="simworld-agent-vehicle-module"></span><h2>simworld.agent.vehicle module<a class="headerlink" href="#module-simworld.agent.vehicle" title="Link to this heading"></a></h2>
+<p>Vehicle agent module for simulating vehicles in traffic.</p>
+<dl class="py class">
+<dt class="sig sig-object py" id="simworld.agent.vehicle.Vehicle">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">simworld.agent.vehicle.</span></span><span class="sig-name descname"><span class="pre">Vehicle</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">position</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="simworld.utils.html#simworld.utils.vector.Vector" title="simworld.utils.vector.Vector"><span class="pre">Vector</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">direction</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference internal" href="simworld.utils.html#simworld.utils.vector.Vector" title="simworld.utils.vector.Vector"><span class="pre">Vector</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">current_lane</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">vehicle_reference</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#str" title="(in Python v3.14)"><span class="pre">str</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">config</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">length</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">500</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span><span class="w"> </span><span class="o"><span class="pre">=</span></span><span class="w"> </span><span class="default_value"><span class="pre">200</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.agent.vehicle.Vehicle" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference internal" href="#simworld.agent.base_agent.BaseAgent" title="simworld.agent.base_agent.BaseAgent"><code class="xref py py-class docutils literal notranslate"><span class="pre">BaseAgent</span></code></a></p>
+<p>Vehicle agent for traffic simulation.</p>
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.agent.vehicle.Vehicle.add_waypoint">
+<span class="sig-name descname"><span class="pre">add_waypoint</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">waypoint</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/stdtypes.html#list" title="(in Python v3.14)"><span class="pre">list</span></a><span class="p"><span class="pre">[</span></span><a class="reference internal" href="simworld.utils.html#simworld.utils.vector.Vector" title="simworld.utils.vector.Vector"><span class="pre">Vector</span></a><span class="p"><span class="pre">]</span></span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.agent.vehicle.Vehicle.add_waypoint" title="Link to this definition"></a></dt>
+<dd><p>Add waypoints to the vehicle’s path.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>waypoint: List of waypoint vectors to add.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.agent.vehicle.Vehicle.change_to_next_lane">
+<span class="sig-name descname"><span class="pre">change_to_next_lane</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">next_lane</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.agent.vehicle.Vehicle.change_to_next_lane" title="Link to this definition"></a></dt>
+<dd><p>Change the vehicle’s current lane to the next lane.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>next_lane: The lane to change to.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.agent.vehicle.Vehicle.completed_u_turn">
+<span class="sig-name descname"><span class="pre">completed_u_turn</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#simworld.agent.vehicle.Vehicle.completed_u_turn" title="Link to this definition"></a></dt>
+<dd><p>Check if the vehicle has completed a U-turn.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>bool: True if the U-turn is completed.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.agent.vehicle.Vehicle.compute_control">
+<span class="sig-name descname"><span class="pre">compute_control</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">waypoint</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">dt</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.agent.vehicle.Vehicle.compute_control" title="Link to this definition"></a></dt>
+<dd><p>Compute throttle, brake, steering.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>waypoint: Target waypoint to calculate control values.
+dt: Time delta for PID controller.</p>
+</dd>
+<dt>Returns:</dt><dd><p>tuple: Throttle, brake, steering values, and a boolean indicating control change.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.agent.vehicle.Vehicle.get_attributes">
+<span class="sig-name descname"><span class="pre">get_attributes</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#simworld.agent.vehicle.Vehicle.get_attributes" title="Link to this definition"></a></dt>
+<dd><p>Get the vehicle’s current control attributes.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>tuple: Current throttle, brake, and steering values.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.agent.vehicle.Vehicle.is_close_to_end">
+<span class="sig-name descname"><span class="pre">is_close_to_end</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#simworld.agent.vehicle.Vehicle.is_close_to_end" title="Link to this definition"></a></dt>
+<dd><p>Check if the vehicle is close to the end of the current lane.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>bool: True if vehicle is close to the end of the lane.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.agent.vehicle.Vehicle.is_close_to_object">
+<span class="sig-name descname"><span class="pre">is_close_to_object</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">vehicles</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">pedestrians</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.agent.vehicle.Vehicle.is_close_to_object" title="Link to this definition"></a></dt>
+<dd><p>Detect objects in the vehicle’s path.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>vehicles: List of vehicles to check for proximity.
+pedestrians: List of pedestrians to check for proximity.</p>
+</dd>
+<dt>Returns:</dt><dd><p>bool: True if the vehicle is close to any object.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.agent.vehicle.Vehicle.pop_waypoint">
+<span class="sig-name descname"><span class="pre">pop_waypoint</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#simworld.agent.vehicle.Vehicle.pop_waypoint" title="Link to this definition"></a></dt>
+<dd><p>Remove and return the first waypoint.</p>
+<dl class="simple">
+<dt>Returns:</dt><dd><p>Vector: The first waypoint.</p>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.agent.vehicle.Vehicle.reset_id_counter">
+<em class="property"><span class="k"><span class="pre">classmethod</span></span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">reset_id_counter</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#simworld.agent.vehicle.Vehicle.reset_id_counter" title="Link to this definition"></a></dt>
+<dd><p>Reset the vehicle ID counter to zero.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="simworld.agent.vehicle.Vehicle.set_attributes">
+<span class="sig-name descname"><span class="pre">set_attributes</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">throttle</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">brake</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></em>, <em class="sig-param"><span class="n"><span class="pre">steering</span></span><span class="p"><span class="pre">:</span></span><span class="w"> </span><span class="n"><a class="reference external" href="https://docs.python.org/3/library/functions.html#float" title="(in Python v3.14)"><span class="pre">float</span></a></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.agent.vehicle.Vehicle.set_attributes" title="Link to this definition"></a></dt>
+<dd><p>Set the vehicle’s control attributes.</p>
+<dl class="simple">
+<dt>Args:</dt><dd><p>throttle: Throttle value.
+brake: Brake value.
+steering: Steering value.</p>
+</dd>
+</dl>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="simworld.agent.vehicle.VehicleState">
+<em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">simworld.agent.vehicle.</span></span><span class="sig-name descname"><span class="pre">VehicleState</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="o"><span class="pre">*</span></span><span class="n"><span class="pre">values</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#simworld.agent.vehicle.VehicleState" title="Link to this definition"></a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/3/library/enum.html#enum.Enum" title="(in Python v3.14)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Enum</span></code></a></p>
+<p>Enumeration of possible vehicle states.</p>
+<dl class="py attribute">
+<dt class="sig sig-object py" id="simworld.agent.vehicle.VehicleState.MAKING_U_TURN">
+<span class="sig-name descname"><span class="pre">MAKING_U_TURN</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">2</span></em><a class="headerlink" href="#simworld.agent.vehicle.VehicleState.MAKING_U_TURN" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="simworld.agent.vehicle.VehicleState.MOVING">
+<span class="sig-name descname"><span class="pre">MOVING</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">3</span></em><a class="headerlink" href="#simworld.agent.vehicle.VehicleState.MOVING" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="simworld.agent.vehicle.VehicleState.STOPPED">
+<span class="sig-name descname"><span class="pre">STOPPED</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">4</span></em><a class="headerlink" href="#simworld.agent.vehicle.VehicleState.STOPPED" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+<dl class="py attribute">
+<dt class="sig sig-object py" id="simworld.agent.vehicle.VehicleState.WAITING">
+<span class="sig-name descname"><span class="pre">WAITING</span></span><em class="property"><span class="w"> </span><span class="p"><span class="pre">=</span></span><span class="w"> </span><span class="pre">1</span></em><a class="headerlink" href="#simworld.agent.vehicle.VehicleState.WAITING" title="Link to this definition"></a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="simworld.html" class="btn btn-neutral float-left" title="simworld package" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="simworld.assets_rp.html" class="btn btn-neutral float-right" title="simworld.assets_rp package" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, SimWorld Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

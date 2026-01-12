@@ -1,0 +1,411 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Unreal Engine Backend &mdash; SimWorld 0.1 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=6cecdd3b" />
+
+  
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=2709fde1"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Procedural City Generation" href="citygen.html" />
+    <link rel="prev" title="Overview" href="overview.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            SimWorld
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">GETTING STARTED</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/introduction.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/installation.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/minimal_example.html">Minimal Example</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/additional_environments.html">Additional Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/make_your_own_pak.html">Make Your Own Pak Files</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">SIMWORLD COMPONENTS</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="overview.html">Overview</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Unreal Engine Backend</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#various-scenes">Various Scenes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#assets">Assets</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#collected-assets">Collected Assets</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#asset-generation-pipeline">Asset Generation Pipeline</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#actions">Actions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sensors">Sensors</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#how-to-get-images">How to get images</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#synchronous-and-asynchronous-mode">Synchronous and Asynchronous mode</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="citygen.html">Procedural City Generation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="waypoint_system.html">Waypoint System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="traffic_system.html">Traffic System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="agent_system.html">Agent System</a></li>
+<li class="toctree-l1"><a class="reference internal" href="unrealcv%2B.html">UnrealCV+</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">PYTHON API REFERENCE</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../resources/modules.html">Python API</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">SIMWORLD ROBOTICS</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../simworld-robotics/simworld_robotics.html">SimWorld-Robotics</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">SimWorld</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Unreal Engine Backend</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/components/ue_detail.md.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="unreal-engine-backend">
+<h1>Unreal Engine Backend<a class="headerlink" href="#unreal-engine-backend" title="Link to this heading"></a></h1>
+<p>The Unreal Engine backend forms the foundation of SimWorld, providing high-fidelity rendering and physics simulation.</p>
+<section id="various-scenes">
+<h2>Various Scenes<a class="headerlink" href="#various-scenes" title="Link to this heading"></a></h2>
+<a class="reference internal image-reference" href="../_images/scenes.png"><img alt="A Subset of Collected Scenes" class="align-center" src="../_images/scenes.png" style="width: 800px;" />
+</a>
+<p>SimWorld supports two scene-building modes: procedural generation and pre-built scenes.</p>
+<p>The procedural generation module enables the creation of virtually unlimited city layouts populated with diverse buildings, roads, and street elements. This allows users to dynamically render coherent and realistic urban environments at runtime, making it ideal for large-scale experimentation under customizable conditions. (See <a class="reference internal" href="citygen.html"><span class="std std-doc">Procedual City Generation</span></a> for details.)</p>
+<p>In addition to procedurally generated cities, SimWorld also provides a rich collection of pre-built maps (See <a class="reference internal" href="../getting_started/additional_environments.html"><span class="std std-doc">Additional Environments</span></a>). These manually designed scenes can be created by users or imported from external sources such as the Unreal Engine Marketplace. The current release includes 102 curated scenes spanning a wide range of visual and structural styles—such as ancient towns, natural landscapes, futuristic cities, and fictional worlds. Each map offers distinct visual cues, spatial layouts, and interaction dynamics, enabling diverse and comprehensive evaluation of embodied agents.</p>
+</section>
+<section id="assets">
+<h2>Assets<a class="headerlink" href="#assets" title="Link to this heading"></a></h2>
+<p>Our simulator provides a rich collection of city-scale assets, designed to support realistic and diverse urban simulations. These assets include buildings, trees, street furniture, vehicles, pedestrians, and robots. All assets are sourced from the Unreal Engine Marketplace to ensure high visual fidelity and performance.</p>
+<p>In addition to the curated asset library, we also offer an <strong>Asset Generation Pipeline</strong> that enables users to create <code class="docutils literal notranslate"><span class="pre">.uasset</span></code> files directly from natural language descriptions. This tool streamlines the content creation process by converting user prompts into usable Unreal Engine assets, significantly lowering the barrier for customizing city environments.</p>
+<section id="collected-assets">
+<h3>Collected Assets<a class="headerlink" href="#collected-assets" title="Link to this heading"></a></h3>
+<p>Below is a selection of the assets currently available in our simulator:</p>
+<ul class="simple">
+<li><p><strong>Buildings</strong>: A variety of architectural styles, including residential, commercial, and industrial structures.</p></li>
+<li><p><strong>Trees</strong>: Multiple tree species with seasonal variations to enhance environmental realism.</p></li>
+<li><p><strong>Street Furniture</strong>: Items such as benches, streetlights, boxes, and trash bins to add detail and immersion.</p></li>
+<li><p><strong>Vehicles</strong>: A range of vehicles including cars, buses, trucks, and scooters, each with accurate scale and animations.</p></li>
+<li><p><strong>Pedestrians</strong>: Human characters with diverse appearances and animations to simulate crowd behavior.</p></li>
+<li><p><strong>Robots</strong>: The detailed introduction of the robot can be found in <a class="reference internal" href="../simworld-robotics/simworld_robotics.html"><span class="std std-doc">SimWorld-Robotics</span></a>.</p></li>
+</ul>
+<p>These assets collectively enable the creation of complex, dynamic, and realistic city scenes for simulation, visualization, and research purposes.</p>
+<a class="reference internal image-reference" href="../_images/assets.png"><img alt="A Subset of Collected Assets" class="align-center" src="../_images/assets.png" style="width: 800px;" />
+</a>
+</section>
+<section id="asset-generation-pipeline">
+<h3>Asset Generation Pipeline<a class="headerlink" href="#asset-generation-pipeline" title="Link to this heading"></a></h3>
+<p>Our <strong>Asset Generation Pipeline</strong> enables the automatic generation of 3D assets from natural language descriptions. This tool is currently designed for developers and is intended to be used within the Unreal Engine Editor. By translating descriptive text into <code class="docutils literal notranslate"><span class="pre">.uasset</span></code> files, this pipeline significantly accelerates asset creation, making it easier to populate large-scale environments with customized elements.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><strong>Asset Generation Pipeline</strong> can only be used in editor mode.</p>
+</div>
+</section>
+</section>
+<section id="actions">
+<h2>Actions<a class="headerlink" href="#actions" title="Link to this heading"></a></h2>
+<p>To enhance realism and interactivity in the simulation, we provide a comprehensive set of <strong>Action Space</strong>, with a strong focus on animations for pedestrians. These actions are essential for simulating lifelike behaviors such as walking, running, waving, interacting with objects, and more. All actions are sourced from the Unreal Engine Marketplace to ensure quality and compatibility.</p>
+<p>Here are some examples of actions available in the simulator:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Action</p></th>
+<th class="head"><p>Agent Type</p></th>
+<th class="head"><p>Category</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Move Forward</p></td>
+<td><p>Humanoid</p></td>
+<td><p>Navigation</p></td>
+<td><p>Keep moving in the current direction</p></td>
+</tr>
+<tr class="row-odd"><td><p>Step Forward/Backward</p></td>
+<td><p>Humanoid</p></td>
+<td><p>Navigation</p></td>
+<td><p>Step forward/backward for a fixed time</p></td>
+</tr>
+<tr class="row-even"><td><p>Rotate</p></td>
+<td><p>Humanoid</p></td>
+<td><p>Navigation</p></td>
+<td><p>Turn the body to face a new direction</p></td>
+</tr>
+<tr class="row-odd"><td><p>Stop</p></td>
+<td><p>Humanoid</p></td>
+<td><p>Navigation</p></td>
+<td><p>Stop moving</p></td>
+</tr>
+<tr class="row-even"><td><p>Look Up/Down</p></td>
+<td><p>Humanoid</p></td>
+<td><p>Observation</p></td>
+<td><p>Adjust the gaze upward/downward by a degree</p></td>
+</tr>
+<tr class="row-odd"><td><p>Focus</p></td>
+<td><p>Humanoid</p></td>
+<td><p>Observation</p></td>
+<td><p>Adjust the field of view</p></td>
+</tr>
+<tr class="row-even"><td><p>Pick Up</p></td>
+<td><p>Humanoid</p></td>
+<td><p>Object Interaction</p></td>
+<td><p>Grasp and lift an object</p></td>
+</tr>
+<tr class="row-odd"><td><p>Drop Off</p></td>
+<td><p>Humanoid</p></td>
+<td><p>Object Interaction</p></td>
+<td><p>Release a held object at the target location</p></td>
+</tr>
+<tr class="row-even"><td><p>Set Throttle/Brack/Steering</p></td>
+<td><p>Vehicle</p></td>
+<td><p>Driving</p></td>
+<td><p>Control a vehicle</p></td>
+</tr>
+<tr class="row-odd"><td><p>Sit Down</p></td>
+<td><p>Humanoid</p></td>
+<td><p>Object Interaction</p></td>
+<td><p>Transition to a seated position</p></td>
+</tr>
+<tr class="row-even"><td><p>Stand Up</p></td>
+<td><p>Humanoid</p></td>
+<td><p>Object Interaction</p></td>
+<td><p>Rise from a seated position</p></td>
+</tr>
+<tr class="row-odd"><td><p>Enter Car</p></td>
+<td><p>Humanoid</p></td>
+<td><p>Object Interaction</p></td>
+<td><p>Get into a vehicle</p></td>
+</tr>
+<tr class="row-even"><td><p>Exit Car</p></td>
+<td><p>Humanoid</p></td>
+<td><p>Object Interaction</p></td>
+<td><p>Leave a vehicle</p></td>
+</tr>
+<tr class="row-odd"><td><p>Get On Scooter</p></td>
+<td><p>Humanoid</p></td>
+<td><p>Object Interaction</p></td>
+<td><p>Get on a scooter</p></td>
+</tr>
+<tr class="row-even"><td><p>Get Off Scooter</p></td>
+<td><p>Humanoid</p></td>
+<td><p>Object Interaction</p></td>
+<td><p>Get off a scooter</p></td>
+</tr>
+<tr class="row-odd"><td><p>Have Conversation</p></td>
+<td><p>Humanoid</p></td>
+<td><p>Social Action</p></td>
+<td><p>Exchange verbal communication</p></td>
+</tr>
+<tr class="row-even"><td><p>Point Direction</p></td>
+<td><p>Humanoid</p></td>
+<td><p>Social Action</p></td>
+<td><p>Gesture to indicate direction</p></td>
+</tr>
+<tr class="row-odd"><td><p>Wave Hand</p></td>
+<td><p>Humanoid</p></td>
+<td><p>Social Action</p></td>
+<td><p>Signal or greet with a hand wave</p></td>
+</tr>
+<tr class="row-even"><td><p>Discuss</p></td>
+<td><p>Humanoid</p></td>
+<td><p>Social Action</p></td>
+<td><p>Engage in dialogue or explanation</p></td>
+</tr>
+<tr class="row-odd"><td><p>Argue with Body Language</p></td>
+<td><p>Humanoid</p></td>
+<td><p>Social Action</p></td>
+<td><p>Express disagreement using gestures</p></td>
+</tr>
+</tbody>
+</table>
+<p>Demo for human action space:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Initialize a humanoid agent with position (0, 0) and facing direction (1, 0)</span>
+<span class="n">humanoid</span> <span class="o">=</span> <span class="n">Humanoid</span><span class="p">(</span><span class="n">Vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">Vector</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+<span class="n">humanoid_name</span> <span class="o">=</span> <span class="s1">&#39;GEN_BP_Humanoid_0&#39;</span>
+
+<span class="c1"># Spawn the humanoid in the simulator using the specified model path</span>
+<span class="n">communicator</span><span class="o">.</span><span class="n">spawn_agent</span><span class="p">(</span><span class="n">humanoid</span><span class="p">,</span> <span class="n">humanoid_model_path</span><span class="p">)</span>
+
+<span class="c1"># Make the humanoid sit down</span>
+<span class="n">ucv</span><span class="o">.</span><span class="n">humanoid_sit_down</span><span class="p">(</span><span class="n">humanoid_name</span><span class="p">)</span>
+
+<span class="c1"># Make the humanoid stand up</span>
+<span class="n">ucv</span><span class="o">.</span><span class="n">humanoid_stand_up</span><span class="p">(</span><span class="n">humanoid_name</span><span class="p">)</span>
+
+<span class="c1"># Play an &quot;argue&quot; animation (the number may represent the type or intensity)</span>
+<span class="n">ucv</span><span class="o">.</span><span class="n">humanoid_argue</span><span class="p">(</span><span class="n">humanoid_name</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># Play a &quot;discuss&quot; animation</span>
+<span class="n">ucv</span><span class="o">.</span><span class="n">humanoid_discuss</span><span class="p">(</span><span class="n">humanoid_name</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># Play a &quot;listening&quot; animation</span>
+<span class="n">ucv</span><span class="o">.</span><span class="n">humanoid_listen</span><span class="p">(</span><span class="n">humanoid_name</span><span class="p">)</span>
+
+<span class="c1"># Make the humanoid point or gesture along a path</span>
+<span class="n">ucv</span><span class="o">.</span><span class="n">humanoid_directing_path</span><span class="p">(</span><span class="n">humanoid_name</span><span class="p">)</span>
+
+<span class="c1"># Play a waving gesture directed toward a dog</span>
+<span class="n">ucv</span><span class="o">.</span><span class="n">humanoid_wave_to_dog</span><span class="p">(</span><span class="n">humanoid_name</span><span class="p">)</span>
+
+<span class="c1"># Make the humanoid pick up an object (e.g., a mug)</span>
+<span class="n">ucv</span><span class="o">.</span><span class="n">humanoid_pick_up_object</span><span class="p">(</span><span class="n">humanoid_name</span><span class="p">,</span> <span class="s2">&quot;BP_Mug_C_1&quot;</span><span class="p">)</span>
+
+<span class="c1"># Drop the currently held object</span>
+<span class="n">ucv</span><span class="o">.</span><span class="n">humanoid_drop_object</span><span class="p">(</span><span class="n">humanoid_name</span><span class="p">)</span>
+
+<span class="c1"># Command the humanoid to enter a specific vehicle</span>
+<span class="n">ucv</span><span class="o">.</span><span class="n">humanoid_enter_vehicle</span><span class="p">(</span><span class="n">humanoid_name</span><span class="p">,</span> <span class="s2">&quot;BP_VehicleBase_Destruction_C_1&quot;</span><span class="p">)</span>
+
+<span class="c1"># Command the humanoid to exit that vehicle</span>
+<span class="n">ucv</span><span class="o">.</span><span class="n">humanoid_exit_vehicle</span><span class="p">(</span><span class="n">humanoid_name</span><span class="p">,</span> <span class="s2">&quot;BP_VehicleBase_Destruction_C_1&quot;</span><span class="p">)</span>
+
+<span class="c1"># Create a scooter object at position (100, 0) facing direction (0, 1)</span>
+<span class="n">scooter</span> <span class="o">=</span> <span class="n">Scooter</span><span class="p">(</span><span class="n">Vector</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">Vector</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+
+<span class="c1"># Spawn the scooter into the simulation</span>
+<span class="n">communicator</span><span class="o">.</span><span class="n">spawn_scooter</span><span class="p">(</span><span class="n">scooter</span><span class="p">,</span> <span class="n">scooter_path</span><span class="p">)</span>
+
+<span class="c1"># Make the humanoid get on the scooter</span>
+<span class="n">communicator</span><span class="o">.</span><span class="n">humanoid_get_on_scooter</span><span class="p">(</span><span class="n">agent</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+
+<span class="c1"># Set scooter attributes: speed = 0.5, direction = 0, angular velocity = 0</span>
+<span class="n">communicator</span><span class="o">.</span><span class="n">set_scooter_attributes</span><span class="p">(</span><span class="n">agent</span><span class="o">.</span><span class="n">scooter_id</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># Make the humanoid get off the scooter</span>
+<span class="n">communicator</span><span class="o">.</span><span class="n">humanoid_get_off_scooter</span><span class="p">(</span><span class="n">agent</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="n">scooter</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+
+<span class="c1"># Make the humanoid step forward for 2 seconds</span>
+<span class="n">communicator</span><span class="o">.</span><span class="n">humanoid_step_forward</span><span class="p">(</span><span class="n">agent</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="c1"># Rotate the humanoid 90 degrees to the left</span>
+<span class="n">communicator</span><span class="o">.</span><span class="n">humanoid_rotate</span><span class="p">(</span><span class="n">agent</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="s1">&#39;left&#39;</span><span class="p">)</span>
+
+<span class="c1"># Start continuous forward movement</span>
+<span class="n">communicator</span><span class="o">.</span><span class="n">humanoid_move_forward</span><span class="p">(</span><span class="n">agent</span><span class="o">.</span><span class="n">id</span><span class="p">)</span>
+
+<span class="c1"># Stop movement, optionally play a stop animation for 2 seconds</span>
+<span class="n">communicator</span><span class="o">.</span><span class="n">humanoid_stop</span><span class="p">(</span><span class="n">agent</span><span class="o">.</span><span class="n">id</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+
+</pre></div>
+</div>
+<p><strong>Related files:</strong> <code class="docutils literal notranslate"><span class="pre">communicator.py</span></code>, <code class="docutils literal notranslate"><span class="pre">unrealcv.py</span></code>.</p>
+<p>A complete example can be found in <code class="docutils literal notranslate"><span class="pre">scripts/ue_command_test.ipynb</span></code>.</p>
+</section>
+<section id="sensors">
+<h2>Sensors<a class="headerlink" href="#sensors" title="Link to this heading"></a></h2>
+<a class="reference internal image-reference" href="../_images/sensor.png"><img alt="Different Sensor" class="align-center" src="../_images/sensor.png" style="width: 800px;" />
+</a>
+<p>As illustrated in the figure above, SimWorld supports a variety of sensors, including RGB images, segmentation maps, and depth images, enabling a rich understanding of the surrounding environment.</p>
+<section id="how-to-get-images">
+<h3>How to get images<a class="headerlink" href="#how-to-get-images" title="Link to this heading"></a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># viewmode can be &#39;lit&#39;, &#39;depth&#39; and &#39;object_mask&#39;</span>
+<span class="n">image</span> <span class="o">=</span> <span class="n">communicator</span><span class="o">.</span><span class="n">get_camera_observation</span><span class="p">(</span><span class="n">camera_id</span><span class="p">,</span> <span class="n">viewmode</span><span class="p">)</span>
+
+<span class="c1"># adjust camera</span>
+<span class="n">ucv</span><span class="o">.</span><span class="n">get_cameras</span><span class="p">()</span>
+<span class="n">ucv</span><span class="o">.</span><span class="n">get_camera_location</span><span class="p">(</span><span class="n">camera_id</span><span class="p">)</span>
+<span class="n">ucv</span><span class="o">.</span><span class="n">get_camera_rotation</span><span class="p">(</span><span class="n">camera_id</span><span class="p">)</span>
+<span class="n">ucv</span><span class="o">.</span><span class="n">get_camera_fov</span><span class="p">(</span><span class="n">camera_id</span><span class="p">)</span>
+<span class="n">ucv</span><span class="o">.</span><span class="n">get_camera_resolution</span><span class="p">(</span><span class="n">camera_id</span><span class="p">)</span>
+<span class="n">ucv</span><span class="o">.</span><span class="n">set_camera_location</span><span class="p">(</span><span class="n">camera_id</span><span class="p">)</span>
+<span class="n">ucv</span><span class="o">.</span><span class="n">set_camera_rotation</span><span class="p">(</span><span class="n">camera_id</span><span class="p">)</span>
+<span class="n">ucv</span><span class="o">.</span><span class="n">set_camera_fov</span><span class="p">(</span><span class="n">camera_id</span><span class="p">)</span>
+<span class="n">ucv</span><span class="o">.</span><span class="n">set_camera_resolution</span><span class="p">(</span><span class="n">camera_id</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>Related files:</strong> <code class="docutils literal notranslate"><span class="pre">communicator.py</span></code>, <code class="docutils literal notranslate"><span class="pre">unrealcv.py</span></code>.</p>
+</section>
+</section>
+<section id="synchronous-and-asynchronous-mode">
+<h2>Synchronous and Asynchronous mode<a class="headerlink" href="#synchronous-and-asynchronous-mode" title="Link to this heading"></a></h2>
+<p>Our simulator supports both synchronous and asynchronous execution modes for communication between the Python client and the Unreal Engine (UE) server.</p>
+<p>In synchronous mode, the Python client explicitly controls the simulation timing. At each step, it sends a tick command to the UE server and waits until the server completes the simulation update. This mode ensures deterministic behavior, which is especially important for reinforcement learning, multi-agent coordination, and evaluation tasks.</p>
+<p>In asynchronous mode, the UE server runs continuously at its own frame rate, while the Python client retrieves data at any time. This allows for real-time interaction but can lead to non-determinism and race conditions in agent-environment interaction.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Set simulation mode: choose between &quot;sync&quot; (synchronous) and &quot;async&quot; (asynchronous)</span>
+<span class="n">mode</span> <span class="o">=</span> <span class="s2">&quot;sync&quot;</span>
+<span class="n">tick_interval</span> <span class="o">=</span> <span class="mf">0.05</span>  <span class="c1"># Duration of each simulation step in seconds (only used in sync mode)</span>
+<span class="n">ucv</span><span class="o">.</span><span class="n">set_mode</span><span class="p">(</span><span class="n">mode</span><span class="p">,</span> <span class="n">tick_interval</span><span class="p">)</span>
+
+<span class="c1"># Advance the simulation by one tick (tick_interval seconds)</span>
+<span class="n">ucv</span><span class="o">.</span><span class="n">tick</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="overview.html" class="btn btn-neutral float-left" title="Overview" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="citygen.html" class="btn btn-neutral float-right" title="Procedural City Generation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2025, SimWorld Team.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
