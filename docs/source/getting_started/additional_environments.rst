@@ -9,7 +9,7 @@ Download and Installation
 Download
 ~~~~~~~~
 
-To use the additional environments, download the environments paks as needed from this huggingface `link <https://huggingface.co/SimWorld-AI/SimWorld/tree/main>`_.
+To use the additional environments, download the environments paks as needed from this huggingface `link <https://huggingface.co/datasets/SimWorld-AI/SimWorld/tree/main/AdditionEnvironmentPaks>`_.
 
 .. important::
 

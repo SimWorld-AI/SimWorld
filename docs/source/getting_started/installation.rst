@@ -55,7 +55,7 @@ The SimWorld Python Client Library contains code for SimWorld's agent and enviro
 Unreal Engine Backend
 ~~~~~~~~~~~~~~~~~~~~~
 
-Download the SimWorld Unreal Engine backend executable from huggingface. Choose the version according to your OS and the edition you want to use. The usage of the Additional Environments version can be found on the :doc:`additional_environments` page.
+Download the SimWorld Unreal Engine backend executable from huggingface. Choose the version according to your OS and the edition you want to use. 
 
 .. list-table::
    :header-rows: 1
@@ -69,14 +69,15 @@ Download the SimWorld Unreal Engine backend executable from huggingface. Choose 
    * - Windows
      - Base
      - Empty map for procedural generation
-     - `Download for Windows <https://huggingface.co/SimWorld-AI/SimWorld/resolve/main/Windows.zip>`_
+     - `Download for Windows <https://huggingface.co/datasets/SimWorld-AI/SimWorld/resolve/main/Base/Windows.zip>`_
      - Full agent features; smaller download.
    * - Linux
      - Base
      - Empty map for procedural generation
-     - `Download for Linux <https://huggingface.co/SimWorld-AI/SimWorld/resolve/main/Linux.zip>`_
+     - `Download for Linux <https://huggingface.co/datasets/SimWorld-AI/SimWorld/resolve/main/Base/Linux.zip>`_
      - Full agent features; smaller download.
 
+You can also download the Additional Environments Paks from this huggingface `link <https://huggingface.co/datasets/SimWorld-AI/SimWorld/tree/main/AdditionEnvironmentPaks>`_. The usage of the Additional Environments Paks can be found on the :doc:`additional_environments` page.
 
 .. note::
 

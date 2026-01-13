@@ -76,10 +76,10 @@ We offer two versions of the SimWorld UE package: the base version, which comes 
 
 | Platform | Package | Scenes/Maps Included | Download | Notes |
 | --- | --- | --- | --- | --- |
-| Windows | Base | Empty map for procedural generation | [Download (Base)](https://huggingface.co/SimWorld-AI/SimWorld/resolve/main/Linux.zip) | Full agent features; smaller download. |
-| Linux | Base | Empty map for procedural generation | [Download (Base)](https://huggingface.co/SimWorld-AI/SimWorld/resolve/main/Windows.zip) | Full agent features; smaller download. |
+| Windows | Base | Empty map for procedural generation | [Download](https://huggingface.co/datasets/SimWorld-AI/SimWorld/resolve/main/Base/Linux.zip) | Full agent features; smaller download. |
+| Linux | Base | Empty map for procedural generation | [Download](https://huggingface.co/datasets/SimWorld-AI/SimWorld/resolve/main/Base/Windows.zip) | Full agent features; smaller download. |
 
-Additional environment paks are available on the [environments paks page](https://huggingface.co/SimWorld-AI/SimWorld/tree/main). You may download them as needed according to the OS you are using.
+Additional environment paks are available on the [environments paks page](https://huggingface.co/datasets/SimWorld-AI/SimWorld/tree/main/AdditionEnvironmentPaks). You may download them as needed according to the OS you are using.
 
 **Note:**
 1. Please check the [documentation](https://simworld.readthedocs.io/en/latest/getting_started/additional_environments.html#usage) for usage instructions of the **100+ Maps** version.
@@ -223,57 +223,6 @@ if __name__ == "__main__":
         print(f"obs: {obs}, reward: {reward}")
         # Plug this into your RL loop / logging as needed
 ```
-
-
-## For Contributors
-### Precommit Setup
-
-We use Google docstring format for our docstrings and the pre-commit library to check our code. To install pre-commit, run the following command:
-
-```bash
-conda install pre-commit  # or pip install pre-commit
-pre-commit install
-```
-
-The pre-commit hooks will run automatically when you try to commit changes to the repository.
-
-
-### Commit Message Guidelines
-All commit messages should be clear, concise, and follow this format:
-```
-<type>: <short summary>
-
-[optional body explaining the change]
-```
-Recommended types:
-+ feat: A new feature
-+ fix: A bug fix
-+ docs: Documentation changes
-+ refactor: Code restructuring without behavior changes
-+ style: Code style changes (formatting, linting)
-+ test: Adding or updating tests
-+ chore: Non-code changes (e.g., updating dependencies)
-
-Example:
-```
-feat: add user login API
-```
-
-### Issue Guidelines
-+ Use clear titles starting with [Bug] or [Feature].
-+ Describe the problem or request clearly.
-+ Include steps to reproduce (for bugs), expected behavior, and screenshots if possible.
-+ Mention your environment (OS, browser/runtime, version, etc.).
-
-### Pull Request Guidelines
-+ Fork the repo and create a new branch (e.g., feature/your-feature, fix/bug-name).
-+ Keep PRs focused: one feature or fix per PR.
-+ Follow the project’s coding style and naming conventions.
-+ Test your changes before submitting.
-+ Link related issues using Fixes #issue-number if applicable.
-+ Add comments or documentation if needed.
-
-We appreciate clean, well-described contributions! 🚀
 
 ## Star History
 
