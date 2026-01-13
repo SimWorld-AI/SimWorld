@@ -50,9 +50,11 @@ simworld/               # Python package
     map/                # Basic map class and waypoint system
     traffic/            # Traffic system
     utils/              # Utility functions
+    data/               # Default data files, e.g., object categories
+    weather/            # Weather system
 data/                   # Necessary input data
 config/                 # Example configuration file and user configuration file
-scripts/                # Examples of usage, such as layout generation and traffic simulation
+examples/                # Examples of usage, such as layout generation and traffic simulation
 docs/                   # Documentation source files
 README.md
 ```
@@ -141,11 +143,6 @@ from simworld.llm.base_llm import BaseLLM
 from simworld.local_planner.local_planner import LocalPlanner
 from simworld.llm.a2a_llm import A2ALLM
 
-
-# Connect to the running Unreal Engine instance via UnrealCV
-ucv = UnrealCV()
-comm = Communicator(ucv)
-
 class Agent:
     def __init__(self, goal):
         self.goal = goal
@@ -208,8 +205,11 @@ class Environment:
 
         return observation, reward
 
-
 if __name__ == "__main__":
+    # Connect to the running Unreal Engine instance via UnrealCV
+    ucv = UnrealCV()
+    comm = Communicator(ucv)
+
     # Create the environment wrapper
     agent = Agent(goal='Go to (1700, -1700) and pick up GEN_BP_Box_1_C.')
     env = Environment(comm)

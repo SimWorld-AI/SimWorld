@@ -129,7 +129,7 @@ cfc.generate_element_alone_roads()
 cfc.export_city('path/to/your_folder')
 ```
 
-A complete example can be found in `scripts/layout_generation.ipynb`.
+A complete example can be found in `examples/layout_generation.ipynb`.
 
 ```{note}
 Procedural City Generation only produces JSON files representing the city’s structure.  

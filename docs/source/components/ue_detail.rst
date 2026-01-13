@@ -212,7 +212,7 @@ Demo for human action space:
 
 **Related files:** ``communicator.py``, ``unrealcv.py``.
 
-A complete example can be found in ``scripts/ue_command_test.ipynb``.
+A complete example can be found in ``examples/ue_command.ipynb``.
 
 Sensors
 -------

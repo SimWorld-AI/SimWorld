@@ -20,9 +20,11 @@ simworld/               # Python package
     map/                # Basic map class and waypoint system
     traffic/            # Traffic system
     utils/              # Utility functions
+    data/               # Default data files, e.g., object categories
+    weather/            # Weather system
 data/                   # Necessary input data
 config/                 # Example configuration file and user configuration file
-scripts/                # Examples of usage, such as layout generation and traffic simulation
+examples/                # Examples of usage, such as layout generation and traffic simulation
 docs/                   # Documentation source files
 README.md
 ```

@@ -34,7 +34,7 @@ Test map and waypoint systems. Initialize map data, visualize road networks, and
 ### `ue_command.ipynb`
 Complete UE interaction command set with detailed demonstration of all available UE commands, including agent actions, object spawning, and environment control. Suitable as an API reference manual.
 
-### `example_city`
+### `data/example_city`
 Contains example outputs produced by `layout_generation.ipynb`.
 
 
