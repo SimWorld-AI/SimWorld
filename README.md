@@ -76,8 +76,8 @@ We offer two versions of the SimWorld UE package: the base version, which comes 
 
 | Platform | Package | Scenes/Maps Included | Download | Notes |
 | --- | --- | --- | --- | --- |
-| Windows | Base | Empty map for procedural generation | [Download](https://huggingface.co/datasets/SimWorld-AI/SimWorld/resolve/main/Base/Linux.zip) | Full agent features; smaller download. |
-| Linux | Base | Empty map for procedural generation | [Download](https://huggingface.co/datasets/SimWorld-AI/SimWorld/resolve/main/Base/Windows.zip) | Full agent features; smaller download. |
+| Windows | Base | Empty map for procedural generation | [Download](https://huggingface.co/datasets/SimWorld-AI/SimWorld/resolve/main/Base/Windows.zip) | Full agent features; smaller download. |
+| Linux | Base | Empty map for procedural generation | [Download](https://huggingface.co/datasets/SimWorld-AI/SimWorld/resolve/main/Base/Linux.zip) | Full agent features; smaller download. |
 
 Additional environment paks are available on the [environments paks page](https://huggingface.co/datasets/SimWorld-AI/SimWorld/tree/main/AdditionEnvironmentPaks). You may download them as needed according to the OS you are using.
 
