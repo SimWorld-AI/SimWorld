@@ -465,8 +465,8 @@ class Communicator:
         human_collision_num = int(collision_data['HumanCollision'])
         object_collision_num = int(collision_data['ObjectCollision'])
         building_collision_num = int(collision_data['BuildingCollision'])
-        vehicle_collision_num = int(collision_data['VehicleCollision'])
-        return human_collision_num, object_collision_num, building_collision_num, vehicle_collision_num
+        # vehicle_collision_num = int(collision_data['VehicleCollision'])
+        return human_collision_num, object_collision_num, building_collision_num# vehicle_collision_num
 
     def get_position_and_direction(self, vehicle_ids=[], pedestrian_ids=[], traffic_signal_ids=[], humanoid_ids=[], scooter_ids=[]):
         """Get position and direction of vehicles, pedestrians, and traffic signals.

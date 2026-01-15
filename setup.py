@@ -24,7 +24,7 @@ setup(
     ],
     python_requires='>=3.10',
     install_requires=[
-        'numpy',
+        'numpy==1.26.4',
         'pandas',
         'pyqtgraph',
         'PyQt5',
