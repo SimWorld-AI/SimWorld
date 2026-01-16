@@ -43,10 +43,14 @@ These assets collectively enable the creation of complex, dynamic, and realistic
    :align: center
    :alt: A Subset of Collected Assets
 
+.. _actions-section:
+
 Actions
 -------
 
 To enhance realism and interactivity in the simulation, we provide a comprehensive **Action Space**, with a strong focus on animations for pedestrians. These actions are essential for simulating lifelike behaviors such as walking, running, waving, interacting with objects, and more. All actions are sourced from the Unreal Engine Marketplace to ensure quality and compatibility.
+
+The actions of robot dog are in :doc:`SimWorld-Robotics <../simworld-robotics/simworld_robotics>`
 
 Here are some examples of actions available in the simulator:
 
