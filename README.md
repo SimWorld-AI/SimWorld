@@ -14,6 +14,7 @@
 </div>
 
 ## 🔥 News
+ - 2026.1 Move **SimWorld** Unreal Engine packages to [huggingface](https://huggingface.co/datasets/SimWorld-AI/SimWorld/tree/main)!
  - 2025.11 The white paper of **SimWorld** is available on arxiv!
  - 2025.9 **SimWorld** has been accepted to NeurIPS 2025 main track as a **spotlight** paper! 🎉
  - 2025.6 The first formal release of **SimWorld** has been published! 🚀
@@ -224,7 +225,7 @@ if __name__ == "__main__":
         # Plug this into your RL loop / logging as needed
 ```
 
-## 🔮 Roadmap
+## 🔮 Next Steps
 
 The SimWorld framework is under active development. Future releases will include:
 
