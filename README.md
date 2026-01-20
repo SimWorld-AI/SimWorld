@@ -234,7 +234,7 @@ Users can extend SimWorld's environment and agent library by creating custom pac
 
 The SimWorld framework is under active development. Future releases will include:
 
-- [ ] **Plugin System**: Extensible interaction modules that can be seamlessly integrated into existing projects.
+- [x] **Plugin System**: Extensible interaction modules that can be seamlessly integrated into existing projects.
 - [ ] **Comprehensive Agent Framework**: A unified training and evaluation pipeline for autonomous agents.
 - [ ] **Code Generation for Scenes**: AI-powered coding agents capable of generating diverse simulation scenarios programmatically.
 - [ ] **Interactive Layout Editor**: Web-based interface for real-time city layout visualization and editing.
