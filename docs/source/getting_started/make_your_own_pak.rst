@@ -37,7 +37,7 @@ Launch the Unreal Engine and create a new project. Then name the project ``SimWo
 3. Import Assets
 ----------------
 
-Import your desired assets into the project. You can use assets from the Unreal Marketplace or your own custom assets. Make sure all assets are properly organized in the **same** folder under the ``Content`` directory.
+Import your desired assets into the project. You can use assets from the Unreal Marketplace or custom assets. Make sure all assets are properly organized in the **same** folder under the ``Content`` directory.
 
 .. image:: ../assets/MYO_3.png
    :width: 800px
@@ -48,7 +48,7 @@ Import your desired assets into the project. You can use assets from the Unreal 
 4. Set Up Chunk Package
 -----------------------
 
-Open project settings by navigating to ``Edit > Project Settings``. In the Project Settings window, go to the ``Packaging`` section and enable the ``Use Pak File`` option, **disable** ``Use Io Store``, and enable ``Generate Chunks``.
+Open project settings by navigating to ``Edit > Project Settings``. In the Project Settings window, go to the ``Packaging`` section and configure the following options: enable ``Use Pak File``, **disable** ``Use Io Store``, and enable ``Generate Chunks``.
 
 .. image:: ../assets/MYO_4.png
    :width: 800px

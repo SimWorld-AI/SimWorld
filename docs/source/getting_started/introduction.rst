@@ -49,3 +49,11 @@ We release the base version of SimWorld and the additional environments paks. Ba
 
    1. Please check the `Additional Environments <https://simworld.readthedocs.io/en/latest/getting_started/additional_environments.html>`_ for downloading and setup instructions of the **100+ Maps** version.
    2. If you only need core functionality for development or testing, use **Base**. If you want richer demonstrations and more scenes, download and install the **Environments Packs** as needed.
+
+Next Steps
+----------
+
+- **Plugin System**: Extensible interaction modules that can be seamlessly integrated into existing projects.
+- **Comprehensive Agent Framework**: A unified training and evaluation pipeline for autonomous agents.
+- **Code Generation for Scenes**: AI-powered coding agents capable of generating diverse simulation scenarios programmatically.
+- **Interactive Layout Editor**: Web-based interface for real-time city layout visualization and editing.
