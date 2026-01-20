@@ -59,7 +59,7 @@ docs/                   # Documentation source files
 README.md
 ```
 
-## Setup
+## ⚙️ Setup
 ### Installation
 + Python Client
 Make sure to use Python 3.10 or later.
@@ -224,6 +224,15 @@ if __name__ == "__main__":
         # Plug this into your RL loop / logging as needed
 ```
 
-## Star History
+## 🔮 Roadmap
+
+The SimWorld framework is under active development. Future releases will include:
+
+- [ ] **Plugin System**: Extensible interaction modules that can be seamlessly integrated into existing projects.
+- [ ] **Comprehensive Agent Framework**: A unified training and evaluation pipeline for autonomous agents.
+- [ ] **Code Generation for Scenes**: AI-powered coding agents capable of generating diverse simulation scenarios programmatically.
+- [ ] **Interactive Layout Editor**: Web-based interface for real-time city layout visualization and editing.
+
+## ⭐ Star History
 
 [![Star History Chart](https://api.star-history.com/svg?repos=SimWorld-AI/SimWorld&type=date&legend=bottom-right)](https://www.star-history.com/#SimWorld-AI/SimWorld&type=date&legend=bottom-right)
