@@ -118,9 +118,7 @@ To set up your own configuration:
    ```
 
 #### Step 2. Start the UE Server
-Start the SimWorld UE server first, then run the Python examples.
-
-From the extracted UE server package directory:
+Start the SimWorld UE server first, then run the Python examples. From the extracted UE server package directory:
 
 - **Windows:** double-click `gym_citynav.exe`, or launch it from the command line:
   ```bash
