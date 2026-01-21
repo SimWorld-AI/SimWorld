@@ -221,15 +221,15 @@ if __name__ == "__main__":
         # Plug this into your RL loop / logging as needed
 ```
 
-### More Examples and References
+## 📚 More Examples and References
 
-#### Agent Action Space
+### Agent Action Space
 SimWorld provides a comprehensive action space for pedestrians, vehicles and robots (e.g., move forward, sit down, pick up). For more details, see [actions](https://simworld.readthedocs.io/en/latest/components/ue_detail.html#actions) and `examples/ue_command.ipynb`.
 
-#### Using the Camera
+### Using UE Cameras and Sensors
 SimWorld supports a variety of sensors, including RGB images, segmentation maps, and depth images. For more details, please refer to the [sensors](https://simworld.readthedocs.io/en/latest/components/ue_detail.html#sensors) and the example script `examples/camera.ipynb`.
 
-#### Commonly Used APIs
+### Commonly Used APIs
 All APIs are located in `simworld/communicator`. Some of the most commonly used ones are listed below:
 - `communicator.get_camera_observation`
 - `communicator.spawn_object`
