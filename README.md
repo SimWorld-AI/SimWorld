@@ -88,11 +88,9 @@ We provide two UE packages: **Base** (an empty map with a smaller download; best
 | Linux | Additional Environments (100+ Maps) | 100+ pre-built maps (including the empty one) | [Download](https://huggingface.co/datasets/SimWorld-AI/SimWorld/tree/main/AdditionEnvironmentPaks/Linux) | Larger download; best for demos and diverse scenes. |
 
 
-Additional environment paks are available on the [environments paks page](https://huggingface.co/datasets/SimWorld-AI/SimWorld/tree/main/AdditionEnvironmentPaks). You may download them as needed according to the OS you are using.
-
 **Note:**
-1. Please check the [documentation](https://simworld.readthedocs.io/en/latest/getting_started/additional_environments.html#usage) for usage instructions of the **100+ Maps** version.
-2. If you only need core functionality for development or testing, use **Base**. If you want richer demonstrations and more scenes, use the **Additional Environments (100+ Maps)**.
+1. The **Additional Environments (100+ Maps)** package is organized as separate `.pak` files. You can download only the maps you need (instead of the full set) based on your OS. Please check the [documentation](https://simworld.readthedocs.io/en/latest/getting_started/additional_environments.html#usage) for usage instructions, including how to load specific maps and what each `.pak` contains.
+2. If you only need core functionality for development or testing, use **Base**. If you want richer demonstrations and more scenes, use the **Additional Environments**.
 
 ### Quick Start
 
