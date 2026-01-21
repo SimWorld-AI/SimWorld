@@ -63,7 +63,8 @@ README.md
 
 ## ⚙️ Setup
 ### Installation
-+ Python Client.
+#### Step 1. Install the Python Client
+
 Make sure to use Python 3.10 or later.
 ```bash
 git clone https://github.com/SimWorld-AI/SimWorld.git
@@ -73,15 +74,19 @@ conda activate simworld
 pip install -e .
 ```
 
-+ UE server.
-Download the SimWorld server executable from huggingface. Choose the version according to your OS and the edition you want to use.
+#### Step 2. Download the UE Server Package.
 
-We offer two versions of the SimWorld UE package: the base version, which comes with an empty map, and the additional environments version, which provides extra pre-defined environments for more diverse simulation scenarios. Both versions include all the core features of SimWorld.
+Download the SimWorld server executable from [huggingface](https://huggingface.co/datasets/SimWorld-AI/SimWorld/tree/main). Choose the version according to your OS and the edition you want to use.
+
+We provide two UE packages: **Base** (an empty map with a smaller download; best for core feature development and testing; supports procedural city generation) and **Additional Environments (100+ Maps)** (a much larger download that includes 100+ ready-to-use maps for diverse scenarios and demos).
 
 | Platform | Package | Scenes/Maps Included | Download | Notes |
 | --- | --- | --- | --- | --- |
-| Windows | Base | Empty map for procedural generation | [Download](https://huggingface.co/datasets/SimWorld-AI/SimWorld/resolve/main/Base/Windows.zip) | Full agent features; smaller download. |
-| Linux | Base | Empty map for procedural generation | [Download](https://huggingface.co/datasets/SimWorld-AI/SimWorld/resolve/main/Base/Linux.zip) | Full agent features; smaller download. |
+| Windows | Base | Empty map for procedural city generation | [Download](https://huggingface.co/datasets/SimWorld-AI/SimWorld/resolve/main/Base/Windows.zip) | Smaller download; recommended for development/testing. |
+| Linux | Base | Empty map for procedural city generation | [Download](https://huggingface.co/datasets/SimWorld-AI/SimWorld/resolve/main/Base/Linux.zip) | Smaller download; recommended for development/testing. |
+| Windows | Additional Environments (100+ Maps) | 100+ pre-built maps (including the empty one) | [Download](https://huggingface.co/datasets/SimWorld-AI/SimWorld/tree/main/AdditionEnvironmentPaks/Windows) | Larger download; best for demos and diverse scenes. |
+| Linux | Additional Environments (100+ Maps) | 100+ pre-built maps (including the empty one) | [Download](https://huggingface.co/datasets/SimWorld-AI/SimWorld/tree/main/AdditionEnvironmentPaks/Linux) | Larger download; best for demos and diverse scenes. |
+
 
 Additional environment paks are available on the [environments paks page](https://huggingface.co/datasets/SimWorld-AI/SimWorld/tree/main/AdditionEnvironmentPaks). You may download them as needed according to the OS you are using.
 
