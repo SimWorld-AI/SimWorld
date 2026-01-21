@@ -13,6 +13,23 @@
     <a href="https://arxiv.org/abs/2512.01078"><img src="https://img.shields.io/badge/arXiv-2512.01078-b31b1b?logo=arxiv&logoColor=white" alt="arXiv:2512.01078" /></a>
 </div>
 
+## 🎬 Demonstration
+<p align="center">
+  <a href="https://youtu.be/OvV6gUhLVK4" target="_blank" rel="noopener noreferrer">
+    <img
+      src="https://img.youtube.com/vi/OvV6gUhLVK4/0.jpg"
+      alt="SimWorld Demo Video"
+      width="600"
+    />
+  </a>
+</p>
+
+<p align="center">
+  <a href="https://youtu.be/OvV6gUhLVK4" target="_blank" rel="noopener noreferrer">
+    ▶ Watch the full demo on YouTube
+  </a>
+</p>
+
 ## 🔥 News
  - 2026.1 **SimWorld** now supports importing customized environments and agents!
  - 2025.11 The white paper of **SimWorld** is available on arxiv!
