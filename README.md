@@ -120,11 +120,17 @@ To set up your own configuration:
 #### Step 2. Start the UE Server
 Start the SimWorld UE server first, then run the Python examples.
 
-- **Windows:** open the server by double-clicking `gym_citynav.exe`.
+- **Windows:** open the server by double-clicking `gym_citynav.exe` or using the command line:
+    ```bash
+    ./gym_citynav.exe <MAP_NAME>
+    ```
 
 - **Linux:** `cd` to the extracted UE server package directory and run:
-  ```bash
-  ./gym_citynav.sh <MAP_NAME>
+    ```bash
+    ./gym_citynav.sh <MAP_NAME>
+    ```
+
+If <MAP_NAME> is not specified, the default map (an empty map) will be open.
 
 #### Step 3. Run a Minimal Example
 
