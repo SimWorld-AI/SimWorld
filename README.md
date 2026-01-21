@@ -79,9 +79,10 @@ README.md
 
 ## ⚙️ Setup
 
+This section walks through the minimal setup to run SimWorld using our provided UE packages and the Python client. If you want to use your own custom environments, assets, or agent models, you can import them via `.pak` files. See [Make Your SimWorld](#make-your-simworld) for instructions.
+
 **System Requirements:** SimWorld requires a dedicated GPU with ≥6GB VRAM, 32GB RAM, and 50-200GB disk space depending on the package. For detailed hardware requirements and recommendations, see the [installation guide](https://simworld.readthedocs.io/en/latest/getting_started/installation.html#before-you-begin).
 
-**Custom Environments:** Beyond the built-in packages, you can create and import your own custom environments, assets, and agent models using `.pak` files. See [Make Your SimWorld](#️-make-your-simworld) for instructions.
 
 ### Installation
 #### Step 1. Install the Python Client
@@ -97,7 +98,7 @@ pip install -e .
 
 #### Step 2. Download the UE Server Package.
 
-Download the SimWorld server executable from [huggingface](https://huggingface.co/datasets/SimWorld-AI/SimWorld/tree/main) and extract it. Choose the version according to your OS and the edition you want to use.
+Download the SimWorld server executable and extract it. Choose the version according to your OS and the edition you want to use.
 
 We provide two UE packages: **Base** (an empty map with a smaller download; best for core feature development and testing; supports procedural city generation) and **Additional Environments (100+ Maps)** (a much larger download that includes 100+ ready-to-use maps for diverse scenarios and demos).
 
@@ -232,10 +233,11 @@ if __name__ == "__main__":
 
 SimWorld uses a YAML configuration file to control **global simulator settings** (e.g., `seed`, `dt`, UE blueprint paths) and **module behaviors** (e.g., city generation, traffic simulation, asset retrieval, and agent/LLM options).
 
+We provide two configuration files to help you get started:
 - [simworld/config/default.yaml](simworld/config/default.yaml) contains the **built-in defaults** shipped with the package (reference/fallback). We recommend **not editing** this file.
 - [config/example.yaml](config/example.yaml) is a **user template** with placeholders for local paths. Copy it to create your own config.
 
-To set up your own configuration:
+If you want to customize SimWorld for your own setup, follow the steps below to create and load your own config:
 
 1. Create a custom config from the template:
    ```bash
@@ -250,13 +252,15 @@ To set up your own configuration:
    config = Config('path/to/your_config')    # use absolute path here
    ```
 
-### Agent Action Space
-SimWorld provides a comprehensive action space for pedestrians, vehicles and robots (e.g., move forward, sit down, pick up). For more details, see [actions](https://simworld.readthedocs.io/en/latest/components/ue_detail.html#actions) and [examples/ue_command.ipynb](examples/ue_command.ipynb).
+### API and Usage
 
-### Using UE Cameras and Sensors
+#### Agent Action Space
+SimWorld provides a comprehensive action space for pedestrians, vehicles, and robots (e.g., move forward, sit down, pick up). For more details, see [actions](https://simworld.readthedocs.io/en/latest/components/ue_detail.html#actions) and [examples/ue_command.ipynb](examples/ue_command.ipynb).
+
+#### Using UE Cameras and Sensors
 SimWorld supports a variety of sensors, including RGB images, segmentation maps, and depth images. For more details, please refer to the [sensors](https://simworld.readthedocs.io/en/latest/components/ue_detail.html#sensors) and the example script [examples/camera.ipynb](examples/camera.ipynb).
 
-### Commonly Used APIs
+#### Commonly Used APIs
 All APIs are located in [simworld/communicator](simworld/communicator). Some of the most commonly used ones are listed below:
 - [communicator.get_camera_observation](simworld/communicator/communicator.py#L195)
 - [communicator.spawn_object](simworld/communicator/communicator.py#L574)
@@ -264,9 +268,10 @@ All APIs are located in [simworld/communicator](simworld/communicator). Some of 
 - [communicator.generate_world](simworld/communicator/communicator.py#L812)
 - [communicator.clear_env](simworld/communicator/communicator.py#L880)
 
-## 🛠️ Make Your SimWorld
-Users can create custom `.pak` files to import their own environments, assets, and agent models into SimWorld, extending the platform with new maps, objects, and characters beyond the built-in library. See full instructions in [Make Your Own Pak Files](https://simworld.readthedocs.io/en/latest/getting_started/make_your_own_pak.html).
+<a id="make-your-simworld"></a>
+### 🛠️ Make Your SimWorld
 
+Bring your own Unreal Engine environments, assets, and agent models into SimWorld. This lets you add new maps, objects, and characters beyond the built-in library. For example, you can turn almost any idea into a playable world, such as a rainy campus, a night market, or a sci-fi city, and then drop agents into it to explore, interact, and learn. To import your content into SimWorld, package it as a custom `.pak` file. See full instructions in [Make Your Own Pak Files](https://simworld.readthedocs.io/en/latest/getting_started/make_your_own_pak.html).
 
 ## 🔮 Next Steps
 
