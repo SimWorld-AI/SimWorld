@@ -76,7 +76,7 @@ pip install -e .
 
 #### Step 2. Download the UE Server Package.
 
-Download the SimWorld server executable from [huggingface](https://huggingface.co/datasets/SimWorld-AI/SimWorld/tree/main). Choose the version according to your OS and the edition you want to use.
+Download the SimWorld server executable from [huggingface](https://huggingface.co/datasets/SimWorld-AI/SimWorld/tree/main) and extract it. Choose the version according to your OS and the edition you want to use.
 
 We provide two UE packages: **Base** (an empty map with a smaller download; best for core feature development and testing; supports procedural city generation) and **Additional Environments (100+ Maps)** (a much larger download that includes 100+ ready-to-use maps for diverse scenarios and demos).
 
@@ -120,10 +120,9 @@ To set up your own configuration:
 #### Step 2. Start the UE Server
 Start the SimWorld UE server first, then run the Python examples.
 
-- **Windows:** open the server by double-clicking `gym_citynav.exe` or using the command line:
-    ```bash
-    ./gym_citynav.exe <MAP_NAME>
-    ```
+- **Windows:** go to the extracted UE server directory, then open the server by double-clicking `gym_citynav.exe` or launching it from the command line:
+  ```bash
+  .\gym_citynav.exe <MAP_NAME>
 
 - **Linux:** `cd` to the extracted UE server package directory and run:
     ```bash
@@ -134,8 +133,7 @@ If <MAP_NAME> is not specified, the default map (an empty map) will be open.
 
 #### Step 3. Run a Minimal Example
 
-Once the SimWorld UE5 environment is running, you can connect from Python and control an in-world humanoid agent in just a few lines:
-(The whole example of minimal demo is shown in `examples/gym_interface_demo.ipynb`)
+Once the SimWorld UE5 environment is running, you can connect from Python and control an in-world humanoid agent in just a few lines. The full minimal demo is provided in `examples/gym_interface_demo.ipynb`. You can also run other example scripts/notebooks under `examples/`.
 
 ```python
 from simworld.communicator.unrealcv import UnrealCV
