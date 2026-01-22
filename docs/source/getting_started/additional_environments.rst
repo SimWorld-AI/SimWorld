@@ -32,7 +32,7 @@ If you run SimWorld on a server, to load and use these additional environments y
 
    For more details on command line arguments, see the `Unreal Engine Official Documentation <https://dev.epicgames.com/documentation/en-us/unreal-engine/command-line-arguments-in-unreal-engine>`_
 
-For example:
+For example, run the following command from the extracted UE server directory:
 
 on Windows:
 
