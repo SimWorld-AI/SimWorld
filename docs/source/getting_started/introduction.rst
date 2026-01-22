@@ -26,32 +26,40 @@ SimWorld employs a three-tier hierarchical architecture that separates the high-
 
 At its core, the *Unreal Engine Backend* provides high-fidelity scenes, assets, and physics, forming the foundation for realistic simulation. Built upon it, the *Environment* layer serves as an intermediary that abstracts low-level rendering and physics into structured representations, supporting procedural city generation, traffic simulation, and a Gym-like interface for agent interaction via *UnrealCV+*. On top of this, the *Agent* layer integrates LLM/VLM agents capable of interpreting multimodal observations from the environment, reasoning about goals, and issuing actions that are executed through the environment's connection to the Unreal backend. Together, these components form a closed perception–planning–action loop, enabling intelligent agents to interact, learn, and adapt in rich, dynamic worlds.
 
-Version Comparison
+UE Server Packages
 ------------------
 
-We release the base version of SimWorld and the additional environments paks. Base versions include the core features of SimWorld, while the additional environments paks offer extra pre-defined environments for more diverse simulation scenarios.
+First, download and extract the **Base** UE server package for your OS. The Base package includes a lightweight city scene for quickly testing SimWorld’s core features, including core agent interaction and procedural city generation.
 
-.. list-table::
-   :header-rows: 1
-   :widths: 20 40 40
+* **Base (Required)**
 
-   * - Package
-     - Scenes/Maps Included
-     - Notes
-   * - Base
-     - Empty map for procedural generation
-     - Full agent features; Smaller download.
-   * - Environments Packs
-     - 100+ maps
-     - Full agent features; Installation required; Download as needed.
+  * **Windows:** `Download <https://huggingface.co/datasets/SimWorld-AI/SimWorld/resolve/main/Base/Windows.zip>`_
+  * **Linux:** `Download <https://huggingface.co/datasets/SimWorld-AI/SimWorld/resolve/main/Base/Linux.zip>`_
 
-.. note::
+If you want more pre-built scenes for demos and diverse scenarios, you can optionally install **Additional Environments (100+ Maps)**. This is an add-on map pack that extends the Base installation. Download the maps you need and copy the ``.pak`` files into the Base server folder at: ``SimWorld/Content/Paks/``.
 
-   1. Please check the `Additional Environments <https://simworld.readthedocs.io/en/latest/getting_started/additional_environments.html>`_ for downloading and setup instructions of the **100+ Maps** version.
-   2. If you only need core functionality for development or testing, use **Base**. If you want richer demonstrations and more scenes, download and install the **Environments Packs** as needed.
+* **Additional Environments (Optional, 100+ Maps)**
+
+  * **Windows:** `Download <https://huggingface.co/datasets/SimWorld-AI/SimWorld/tree/main/AdditionEnvironmentPaks/Windows>`_
+  * **Linux:** `Download <https://huggingface.co/datasets/SimWorld-AI/SimWorld/tree/main/AdditionEnvironmentPaks/Linux>`_
+
+The Additional Environments package is organized as separate ``.pak`` files, so you can download only the maps you need. Please check the :doc:`additional_environments` documentation for usage instructions, including how to load specific maps and what each ``.pak`` contains.
+
 
 Next Steps
 ----------
-- **Comprehensive Agent Framework**: A unified training and evaluation pipeline for autonomous agents.
-- **Code Generation for Scenes**: AI-powered coding agents capable of generating diverse simulation scenarios programmatically.
-- **Interactive Layout Editor**: Web-based interface for real-time city layout visualization and editing.
+
+The SimWorld framework is under active development. Future releases will include:
+
+.. list-table::
+   :widths: 5 95
+   :class: tight-table
+
+   * - ☑
+     - **Plugin System:** Support for importing user-defined custom environments and agents to extend SimWorld's capabilities.
+   * - ☐
+     - **Comprehensive Agent Framework:** A unified training and evaluation pipeline for autonomous agents.
+   * - ☐
+     - **Code Generation for Scenes:** AI-powered coding agents capable of generating diverse simulation scenarios programmatically.
+   * - ☐
+     - **Interactive Layout Editor:** Web-based interface for real-time city layout visualization and editing.
