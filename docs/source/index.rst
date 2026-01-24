@@ -37,6 +37,7 @@ With SimWorld, researchers can explore embodied intelligence at scale, enabling 
    getting_started/installation
    getting_started/configuration
    getting_started/minimal_example
+   getting_started/base_environments
    getting_started/additional_environments
 
 .. toctree::
