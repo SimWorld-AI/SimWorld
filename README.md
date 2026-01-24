@@ -107,7 +107,7 @@ pip install -e .
 
 First, download and extract the **Base** UE server package for your OS. The Base package includes two lightweight city scenes and one empty map for quickly testing SimWorld’s core features, including core agent interaction and procedural city generation.
 
-- **Base (Required)**
+- **Base (Required, 2 demo city maps and 1 empty map)**
   - **Windows:** [Download](https://huggingface.co/datasets/SimWorld-AI/SimWorld/resolve/main/Base/Windows.zip)
   - **Linux:** [Download](https://huggingface.co/datasets/SimWorld-AI/SimWorld/resolve/main/Base/Linux.zip)
 
