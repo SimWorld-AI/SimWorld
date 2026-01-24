@@ -14,7 +14,7 @@
 </div>
 
 ## 🎬 Demonstration
-<p align="center">
+<!-- <p align="center">
   <a href="https://youtu.be/OvV6gUhLVK4" target="_blank" rel="noopener noreferrer">
     <img
       src="https://img.youtube.com/vi/OvV6gUhLVK4/0.jpg"
@@ -22,10 +22,19 @@
       width="600"
     />
   </a>
+</p> -->
+<p align="center">
+  <a href="https://www.youtube.com/@SimWorld-AI" target="_blank" rel="noopener noreferrer">
+    <img
+      src="docs/source/assets/video_cover.png"
+      alt="SimWorld Demo Video"
+      width="600"
+    />
+  </a>
 </p>
 
 <p align="center">
-  <a href="https://youtu.be/OvV6gUhLVK4" target="_blank" rel="noopener noreferrer">
+  <a href="https://www.youtube.com/@SimWorld-AI" target="_blank" rel="noopener noreferrer">
     ▶ Watch the full demo on YouTube
   </a>
 </p>
@@ -81,7 +90,7 @@ README.md
 
 This section walks through the minimal setup to run SimWorld using our provided UE packages and the Python client. If you want to use your own custom environments, assets, or agent models, you can import them via `.pak` files. See [Make Your SimWorld](#make-your-simworld) for instructions.
 
-**System Requirements:** SimWorld requires a dedicated GPU with ≥6GB VRAM, 32GB RAM, and 50-200GB disk space depending on the package. For detailed hardware requirements and recommendations, see the [installation guide](https://simworld.readthedocs.io/en/latest/getting_started/installation.html#before-you-begin).
+**System Requirements:** SimWorld requires Windows or Linux operating system, a dedicated GPU with ≥6GB VRAM, 32GB RAM, and 50-200GB disk space depending on the package. For detailed hardware requirements and recommendations, see the [installation guide](https://simworld.readthedocs.io/en/latest/getting_started/installation.html).
 
 
 ### Installation
