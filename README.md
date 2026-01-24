@@ -107,7 +107,7 @@ pip install -e .
 
 First, download and extract the **Base** UE server package for your OS. The Base package includes two lightweight city scenes and one empty map for quickly testing SimWorld’s core features, including core agent interaction and procedural city generation.
 
-- **Base (Required, 2 demo city maps and 1 empty map)**
+- **Base (Required, 2 city maps and 1 empty map)**
   - **Windows:** [Download](https://huggingface.co/datasets/SimWorld-AI/SimWorld/resolve/main/Base/Windows.zip)
   - **Linux:** [Download](https://huggingface.co/datasets/SimWorld-AI/SimWorld/resolve/main/Base/Linux.zip)
 
@@ -118,7 +118,7 @@ If you want more pre-built scenes for demos and diverse scenarios, you can optio
   - **Windows:** [Download](https://huggingface.co/datasets/SimWorld-AI/SimWorld/tree/main/AdditionEnvironmentPaks/Windows)
   - **Linux:** [Download](https://huggingface.co/datasets/SimWorld-AI/SimWorld/tree/main/AdditionEnvironmentPaks/Linux)
 
-The Additional Environments package is organized as separate `.pak` files, so you can download only the maps you need. Please check the [documentation](https://simworld.readthedocs.io/en/latest/getting_started/additional_environments.html#download-and-installation) for usage instructions, including how to load specific maps and what each `.pak` contains.
+The Additional Environments package is organized as separate `.pak` files, so you can download only the maps you need. Please check the [download and installation](https://simworld.readthedocs.io/en/latest/getting_started/additional_environments.html#download-and-installation) for usage instructions, including how to load specific maps and what each `.pak` contains.
 
 
 ### Quick Start
@@ -138,7 +138,7 @@ Start the SimWorld UE server first, then run the Python examples. From the extra
     ./SimWorld.sh <MAP_PATH>
     ```
 
-`<MAP_PATH>` refers to the Unreal Engine internal path to a map file (e.g., `/Game/hospital/map/demo.umap`). SimWorld's **base** binary contains 2 lightweight city demo map and 1 empty map. See [Base Environments](https://simworld.readthedocs.io/en/latest/getting_started/base_environments.html) for details. In addition, users can download 100+ **additional environment paks**. See the [Additional Environments](https://simworld.readthedocs.io/en/latest/getting_started/additional_environments.html) for the installation and complete list of available map paths. If `<MAP_PATH>` is not specified, the default map (`/Game/Maps/demo_1`) will be open.
+`<MAP_PATH>` refers to the Unreal Engine internal path to a map file (e.g., `/Game/hospital/map/demo.umap`). SimWorld's **base** binary contains 2 city maps and 1 empty map. See [Base Environments](https://simworld.readthedocs.io/en/latest/getting_started/base_environments.html) for details. In addition, users can download 100+ **additional environment paks**. See the [Additional Environments](https://simworld.readthedocs.io/en/latest/getting_started/additional_environments.html) for the installation and complete list of available map paths. If `<MAP_PATH>` is not specified, the default map (`/Game/Maps/demo_1`) will be open.
 
 #### Step 2. Run a Minimal Gym-Style Example
 
@@ -264,7 +264,7 @@ If you want to customize SimWorld for your own setup, follow the steps below to 
 ### API and Usage
 
 #### Agent Action Space
-SimWorld provides a comprehensive action space for pedestrians, vehicles, and robots (e.g., move forward, sit down, pick up). For more details, see [actions](https://simworld.readthedocs.io/en/latest/components/ue_detail.html#actions) and [examples/ue_command.ipynb](examples/ue_command.ipynb).
+SimWorld provides a comprehensive action space for pedestrians, vehicles, and robots (e.g., move forward, sit down, pick up). For more details, see [actions](https://simworld.readthedocs.io/en/latest/components/agent_system.html#action-space) and [examples/ue_command.ipynb](examples/ue_command.ipynb).
 
 #### Using UE Cameras and Sensors
 SimWorld supports a variety of sensors, including RGB images, segmentation maps, and depth images. For more details, please refer to the [sensors](https://simworld.readthedocs.io/en/latest/components/ue_detail.html#sensors) and the example script [examples/camera.ipynb](examples/camera.ipynb).
