@@ -491,6 +491,7 @@ Creating Your Own Configuration
 To create a custom configuration:
 
 1. Copy the example template:
+
    .. code-block:: bash
 
       cp config/example.yaml config/your_config.yaml
@@ -498,6 +499,7 @@ To create a custom configuration:
 2. Modify the values in ``your_config.yaml`` according to your needs.
 
 3. Load your configuration in Python:
+
    .. code-block:: python
 
       from simworld.config import Config
