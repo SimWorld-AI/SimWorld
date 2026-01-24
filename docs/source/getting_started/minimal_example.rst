@@ -7,7 +7,7 @@ Prerequisites
 -------------
 
 - Install the Python client and have the UE backend running (see :doc:`installation`).
-- Ensure the backend is reachable (default ports 9000). If you changed ports, pass them through command line arguments ``--cvport 9001`` or change the ``/gym_citynav/Binaries/Win64/unrealcv.ini``.
+- Ensure the backend is reachable (default ports 9000). If you changed ports, pass them through command line arguments ``--cvport 9001`` or change the ``/SimWorld/Binaries/Win64/unrealcv.ini``.
 - Set an OpenAI-compatible API key in your environment (the demo uses ``gpt-4o`` for the agent and ``gpt-4o-mini`` for the planner).
 
 .. code-block:: bash

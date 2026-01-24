@@ -38,13 +38,13 @@ on Windows:
 
 .. code-block:: bash
 
-   ./gym_citynav.exe /Game/TokyoStylizedEnvironment/Maps/Tokyo.umap
+   ./SimWorld.exe /Game/TokyoStylizedEnvironment/Maps/Tokyo.umap
 
 or on Linux:
 
 .. code-block:: bash
 
-   ./gym_citynav.sh /Game/TokyoStylizedEnvironment/Maps/Tokyo.umap
+   ./SimWorld.sh /Game/TokyoStylizedEnvironment/Maps/Tokyo.umap
 
 GUI
 ~~~
