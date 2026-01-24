@@ -19,7 +19,6 @@
     <img
       src="https://img.youtube.com/vi/OvV6gUhLVK4/0.jpg"
       alt="SimWorld Demo Video"
-      width="600"
     />
   </a>
 </p> -->
@@ -28,14 +27,13 @@
     <img
       src="docs/source/assets/video_cover.png"
       alt="SimWorld Demo Video"
-      width="600"
     />
   </a>
 </p>
 
 <p align="center">
   <a href="https://www.youtube.com/@SimWorld-AI" target="_blank" rel="noopener noreferrer">
-    ▶ Watch the full demo on YouTube
+    ▶ See all our demo videos on YouTube
   </a>
 </p>
 
