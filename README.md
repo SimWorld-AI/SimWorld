@@ -242,7 +242,7 @@ if __name__ == "__main__":
 
 SimWorld uses a YAML configuration file to control **global simulator settings** (e.g., `seed`, `dt`, UE blueprint paths) and **module behaviors** (e.g., city generation, traffic simulation, asset retrieval, and agent/LLM options).
 
-For a comprehensive reference of all configuration parameters, see the [Configuration Reference](docs/source/getting_started/configuration.rst) documentation.
+For a comprehensive reference of all configuration parameters, see the [Configuration Reference](https://simworld.readthedocs.io/en/latest/getting_started/configuration.html) documentation.
 
 We provide two configuration files to help you get started:
 - [simworld/config/default.yaml](simworld/config/default.yaml) contains the **built-in defaults** shipped with the package (reference/fallback). We recommend **not editing** this file.

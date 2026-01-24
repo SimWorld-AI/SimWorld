@@ -234,18 +234,18 @@ How to get images
 .. code-block:: python
 
    # viewmode can be 'lit', 'depth' and 'object_mask'
-   image = communicator.get_camera_observation(camera_id, viewmode)
+   image = communicator.get_camera_observation(camera_id, viewmode)  # Get camera image observation
 
    # adjust camera
-   ucv.get_cameras()
-   ucv.get_camera_location(camera_id)
-   ucv.get_camera_rotation(camera_id)
-   ucv.get_camera_fov(camera_id)
-   ucv.get_camera_resolution(camera_id)
-   ucv.set_camera_location(camera_id)
-   ucv.set_camera_rotation(camera_id)
-   ucv.set_camera_fov(camera_id)
-   ucv.set_camera_resolution(camera_id)
+   ucv.get_cameras()                                   # Get list of all available cameras
+   ucv.get_camera_location(camera_id)                  # Get camera position (x, y, z)
+   ucv.get_camera_rotation(camera_id)                  # Get camera rotation (pitch, yaw, roll)
+   ucv.get_camera_fov(camera_id)                       # Get camera field of view
+   ucv.get_camera_resolution(camera_id)                # Get camera resolution (width, height)
+   ucv.set_camera_location(camera_id, location)        # Set camera position (location: tuple of x, y, z)
+   ucv.set_camera_rotation(camera_id, rotation)        # Set camera rotation (rotation: tuple of pitch, yaw, roll)
+   ucv.set_camera_fov(camera_id, fov)                  # Set camera field of view (fov: float)
+   ucv.set_camera_resolution(camera_id, resolution)    # Set camera resolution (resolution: tuple of width, height)
 
 **Related files:** ``communicator.py``, ``unrealcv.py``.
 
