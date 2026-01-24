@@ -19,7 +19,6 @@
     <img
       src="https://img.youtube.com/vi/OvV6gUhLVK4/0.jpg"
       alt="SimWorld Demo Video"
-      width="600"
     />
   </a>
 </p> -->
@@ -28,14 +27,13 @@
     <img
       src="docs/source/assets/video_cover.png"
       alt="SimWorld Demo Video"
-      width="600"
     />
   </a>
 </p>
 
 <p align="center">
   <a href="https://www.youtube.com/@SimWorld-AI" target="_blank" rel="noopener noreferrer">
-    ▶ Watch the full demo on YouTube
+    ▶ See all our demo videos on YouTube
   </a>
 </p>
 
@@ -109,7 +107,7 @@ pip install -e .
 
 First, download and extract the **Base** UE server package for your OS. The Base package includes two lightweight city scenes and one empty map for quickly testing SimWorld’s core features, including core agent interaction and procedural city generation.
 
-- **Base (Required)**
+- **Base (Required, 2 demo city maps and 1 empty map)**
   - **Windows:** [Download](https://huggingface.co/datasets/SimWorld-AI/SimWorld/resolve/main/Base/Windows.zip)
   - **Linux:** [Download](https://huggingface.co/datasets/SimWorld-AI/SimWorld/resolve/main/Base/Linux.zip)
 
@@ -140,7 +138,7 @@ Start the SimWorld UE server first, then run the Python examples. From the extra
     ./SimWorld.sh <MAP_PATH>
     ```
 
-`<MAP_PATH>` refers to the Unreal Engine internal path to a map file (e.g., `/Game/hospital/map/demo.umap`). SimWorld includes 100+ additional environments. See the [Additional Environments](https://simworld.readthedocs.io/en/latest/getting_started/additional_environments.html#predefined-environments-list) for a complete list of available map paths. If `<MAP_PATH>` is not specified, SimWorld will open the default lightweight city map (`/Game/Maps/demo_1.umap`).
+`<MAP_PATH>` refers to the Unreal Engine internal path to a map file (e.g., `/Game/hospital/map/demo.umap`). SimWorld's **base** binary contains 2 lightweight city demo map(`/Game/Maps/demo_1` and `/Game/Maps/demo_2`) and 1 empty map(`/Game/Maps/empty`). See [Base Environments](https://simworld.readthedocs.io/en/latest/getting_started/base_environments.html) for details. In addition, users can download 100+ **additional environment paks**. See the [Additional Environments](https://simworld.readthedocs.io/en/latest/getting_started/additional_environments.html) for the installation and complete list of available map paths. If `<MAP_PATH>` is not specified, the default map will be open(/Game/Maps/demo_1).
 
 #### Step 2. Run a Minimal Gym-Style Example
 
