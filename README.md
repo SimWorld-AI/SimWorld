@@ -25,7 +25,7 @@
 <p align="center">
   <a href="https://www.youtube.com/watch?v=-e19MzwDhy4" target="_blank" rel="noopener noreferrer">
     <img
-      src="docs/source/assets/video_cover.png"
+      src="docs/source/assets/video_cover.jpg"
       alt="SimWorld Demo Video"
     />
   </a>
