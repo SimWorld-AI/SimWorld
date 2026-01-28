@@ -55,7 +55,7 @@ The SimWorld Python Client Library contains code for SimWorld's agent and enviro
 Unreal Engine Backend
 ~~~~~~~~~~~~~~~~~~~~~
 
-First, download and extract the **Base** UE server package for your OS. The Base package includes 2 lightweight city demo map and 1 empty map for quickly testing SimWorld's core features, including core agent interaction and procedural city generation. See :doc:`base_environments` for details.
+First, download and extract the **Base** UE server package for your OS. The Base package includes 2 lightweight lightweight city scenes and 1 empty map for quickly testing SimWorld's core features, including core agent interaction and procedural city generation. See :doc:`base_environments` for details.
 
 * **Base (Required)**
 
