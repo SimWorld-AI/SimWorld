@@ -6,7 +6,7 @@ SimWorld uses a YAML configuration file to control global simulator settings and
 Overview
 --------
 
-The configuration file is organized into several main sections:
+The configuration file is organized into several main sections.
 
 * ``simworld``: Global simulator settings
 * ``citygen``: Procedural city generation parameters
@@ -15,6 +15,12 @@ The configuration file is organized into several main sections:
 * ``map``: Map-related settings
 * ``user``: User agent configuration
 * ``scooter``: Scooter agent settings
+
+Quick guidance
+--------------
+
+* Core knobs: ``simworld`` is the primary global block most users tweak (e.g., seed, dt, UE manager path). Start here.
+* Advanced blocks: ``citygen``, ``assets_rp``, ``traffic``, ``map``, ``user``, and ``scooter`` expose detailed behaviors. In most cases you can keep their defaults unchanged unless you need specific generation or simulation customization.
 
 Global Settings (simworld)
 ---------------------------
