@@ -115,8 +115,8 @@ If you want more pre-built scenes for demos and diverse scenarios, you can optio
 `SimWorld/Content/Paks/`.
 
 - **Additional Environments (optional, 100+ maps)**
-  - **Windows:** [Download](https://huggingface.co/datasets/SimWorld-AI/SimWorld/tree/main/AdditionEnvironmentPaks/Windows)
-  - **Linux:** [Download](https://huggingface.co/datasets/SimWorld-AI/SimWorld/tree/main/AdditionEnvironmentPaks/Linux)
+  - **Windows:** [Download](https://huggingface.co/datasets/SimWorld-AI/SimWorld/blob/main/Base/Windows.zip)
+  - **Linux:** [Download](https://huggingface.co/datasets/SimWorld-AI/SimWorld/blob/main/Base/Linux.zip)
 
 The Additional Environments package is organized as separate `.pak` files, so you can download only the maps you need. Please check the [download and installation](https://simworld.readthedocs.io/en/latest/getting_started/additional_environments.html#download-and-installation) for usage instructions, including how to load specific maps and what each `.pak` contains.
 
