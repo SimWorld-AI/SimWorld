@@ -45,7 +45,7 @@ If you are working on language-to-action or tool-use agents and would like to bu
 
 .. _next-steps-rl-training-pipeline:
 
-RL Training Pipeline
+RL Training Pipeline for SimWorld
 --------------------
 
 We plan to provide a **unified RL training pipeline** for diverse embodied tasks (e.g., DeliveryBench) in SimWorld, including:
