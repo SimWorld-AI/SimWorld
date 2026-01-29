@@ -84,6 +84,121 @@ docs/                   # Documentation source files
 README.md
 ```
 
+## 🚀 Quick Tour
+Here's a minimal example showing how to create an LLM-driven navigation task in SimWorld. This demo creates a humanoid agent that autonomously navigates to a target location using natural language reasoning and a Gym-like interface.
+
+For the complete implementation, see [examples/gym_interface_demo.ipynb](examples/gym_interface_demo.ipynb). More examples are available in the [examples/](examples/) directory.
+
+```python {42-49,53,56,61,75,78}
+import math
+from simworld.communicator.communicator import Communicator
+from simworld.communicator.unrealcv import UnrealCV
+from simworld.llm.base_llm import BaseLLM
+from simworld.agent.humanoid import Humanoid
+from simworld.utils.vector import Vector
+
+# 1. Define Agent class - uses LLM to decide navigation actions
+class Agent():
+    def __init__(self):
+        self.llm = BaseLLM("gpt-4o")
+        self.system_prompt = """ ... Your task is to ..."""
+
+    def action(self, obs, target):
+        position = obs['position']
+        direction = obs['direction']
+
+        # Calculate angle to target
+        current_yaw = math.degrees(math.atan2(direction.y, direction.x))
+        # ... calculate angle difference to target ...
+
+        prompt = f""" ... Choose your next action ..."""
+
+        action, _ = self.llm.generate_text(system_prompt=self.system_prompt, user_prompt=prompt)
+        return action.strip()
+
+# 2. Define Environment class - Gym-like interface
+class Environment:
+    def __init__(self, communicator, config=Config()):
+        self.communicator = communicator
+        self.agent = None
+        self.target = None
+        # ... initialize map and config ...
+
+    def reset(self):
+        """Spawn/reset humanoid and return initial observation."""
+        spawn_location = Vector(0, 0)
+        spawn_forward = Vector(1, 0)
+
+        # Spawn humanoid agent in UE world
+        self.agent = Humanoid(
+            communicator=self.communicator,
+            position=spawn_location,
+            direction=spawn_forward,
+            config=self.config,
+            map=self.map
+        )
+        self.communicator.spawn_agent(self.agent, name=None, model_path=agent_bp, type="humanoid")
+        self.target = Vector(1700, -1700)
+
+        # Get initial observation (position, direction, and ego-view camera)
+        loc_3d = self.communicator.unrealcv.get_location(self.agent_name)  # Returns [x, y, z]
+        position = Vector(loc_3d[0], loc_3d[1])
+
+        orientation = self.communicator.unrealcv.get_orientation(self.agent_name)  # Returns [pitch, yaw, roll]
+        yaw = orientation[1]  # Yaw angle in degrees
+        # Convert yaw to direction vector
+        direction = Vector(math.cos(math.radians(yaw)), math.sin(math.radians(yaw)))
+
+        ego_view = self.communicator.get_camera_observation(self.agent.camera_id, "lit")
+
+        observation = {
+            'position': position,
+            'direction': direction,  # unit vector
+            'ego_view': ego_view     # RGB image
+        }
+        return observation
+
+    def step(self, action):
+        """Parse and execute action, return new observation and reward."""
+        # Parse action string (e.g., "forward 2", "rotate 45 left")
+        if action.startswith("forward"):
+            # Extract duration and execute forward movement
+            self.communicator.humanoid_step_forward(self.agent.id, duration, direction=0)
+        elif action.startswith("rotate"):
+            # Extract angle and direction, execute rotation
+            self.communicator.humanoid_rotate(self.agent.id, angle, direction)
+        # ... handle other actions ...
+
+        # Get new observation and calculate reward
+        # ... update position, direction, ego_view ...
+        reward = -position.distance(self.target)  # negative distance
+        return observation, reward, success
+
+# 3. Main loop - observe, decide, execute
+communicator = Communicator(UnrealCV())
+agent = Agent()
+env = Environment(communicator)
+
+obs = env.reset()
+print(f"Task: Navigate to target position {env.target}")
+
+for i in range(100):
+    # Agent decides next action based on observation
+    action = agent.action(obs, env.target)
+    print(f"Step {i+1}: Action = '{action}'")
+
+    # Execute action and get new observation
+    obs, reward, success = env.step(action)
+
+    if success:
+        print(f"  Position: {obs['position']}, Reward: {reward:.2f}")
+
+        # Check if reached target
+        if obs['position'].distance(env.target) < 200:
+            print("Target reached!")
+            break
+```
+
 ## ⚙️ Setup
 
 This section walks through the minimal setup to run SimWorld using our provided UE packages and the Python client. If you want to use your own custom environments, assets, or agent models, you can import them via `.pak` files. See [Make Your SimWorld](#make-your-simworld) for instructions.
@@ -125,7 +240,7 @@ The Additional Environments package is organized as separate `.pak` files, so yo
 
 We provide several examples of code in [examples/](examples/), showcasing how to use the basic functionalities of SimWorld, including city layout generation, traffic simulation, asset retrieval, and activity-to-actions. Please follow the examples to see how SimWorld works.
 
-#### Step 1. Start the UE Server
+#### Start the UE Server
 Start the SimWorld UE server first, then run the Python examples. From the extracted UE server package directory:
 
 - **Windows:** double-click `SimWorld.exe`, or launch it from the command line:
@@ -139,100 +254,6 @@ Start the SimWorld UE server first, then run the Python examples. From the extra
     ```
 
 `<MAP_PATH>` refers to the Unreal Engine internal path to a map file (e.g., `/Game/hospital/map/demo.umap`). SimWorld's **base** binary contains 2 city maps and 1 empty map. See [Base Environments](https://simworld.readthedocs.io/en/latest/getting_started/base_environments.html) for details. In addition, users can download 100+ **additional environment paks**. See the [Additional Environments](https://simworld.readthedocs.io/en/latest/getting_started/additional_environments.html) for the installation and complete list of available map paths. If `<MAP_PATH>` is not specified, the default map (`/Game/Maps/demo_1`) will be open.
-
-#### Step 2. Run a Minimal Gym-Style Example
-
-Once the SimWorld UE5 environment is running, you can connect from Python and control an in-world humanoid agent in just a few lines. The full demo is provided in [examples/gym_interface_demo.ipynb](examples/gym_interface_demo.ipynb). You can also run other example scripts/notebooks under [examples/](examples/).
-
-```python
-from simworld.communicator.unrealcv import UnrealCV
-from simworld.communicator.communicator import Communicator
-from simworld.agent.humanoid import Humanoid
-from simworld.utils.vector import Vector
-from simworld.llm.base_llm import BaseLLM
-from simworld.local_planner.local_planner import LocalPlanner
-from simworld.llm.a2a_llm import A2ALLM
-
-class Agent:
-    def __init__(self, goal):
-        self.goal = goal
-        self.llm = BaseLLM("gpt-4o")
-        self.system_prompt = f"You are an intelligent agent in a 3D world. Your goal is to: {self.goal}."
-
-    def action(self, obs):
-        prompt = f"{self.system_prompt}\n You are currently at: {obs}\nWhat is your next action?"
-        action = self.llm.generate_text(system_prompt=self.system_prompt, user_prompt=prompt)
-        return action
-
-class Environment:
-    def __init__(self, comm: Communicator):
-        self.comm = comm
-        self.agent: Humanoid | None = None
-        self.action_planner = None
-        self.agent_name: str | None = None
-        self.target: Vector | None = None
-        self.action_planner_llm = A2ALLM(model_name="gpt-4o-mini")
-
-    def reset(self):
-        """Clear the UE scene and (re)spawn the humanoid and target."""
-        # Clear spawned objects
-        self.comm.clear_env()
-
-        # Blueprint path for the humanoid agent to spawn in the UE level
-        agent_bp = "/Game/TrafficSystem/Pedestrian/Base_User_Agent.Base_User_Agent_C"
-
-        # Initial spawn position and facing direction for the humanoid (2D)
-        spawn_location, spawn_forward = Vector(0, 0), Vector(0, 1)
-        self.agent = Humanoid(spawn_location, spawn_forward)
-        self.action_planner = LocalPlanner(agent=self.agent, model=self.action_planner_llm, rule_based=False)
-
-        # Spawn the humanoid agent in the Unreal world
-        self.comm.spawn_agent(self.agent, name=None, model_path=agent_bp, type="humanoid")
-
-        # Define a target position the agent is encouraged to move toward (example value)
-        self.target = Vector(1700, -1700)
-
-        # Return initial observation (optional, but RL-style)
-        observation = self.communicator.unrealcv.get_location(self.agent_name)
-        ret = Vector(observation[0], observation[1])
-        return ret
-
-    def step(self, action):
-        """Use action planner to execute the given action."""
-        # Parse the action text and map it to the action space
-        primitive_actions = self.action_planner.parse(action)
-
-        self.action_planner.execute(primitive_actions)
-
-        # Get current location from UE (x, y, z) and convert to 2D Vector
-        location = Vector(*self.comm.unrealcv.get_location(self.agent)[:2])
-
-        observation = location
-        self.agent.position = location
-
-        # Reward: negative Euclidean distance in 2D plane
-        reward = -location.distance(self.target)
-
-        return observation, reward
-
-if __name__ == "__main__":
-    # Connect to the running Unreal Engine instance via UnrealCV
-    ucv = UnrealCV()
-    comm = Communicator(ucv)
-
-    # Create the environment wrapper
-    agent = Agent(goal='Go to (1700, -1700).')
-    env = Environment(comm)
-
-    obs = env.reset()
-
-    # Roll out a short trajectory
-    for _ in range(100):
-        action = agent.action(obs)
-        obs, reward = env.step(action)
-        print(f"obs: {obs}, reward: {reward}")
-        # Plug this into your RL loop / logging as needed
-```
 
 ## 📚 Configuration and API Reference
 
